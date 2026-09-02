@@ -304,12 +304,6 @@
         <div class="tags"><span data-i18n="w2.t1"></span><span>GitHub Pages</span><span data-i18n="w2.t2"></span><span>Instagram</span></div>
         <div class="more" data-i18n="w.open"></div></div>
       </div>
-      <div class="work" data-proj="myasna" role="button" tabindex="0">
-        <div class="shot"><div class="ph a">М'ясна карта</div></div>
-        <div class="body"><div class="tag" data-i18n="w3.tag"></div><h3 data-i18n="w3.h"></h3><p data-i18n="w3.p"></p>
-        <div class="tags"><span>WordPress</span><span data-i18n="w3.t1"></span><span data-i18n="w3.t2"></span></div>
-        <div class="more" data-i18n="w.open"></div></div>
-      </div>
       <div class="work" data-proj="janafit" role="button" tabindex="0">
         <div class="shot"><div class="ph b">JanaFit</div></div>
         <div class="body"><div class="tag" data-i18n="w4.tag"></div><h3 data-i18n="w4.h"></h3><p data-i18n="w4.p"></p>
@@ -417,7 +411,6 @@
 const PROJ = {
  shifton:{img:"https://image.thum.io/get/width/900/crop/450/https://shifton.com",ph:"b",name:"Shifton",url:"https://shifton.com",stack:["Cloudflare Workers","D1","Queues","Bitrix24 REST","Webhooks","TypeScript"]},
  spirit:{img:"https://image.thum.io/get/width/900/crop/450/https://spiritagency.space",ph:"c",name:"Spirit Agency",url:"https://spiritagency.space",stack:["HTML/CSS","GitHub Pages","Open Graph","SEO-теги","Instagram"]},
- myasna:{ph:"a",name:"М'ясна карта",stack:["WordPress","WooCommerce","PageSpeed"]},
  janafit:{ph:"b",name:"JanaFit",stack:["Telegram Bot API","Python","Cron","Google Sheets"]},
  freelancehunt:{ph:"c",name:"Freelancehunt",stack:["Telegram Bot API","Freelancehunt API v2","Python"]},
  appsscript:{ph:"a",name:"Apps Script",stack:["Google Apps Script","Google Forms","Google Docs","Drive"]}
@@ -430,8 +423,6 @@ rot:["Більше клієнтів","Швидший сайт","Вище в Goog
 "p.shifton.l":["Інтеграція з Bitrix24: двостороння синхронізація співробітників, змін і відсутностей","Обробка вебхуків і черги подій на Cloudflare Workers — без втрат при піках","Зберігання стану інтеграції в D1, повторні спроби при збоях","Каркас для наступних інтеграцій: CRM, хелпдеск, телефонія, календарі"],
 "p.spirit.tag":"Сайти · SEO","p.spirit.lead":"Мережа сайтів агентства на піддоменах одного домену — кожен під свою аудиторію і свій Instagram-акаунт.",
 "p.spirit.l":["8 сайтів-сателітів: вёрстка, адаптив, швидке завантаження","SEO-теги, мова сторінки, Open Graph для коректних прев'ю в месенджерах","Безкоштовний хостинг на GitHub Pages, домен і DNS налаштовані","Оформлення Instagram-акаунтів під кожен сайт"],
-"p.myasna.tag":"Сайт · Магазин","p.myasna.lead":"Сайт магазину м'ясної продукції: щоб клієнт швидко знайшов потрібне і замовив з телефона.",
-"p.myasna.l":["Каталог продукції з категоріями","Замовлення в кілька кроків з мобільного","Оптимізація швидкості завантаження","Базове SEO для локального пошуку"],
 "p.janafit.tag":"Автоматизація · Бот","p.janafit.lead":"Бот-тренер для марафону схуднення: тренер веде десятки учасниць, а рутину — програму, меню, нагадування — виконує бот.",
 "p.janafit.l":["Програма тренувань і меню за днями прямо в Telegram","Нагадування про тренування та замір за розкладом","Облік прогресу кожної учасниці","Тренер бачить зведення, не витрачаючи час на ручні повідомлення"],
 "p.freelancehunt.tag":"Автоматизація · Бот","p.freelancehunt.lead":"Бот, який моніторить біржу Freelancehunt і за секунди приносить нові проєкти у Telegram — щоб відповідати першим.",
@@ -442,7 +433,6 @@ rot:["Більше клієнтів","Швидший сайт","Вище в Goog
 "w.h":"Проєкти, які вже працюють","w.sub":"Кілька прикладів того, що ми робили — від SaaS-інтеграцій до сайтів для малого бізнесу.",
 "w1.tag":"Інтеграції · Автоматизація","w1.p":"Плагіни-інтеграції сервісу планування змін Shifton із CRM: Bitrix24 та інші. Двостороння синхронізація даних, вебхуки, черги на Cloudflare Workers.",
 "w2.tag":"Сайти · SEO","w2.t1":"8 сайтів","w2.t2":"SEO-теги","w2.p":"Мережа з 8 сайтів-сателітів на піддоменах: вёрстка, SEO-теги, Open Graph, розгортання на GitHub Pages, оформлення Instagram-акаунтів.",
-"w3.tag":"Сайт · Магазин","w3.h":"М'ясна карта","w3.p":"Сайт для магазину м'ясної продукції: каталог, зручне замовлення з телефона, швидке завантаження.","w3.t1":"Каталог","w3.t2":"Замовлення",
 "w4.tag":"Автоматизація · Бот","w4.h":"JanaFit — бот-тренер","w4.p":"Telegram-бот для марафону схуднення: програма тренувань, меню, нагадування й облік прогресу учасниць без ручної роботи тренера.","w4.t1":"Нагадування","w4.t2":"Прогрес",
 "w5.tag":"Автоматизація · Бот","w5.h":"Freelancehunt — бот проєктів","w5.p":"Бот, який ловить нові проєкти на біржі за фільтрами і миттєво надсилає їх у Telegram — перша відповідь швидша за конкурентів.","w5.t1":"Фільтри",
 "w6.tag":"Автоматизація · Документи","w6.h":"Форма → 3 документи","w6.p":"Система на Google Apps Script: одна заповнена форма автоматично генерує три готові .docx-документи за шаблонами. Нуль ручного набору.",
@@ -482,8 +472,6 @@ rot:["Больше клиентов","Быстрее сайт","Выше в Goog
 "p.shifton.l":["Интеграция с Bitrix24: двусторонняя синхронизация сотрудников, смен и отсутствий","Обработка вебхуков и очереди событий на Cloudflare Workers — без потерь при пиках","Хранение состояния интеграции в D1, повторные попытки при сбоях","Каркас для следующих интеграций: CRM, хелпдеск, телефония, календари"],
 "p.spirit.tag":"Сайты · SEO","p.spirit.lead":"Сеть сайтов агентства на поддоменах одного домена — каждый под свою аудиторию и свой Instagram-аккаунт.",
 "p.spirit.l":["8 сайтов-сателлитов: вёрстка, адаптив, быстрая загрузка","SEO-теги, язык страницы, Open Graph для корректных превью в мессенджерах","Бесплатный хостинг на GitHub Pages, домен и DNS настроены","Оформление Instagram-аккаунтов под каждый сайт"],
-"p.myasna.tag":"Сайт · Магазин","p.myasna.lead":"Сайт магазина мясной продукции: чтобы клиент быстро нашёл нужное и заказал с телефона.",
-"p.myasna.l":["Каталог продукции с категориями","Заказ в несколько шагов с мобильного","Оптимизация скорости загрузки","Базовое SEO для локального поиска"],
 "p.janafit.tag":"Автоматизация · Бот","p.janafit.lead":"Бот-тренер для марафона похудения: тренер ведёт десятки участниц, а рутину — программу, меню, напоминания — выполняет бот.",
 "p.janafit.l":["Программа тренировок и меню по дням прямо в Telegram","Напоминания о тренировке и замерах по расписанию","Учёт прогресса каждой участницы","Тренер видит сводку, не тратя время на ручные сообщения"],
 "p.freelancehunt.tag":"Автоматизация · Бот","p.freelancehunt.lead":"Бот, который мониторит биржу Freelancehunt и за секунды приносит новые проекты в Telegram — чтобы отвечать первым.",
@@ -494,7 +482,6 @@ rot:["Больше клиентов","Быстрее сайт","Выше в Goog
 "w.h":"Проекты, которые уже работают","w.sub":"Несколько примеров того, что мы делали — от SaaS-интеграций до сайтов для малого бизнеса.",
 "w1.tag":"Интеграции · Автоматизация","w1.p":"Плагины-интеграции сервиса планирования смен Shifton с CRM: Bitrix24 и другие. Двусторонняя синхронизация данных, вебхуки, очереди на Cloudflare Workers.",
 "w2.tag":"Сайты · SEO","w2.t1":"8 сайтов","w2.t2":"SEO-теги","w2.p":"Сеть из 8 сайтов-сателлитов на поддоменах: вёрстка, SEO-теги, Open Graph, развёртывание на GitHub Pages, оформление Instagram-аккаунтов.",
-"w3.tag":"Сайт · Магазин","w3.h":"Мясна карта","w3.p":"Сайт для магазина мясной продукции: каталог, удобный заказ с телефона, быстрая загрузка.","w3.t1":"Каталог","w3.t2":"Заказ",
 "w4.tag":"Автоматизация · Бот","w4.h":"JanaFit — бот-тренер","w4.p":"Telegram-бот для марафона похудения: программа тренировок, меню, напоминания и учёт прогресса участниц без ручной работы тренера.","w4.t1":"Напоминания","w4.t2":"Прогресс",
 "w5.tag":"Автоматизация · Бот","w5.h":"Freelancehunt — бот проектов","w5.p":"Бот, который ловит новые проекты на бирже по фильтрам и мгновенно присылает их в Telegram — первый ответ быстрее конкурентов.","w5.t1":"Фильтры",
 "w6.tag":"Автоматизация · Документы","w6.h":"Форма → 3 документа","w6.p":"Система на Google Apps Script: одна заполненная форма автоматически генерирует три готовых .docx-документа по шаблонам. Ноль ручного набора.",
@@ -534,8 +521,6 @@ rot:["More customers","A faster site","Higher on Google","No lost leads"],
 "p.shifton.l":["Bitrix24 integration: two-way sync of employees, shifts and absences","Webhook handling and event queues on Cloudflare Workers — no data loss at peaks","Integration state stored in D1, retries on failures","A framework for the next integrations: CRM, helpdesk, telephony, calendars"],
 "p.spirit.tag":"Websites · SEO","p.spirit.lead":"An agency's network of sites on subdomains of one domain — each for its own audience and its own Instagram account.",
 "p.spirit.l":["8 satellite sites: layout, responsive, fast loading","SEO tags, page language, Open Graph for correct previews in messengers","Free hosting on GitHub Pages, domain and DNS configured","Instagram account styling for each site"],
-"p.myasna.tag":"Website · Store","p.myasna.lead":"A meat-products store website: so a customer quickly finds what they need and orders from a phone.",
-"p.myasna.l":["Product catalogue with categories","Ordering in a few steps from mobile","Page speed optimization","Basic SEO for local search"],
 "p.janafit.tag":"Automation · Bot","p.janafit.lead":"A coach bot for a weight-loss marathon: the coach guides dozens of participants while the bot handles the routine — plan, menu, reminders.",
 "p.janafit.l":["Workout plan and daily menu right in Telegram","Scheduled reminders for workouts and measurements","Progress tracking for every participant","The coach sees a summary without sending messages by hand"],
 "p.freelancehunt.tag":"Automation · Bot","p.freelancehunt.lead":"A bot that monitors the Freelancehunt marketplace and delivers new projects to Telegram in seconds — so you reply first.",
@@ -546,7 +531,6 @@ rot:["More customers","A faster site","Higher on Google","No lost leads"],
 "w.h":"Projects already up and running","w.sub":"A few examples of what we've built — from SaaS integrations to small-business websites.",
 "w1.tag":"Integrations · Automation","w1.p":"Integration plugins connecting the Shifton shift-scheduling service to CRMs such as Bitrix24. Two-way data sync, webhooks and queues on Cloudflare Workers.",
 "w2.tag":"Websites · SEO","w2.t1":"8 sites","w2.t2":"SEO tags","w2.p":"A network of 8 satellite sites on subdomains: layout, SEO tags, Open Graph, GitHub Pages deployment and Instagram account styling.",
-"w3.tag":"Website · Store","w3.h":"Myasna Karta","w3.p":"Website for a meat-products store: catalogue, easy ordering from a phone, fast loading.","w3.t1":"Catalogue","w3.t2":"Ordering",
 "w4.tag":"Automation · Bot","w4.h":"JanaFit — coach bot","w4.p":"Telegram bot for a weight-loss marathon: workout plan, menu, reminders and progress tracking with no manual work for the coach.","w4.t1":"Reminders","w4.t2":"Progress",
 "w5.tag":"Automation · Bot","w5.h":"Freelancehunt — project bot","w5.p":"A bot that catches new marketplace projects by filters and pushes them to Telegram instantly — first reply ahead of competitors.","w5.t1":"Filters",
 "w6.tag":"Automation · Documents","w6.h":"Form → 3 documents","w6.p":"Google Apps Script system: one submitted form automatically generates three ready .docx documents from templates. Zero manual typing.",
