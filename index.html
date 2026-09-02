@@ -89,6 +89,35 @@
   .ico{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
   .ico svg{width:26px;height:26px}
   .ico.b{background:var(--ico-b);color:var(--blue)} .ico.g{background:var(--ico-g);color:var(--green)} .ico.y{background:var(--ico-y);color:var(--ico-y-t)} .ico.r{background:var(--ico-r);color:var(--red)} .ico.p{background:var(--ico-p);color:var(--ico-p-t)}
+  .svc{position:relative;overflow:hidden;display:flex;flex-direction:column;padding:28px 24px 22px;border-radius:16px;transition:transform .2s,box-shadow .2s,border-color .2s}
+  .svc:hover{transform:translateY(-4px);box-shadow:0 14px 34px var(--shadow);border-color:transparent}
+  .svc:before{content:"";position:absolute;left:0;top:0;right:0;height:5px;background:var(--acc)}
+  .svc .ico{width:56px;height:56px;border-radius:14px;background:var(--tint);color:var(--acc)}
+  .svc .ico svg{width:28px;height:28px}
+  .svc .ghost-ico{position:absolute;right:-18px;bottom:-18px;width:120px;height:120px;color:var(--acc);opacity:.07;pointer-events:none}
+  .svc .ghost-ico svg{width:100%;height:100%}
+  .svc h3{font-size:20px;font-weight:700;letter-spacing:-.2px;margin-bottom:8px}
+  .svc p{flex:1}
+  .svc .foot{display:flex;align-items:center;justify-content:space-between;margin-top:18px;gap:10px}
+  .svc .chip{display:inline-block;background:var(--tint);color:var(--acc);font-weight:700;font-size:14px;padding:6px 12px;border-radius:20px}
+  .svc .go{color:var(--acc);font-weight:500;font-size:14px;white-space:nowrap}
+  .svc.r{--acc:var(--red);--tint:var(--ico-r)} .svc.y{--acc:var(--ico-y-t);--tint:var(--ico-y)} .svc.b{--acc:var(--blue);--tint:var(--ico-b)} .svc.g{--acc:var(--green);--tint:var(--ico-g)} .svc.p{--acc:var(--ico-p-t);--tint:var(--ico-p)}
+  .svc-grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  @media(min-width:960px){.svc-grid{grid-template-columns:repeat(6,1fr)}.svc{grid-column:span 2}.svc:nth-child(4){grid-column:2/span 2}.svc:nth-child(5){grid-column:4/span 2}}
+  /* portfolio */
+  .work{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+  .work:hover{transform:translateY(-4px);box-shadow:0 14px 34px var(--shadow)}
+  .work .shot{aspect-ratio:16/10;background:var(--soft);position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .work .shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+  .work .shot .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:44px;font-weight:700;color:#fff;letter-spacing:-1px}
+  .work .shot .ph.a{background:linear-gradient(135deg,#d93025,#f9ab00)} .work .shot .ph.b{background:linear-gradient(135deg,#1a73e8,#8430ce)} .work .shot .ph.c{background:linear-gradient(135deg,#1e8e3e,#1a73e8)}
+  .work .body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+  .work .tag{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.6px;color:var(--blue);margin-bottom:6px}
+  .work h3{font-size:19px;font-weight:700;margin-bottom:6px}
+  .work p{color:var(--grey);font-size:15px;flex:1}
+  .work .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+  .work .tags span{font-size:12px;background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:4px 10px;color:var(--grey)}
+  .work a.site{margin-top:12px;font-size:14px;font-weight:500}
   .card h3{font-size:19px;font-weight:500;margin-bottom:8px}
   .card p{color:var(--grey);font-size:15px}
   .card .from{display:block;margin-top:14px;font-weight:500}
@@ -145,6 +174,7 @@
     <ul>
       <li><a href="#services" data-i18n="nav.services"></a></li>
       <li><a href="#offers" data-i18n="nav.prices"></a></li>
+      <li><a href="#work" data-i18n="nav.work"></a></li>
       <li><a href="#how" data-i18n="nav.how"></a></li>
       <li><a href="#faq" data-i18n="nav.faq"></a></li>
     </ul>
@@ -184,12 +214,37 @@
   <div class="wrap">
     <h2 data-i18n="s.h"></h2>
     <p class="sub" data-i18n="s.sub"></p>
-    <div class="grid g5">
-      <div class="card"><div class="ico r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div><h3 data-i18n="s1.h"></h3><p data-i18n="s1.p"></p><span class="from" data-i18n="s1.from"></span></div>
-      <div class="card"><div class="ico y"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><h3 data-i18n="s2.h"></h3><p data-i18n="s2.p"></p><span class="from" data-i18n="s2.from"></span></div>
-      <div class="card"><div class="ico b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div><h3 data-i18n="s3.h"></h3><p data-i18n="s3.p"></p><span class="from" data-i18n="s3.from"></span></div>
-      <div class="card"><div class="ico g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><h3 data-i18n="s4.h"></h3><p data-i18n="s4.p"></p><span class="from" data-i18n="s4.from"></span></div>
-      <div class="card"><div class="ico p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div><h3 data-i18n="s5.h"></h3><p data-i18n="s5.p"></p><span class="from" data-i18n="s5.from"></span></div>
+    <div class="svc-grid">
+      <div class="card svc r">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3 data-i18n="s1.h"></h3><p data-i18n="s1.p"></p>
+        <div class="foot"><span class="chip" data-i18n="s1.from"></span><a class="go js-tg" href="#" onclick="lead('telegram')" data-i18n="s.go"></a></div>
+        <div class="ghost-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+      </div>
+      <div class="card svc y">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3 data-i18n="s2.h"></h3><p data-i18n="s2.p"></p>
+        <div class="foot"><span class="chip" data-i18n="s2.from"></span><a class="go js-tg" href="#" onclick="lead('telegram')" data-i18n="s.go"></a></div>
+        <div class="ghost-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      </div>
+      <div class="card svc b">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+        <h3 data-i18n="s3.h"></h3><p data-i18n="s3.p"></p>
+        <div class="foot"><span class="chip" data-i18n="s3.from"></span><a class="go js-tg" href="#" onclick="lead('telegram')" data-i18n="s.go"></a></div>
+        <div class="ghost-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+      </div>
+      <div class="card svc g">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <h3 data-i18n="s4.h"></h3><p data-i18n="s4.p"></p>
+        <div class="foot"><span class="chip" data-i18n="s4.from"></span><a class="go js-tg" href="#" onclick="lead('telegram')" data-i18n="s.go"></a></div>
+        <div class="ghost-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+      </div>
+      <div class="card svc p">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
+        <h3 data-i18n="s5.h"></h3><p data-i18n="s5.p"></p>
+        <div class="foot"><span class="chip" data-i18n="s5.from"></span><a class="go js-tg" href="#" onclick="lead('telegram')" data-i18n="s.go"></a></div>
+        <div class="ghost-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
+      </div>
     </div>
   </div>
 </section>
@@ -212,6 +267,47 @@
   </div>
 </section>
 
+<section id="work" style="background:var(--soft)">
+  <div class="wrap">
+    <h2 data-i18n="w.h"></h2>
+    <p class="sub" data-i18n="w.sub"></p>
+    <div class="grid g3">
+      <div class="work">
+        <div class="shot"><img loading="lazy" src="https://image.thum.io/get/width/800/crop/500/https://shifton.com" alt="shifton.com" onerror="this.remove()"><div class="ph b" style="z-index:-1">Shifton</div></div>
+        <div class="body"><div class="tag" data-i18n="w1.tag"></div><h3>Shifton</h3><p data-i18n="w1.p"></p>
+        <div class="tags"><span>Cloudflare Workers</span><span>Bitrix24</span><span>CRM API</span><span>Webhooks</span></div>
+        <a class="site" href="https://shifton.com" target="_blank" rel="noopener">shifton.com ↗</a></div>
+      </div>
+      <div class="work">
+        <div class="shot"><img loading="lazy" src="https://image.thum.io/get/width/800/crop/500/https://spiritagency.space" alt="spiritagency.space" onerror="this.remove()"><div class="ph c" style="z-index:-1">Spirit</div></div>
+        <div class="body"><div class="tag" data-i18n="w2.tag"></div><h3>Spirit Agency</h3><p data-i18n="w2.p"></p>
+        <div class="tags"><span>8 сайтів</span><span>GitHub Pages</span><span>SEO-теги</span><span>Instagram</span></div>
+        <a class="site" href="https://spiritagency.space" target="_blank" rel="noopener">spiritagency.space ↗</a></div>
+      </div>
+      <div class="work">
+        <div class="shot"><div class="ph a">М'ясна карта</div></div>
+        <div class="body"><div class="tag" data-i18n="w3.tag"></div><h3 data-i18n="w3.h"></h3><p data-i18n="w3.p"></p>
+        <div class="tags"><span>WordPress</span><span data-i18n="w3.t1"></span><span data-i18n="w3.t2"></span></div></div>
+      </div>
+      <div class="work">
+        <div class="shot"><div class="ph b">JanaFit</div></div>
+        <div class="body"><div class="tag" data-i18n="w4.tag"></div><h3 data-i18n="w4.h"></h3><p data-i18n="w4.p"></p>
+        <div class="tags"><span>Telegram Bot</span><span data-i18n="w4.t1"></span><span data-i18n="w4.t2"></span></div></div>
+      </div>
+      <div class="work">
+        <div class="shot"><div class="ph c">Freelancehunt</div></div>
+        <div class="body"><div class="tag" data-i18n="w5.tag"></div><h3 data-i18n="w5.h"></h3><p data-i18n="w5.p"></p>
+        <div class="tags"><span>Telegram Bot</span><span>REST API</span><span data-i18n="w5.t1"></span></div></div>
+      </div>
+      <div class="work">
+        <div class="shot"><div class="ph a">Apps Script</div></div>
+        <div class="body"><div class="tag" data-i18n="w6.tag"></div><h3 data-i18n="w6.h"></h3><p data-i18n="w6.p"></p>
+        <div class="tags"><span>Google Apps Script</span><span>Google Forms</span><span>Docs</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="goals">
   <div class="wrap">
     <h2 data-i18n="g.h"></h2>
@@ -225,7 +321,7 @@
   </div>
 </section>
 
-<section id="how" style="background:var(--soft)">
+<section id="how">
   <div class="wrap">
     <h2 data-i18n="h.h"></h2>
     <p class="sub" data-i18n="h.sub"></p>
@@ -278,6 +374,15 @@
 const I18N = {
 uk:{title:"SiteBoosty — більше клієнтів завдяки швидкому сайту",desc:"Ремонт і прискорення сайтів, SEO, заявки з сайту в Telegram і CRM. Безкоштовна діагностика за 30 хвилин, фіксована ціна до старту робіт.",
 rot:["Більше клієнтів","Швидший сайт","Вище в Google","Заявки без втрат"],
+"s.go":"Детальніше →","nav.work":"Портфоліо",
+"w.h":"Проєкти, які вже працюють","w.sub":"Кілька прикладів того, що ми робили — від SaaS-інтеграцій до сайтів для малого бізнесу.",
+"w1.tag":"Інтеграції · Автоматизація","w1.p":"Плагіни-інтеграції сервісу планування змін Shifton із CRM: Bitrix24 та інші. Двостороння синхронізація даних, вебхуки, черги на Cloudflare Workers.",
+"w2.tag":"Сайти · SEO","w2.p":"Мережа з 8 сайтів-сателітів на піддоменах: вёрстка, SEO-теги, Open Graph, розгортання на GitHub Pages, оформлення Instagram-акаунтів.",
+"w3.tag":"Сайт · Магазин","w3.h":"М'ясна карта","w3.p":"Сайт для магазину м'ясної продукції: каталог, зручне замовлення з телефона, швидке завантаження.","w3.t1":"Каталог","w3.t2":"Замовлення",
+"w4.tag":"Автоматизація · Бот","w4.h":"JanaFit — бот-тренер","w4.p":"Telegram-бот для марафону схуднення: програма тренувань, меню, нагадування й облік прогресу учасниць без ручної роботи тренера.","w4.t1":"Нагадування","w4.t2":"Прогрес",
+"w5.tag":"Автоматизація · Бот","w5.h":"Freelancehunt — бот проєктів","w5.p":"Бот, який ловить нові проєкти на біржі за фільтрами і миттєво надсилає їх у Telegram — перша відповідь швидша за конкурентів.","w5.t1":"Фільтри",
+"w6.tag":"Автоматизація · Документи","w6.h":"Форма → 3 документи","w6.p":"Система на Google Apps Script: одна заповнена форма автоматично генерує три готові .docx-документи за шаблонами. Нуль ручного набору.",
+"q4.a":"50% на старті, 50% після того, як ви перевірили результат. Оплата на картку, за рахунком для ФОП/ТОВ, або через фриланс-біржу (Freelancehunt, Upwork) із безпечною угодою — гроші резервуються на біржі й списуються лише після здачі роботи.",
 "nav.services":"Послуги","nav.prices":"Ціни","nav.how":"Як це працює","nav.faq":"Питання","nav.cta":"Почати",
 "hero.tail":"завдяки SiteBoosty","hero.sub":"Полагодимо, прискоримо і виведемо ваш сайт у Google, щоб клієнти знаходили саме вас. Діагностика — безкоштовно, ціна фіксується до початку робіт.",
 "cta.tg":"Написати в Telegram","cta.call":"Подзвонити","cta.order":"Замовити","hero.hint":"Відповідаємо за 30 хвилин · 8:00–22:00 без вихідних",
@@ -302,13 +407,21 @@ rot:["Більше клієнтів","Швидший сайт","Вище в Goog
 "q1.q":"Скільки коштує подивитися, що з сайтом?","q1.a":"Нічого. Діагностика безкоштовна: ви надсилаєте посилання, за 30 хвилин отримуєте причину проблеми й фіксовану ціну. Далі вирішуєте ви.",
 "q2.q":"Ціна може зрости в процесі?","q2.a":"Ні. Ціна фіксується до початку робіт і не змінюється. Якщо в процесі знайдемо ще щось — скажемо окремо, і ви самі вирішите, чи робити.",
 "q3.q":"З якими сайтами працюєте?","q3.a":"WordPress, OpenCart, Хорошоп, Tilda, Shopify, самописні на PHP/JS. Якщо ваша платформа не в списку — напишіть, скоріш за все теж допоможемо.",
-"q4.q":"Як відбувається оплата?","q4.a":"50% на старті, 50% після того, як ви перевірили результат. Оплата на картку або за рахунком для ФОП/ТОВ.",
-"q5.q":"Що якщо сайт «упав» просто зараз?","q5.a":"Пишіть у Telegram одразу — критичні поломки беремо в роботу першими, зазвичай протягом години.",
+"q4.q":"Як відбувається оплата?","q5.q":"Що якщо сайт «упав» просто зараз?","q5.a":"Пишіть у Telegram одразу — критичні поломки беремо в роботу першими, зазвичай протягом години.",
 "fin.h":"Почніть із безкоштовної діагностики","fin.p":"Напишіть посилання на сайт — за 30 хвилин ви знатимете, що з ним і скільки коштує виправити.",
 "foot":"SiteBoosty · сайти, SEO, автоматизація · Україна"},
 
 ru:{title:"SiteBoosty — больше клиентов благодаря быстрому сайту",desc:"Ремонт и ускорение сайтов, SEO, заявки с сайта в Telegram и CRM. Бесплатная диагностика за 30 минут, фиксированная цена до старта работ.",
 rot:["Больше клиентов","Быстрее сайт","Выше в Google","Заявки без потерь"],
+"s.go":"Подробнее →","nav.work":"Портфолио",
+"w.h":"Проекты, которые уже работают","w.sub":"Несколько примеров того, что мы делали — от SaaS-интеграций до сайтов для малого бизнеса.",
+"w1.tag":"Интеграции · Автоматизация","w1.p":"Плагины-интеграции сервиса планирования смен Shifton с CRM: Bitrix24 и другие. Двусторонняя синхронизация данных, вебхуки, очереди на Cloudflare Workers.",
+"w2.tag":"Сайты · SEO","w2.p":"Сеть из 8 сайтов-сателлитов на поддоменах: вёрстка, SEO-теги, Open Graph, развёртывание на GitHub Pages, оформление Instagram-аккаунтов.",
+"w3.tag":"Сайт · Магазин","w3.h":"Мясна карта","w3.p":"Сайт для магазина мясной продукции: каталог, удобный заказ с телефона, быстрая загрузка.","w3.t1":"Каталог","w3.t2":"Заказ",
+"w4.tag":"Автоматизация · Бот","w4.h":"JanaFit — бот-тренер","w4.p":"Telegram-бот для марафона похудения: программа тренировок, меню, напоминания и учёт прогресса участниц без ручной работы тренера.","w4.t1":"Напоминания","w4.t2":"Прогресс",
+"w5.tag":"Автоматизация · Бот","w5.h":"Freelancehunt — бот проектов","w5.p":"Бот, который ловит новые проекты на бирже по фильтрам и мгновенно присылает их в Telegram — первый ответ быстрее конкурентов.","w5.t1":"Фильтры",
+"w6.tag":"Автоматизация · Документы","w6.h":"Форма → 3 документа","w6.p":"Система на Google Apps Script: одна заполненная форма автоматически генерирует три готовых .docx-документа по шаблонам. Ноль ручного набора.",
+"q4.a":"50% на старте, 50% после того, как вы проверили результат. Оплата на карту, по счёту для ФОП/ООО или через фриланс-биржу (Freelancehunt, Upwork) с безопасной сделкой — деньги резервируются на бирже и списываются только после сдачи работы.",
 "nav.services":"Услуги","nav.prices":"Цены","nav.how":"Как это работает","nav.faq":"Вопросы","nav.cta":"Начать",
 "hero.tail":"благодаря SiteBoosty","hero.sub":"Починим, ускорим и выведем ваш сайт в Google, чтобы клиенты находили именно вас. Диагностика — бесплатно, цена фиксируется до начала работ.",
 "cta.tg":"Написать в Telegram","cta.call":"Позвонить","cta.order":"Заказать","hero.hint":"Отвечаем за 30 минут · 8:00–22:00 без выходных",
@@ -333,13 +446,21 @@ rot:["Больше клиентов","Быстрее сайт","Выше в Goog
 "q1.q":"Сколько стоит посмотреть, что с сайтом?","q1.a":"Ничего. Диагностика бесплатна: вы присылаете ссылку, через 30 минут получаете причину проблемы и фиксированную цену. Дальше решаете вы.",
 "q2.q":"Цена может вырасти в процессе?","q2.a":"Нет. Цена фиксируется до начала работ и не меняется. Если в процессе найдём ещё что-то — скажем отдельно, и вы сами решите, делать ли.",
 "q3.q":"С какими сайтами работаете?","q3.a":"WordPress, OpenCart, Хорошоп, Tilda, Shopify, самописные на PHP/JS. Если вашей платформы нет в списке — напишите, скорее всего тоже поможем.",
-"q4.q":"Как происходит оплата?","q4.a":"50% на старте, 50% после того, как вы проверили результат. Оплата на карту или по счёту для ФОП/ООО.",
-"q5.q":"Что если сайт «упал» прямо сейчас?","q5.a":"Пишите в Telegram сразу — критические поломки берём в работу первыми, обычно в течение часа.",
+"q4.q":"Как происходит оплата?","q5.q":"Что если сайт «упал» прямо сейчас?","q5.a":"Пишите в Telegram сразу — критические поломки берём в работу первыми, обычно в течение часа.",
 "fin.h":"Начните с бесплатной диагностики","fin.p":"Пришлите ссылку на сайт — через 30 минут вы будете знать, что с ним и сколько стоит исправить.",
 "foot":"SiteBoosty · сайты, SEO, автоматизация · Украина"},
 
 en:{title:"SiteBoosty — more customers with a faster website",desc:"Website repair and speed optimization, SEO, leads from your site straight to Telegram and CRM. Free 30-minute diagnosis, fixed price before work starts.",
 rot:["More customers","A faster site","Higher on Google","No lost leads"],
+"s.go":"Learn more →","nav.work":"Portfolio",
+"w.h":"Projects already up and running","w.sub":"A few examples of what we've built — from SaaS integrations to small-business websites.",
+"w1.tag":"Integrations · Automation","w1.p":"Integration plugins connecting the Shifton shift-scheduling service to CRMs such as Bitrix24. Two-way data sync, webhooks and queues on Cloudflare Workers.",
+"w2.tag":"Websites · SEO","w2.p":"A network of 8 satellite sites on subdomains: layout, SEO tags, Open Graph, GitHub Pages deployment and Instagram account styling.",
+"w3.tag":"Website · Store","w3.h":"Myasna Karta","w3.p":"Website for a meat-products store: catalogue, easy ordering from a phone, fast loading.","w3.t1":"Catalogue","w3.t2":"Ordering",
+"w4.tag":"Automation · Bot","w4.h":"JanaFit — coach bot","w4.p":"Telegram bot for a weight-loss marathon: workout plan, menu, reminders and progress tracking with no manual work for the coach.","w4.t1":"Reminders","w4.t2":"Progress",
+"w5.tag":"Automation · Bot","w5.h":"Freelancehunt — project bot","w5.p":"A bot that catches new marketplace projects by filters and pushes them to Telegram instantly — first reply ahead of competitors.","w5.t1":"Filters",
+"w6.tag":"Automation · Documents","w6.h":"Form → 3 documents","w6.p":"Google Apps Script system: one submitted form automatically generates three ready .docx documents from templates. Zero manual typing.",
+"q4.a":"50% upfront, 50% after you've verified the result. Pay by card, by invoice for businesses, or via a freelance marketplace (Freelancehunt, Upwork) with escrow — funds are held by the platform and released only after delivery.",
 "nav.services":"Services","nav.prices":"Pricing","nav.how":"How it works","nav.faq":"FAQ","nav.cta":"Get started",
 "hero.tail":"with SiteBoosty","hero.sub":"We fix, speed up and get your website ranking on Google so customers find you first. Diagnosis is free, and the price is fixed before we start.",
 "cta.tg":"Message on Telegram","cta.call":"Call us","cta.order":"Order","hero.hint":"Reply within 30 minutes · 8:00–22:00, 7 days a week",
@@ -364,8 +485,7 @@ rot:["More customers","A faster site","Higher on Google","No lost leads"],
 "q1.q":"How much does it cost to check my site?","q1.a":"Nothing. Diagnosis is free: you send a link, within 30 minutes you get the cause and a fixed price. Then it's your call.",
 "q2.q":"Can the price go up during the work?","q2.a":"No. The price is fixed before we start and doesn't change. If we find something else along the way, we'll tell you separately and you decide.",
 "q3.q":"Which platforms do you work with?","q3.a":"WordPress, OpenCart, Horoshop, Tilda, Shopify, custom PHP/JS. If yours isn't listed, ask — we most likely can help.",
-"q4.q":"How does payment work?","q4.a":"50% upfront, 50% after you've verified the result. Card payment or invoice for businesses.",
-"q5.q":"What if my site is down right now?","q5.a":"Message us on Telegram immediately — critical outages go first, usually within the hour.",
+"q4.q":"How does payment work?","q5.q":"What if my site is down right now?","q5.a":"Message us on Telegram immediately — critical outages go first, usually within the hour.",
 "fin.h":"Start with a free diagnosis","fin.p":"Send us your site link — in 30 minutes you'll know what's wrong and what it costs to fix.",
 "foot":"SiteBoosty · websites, SEO, automation · Ukraine"}
 };
