@@ -104,6 +104,26 @@
   .svc.r{--acc:var(--red);--tint:var(--ico-r)} .svc.y{--acc:var(--ico-y-t);--tint:var(--ico-y)} .svc.b{--acc:var(--blue);--tint:var(--ico-b)} .svc.g{--acc:var(--green);--tint:var(--ico-g)} .svc.p{--acc:var(--ico-p-t);--tint:var(--ico-p)}
   .svc-grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
   @media(min-width:960px){.svc-grid{grid-template-columns:repeat(6,1fr)}.svc{grid-column:span 2}.svc:nth-child(4){grid-column:2/span 2}.svc:nth-child(5){grid-column:4/span 2}}
+  /* reviews */
+  .rv-stats{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:-16px 0 32px}
+  .rv-stat{border:1px solid var(--line);border-radius:12px;padding:14px 24px;background:var(--card);text-align:center;min-width:160px}
+  .rv-stat b{display:block;font-size:30px;font-weight:700;letter-spacing:-.5px;color:var(--green);line-height:1.1}
+  .rv-stat span{font-size:13px;color:var(--grey)}
+  .rv-proof{max-width:760px;margin:0 auto 22px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+  .rv-proof img{display:block;width:100%;height:auto}
+  .rv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:820px){.rv-grid{grid-template-columns:1fr}}
+  .rv-grid figure{margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;cursor:zoom-in;box-shadow:0 1px 3px var(--shadow);transition:transform .2s,box-shadow .2s}
+  .rv-grid figure:hover{transform:translateY(-3px);box-shadow:0 10px 26px var(--shadow)}
+  .rv-grid img{display:block;width:100%;height:auto}
+  .rv-more{margin-top:26px;display:flex;flex-direction:column;align-items:center;gap:10px}
+  .rv-count,.rv-note{font-size:13px;color:var(--grey);text-align:center}
+  .rv-note{margin-top:22px}
+  .rv-note a{white-space:nowrap}
+  dialog.lb{border:0;padding:0;background:transparent;max-width:min(1200px,calc(100% - 32px));margin:auto;overflow:visible}
+  dialog.lb::backdrop{background:rgba(0,0,0,.72)}
+  dialog.lb img{width:100%;height:auto;border-radius:12px;display:block;background:#fff;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+  dialog.lb .x{position:absolute;top:-16px;right:-16px;width:38px;height:38px;border-radius:50%;border:0;background:#fff;color:#202124;font-size:22px;cursor:pointer;line-height:1;box-shadow:0 4px 14px rgba(0,0,0,.3)}
   /* portfolio */
   .work{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
   .work:hover{transform:translateY(-4px);box-shadow:0 14px 34px var(--shadow)}
@@ -210,6 +230,7 @@
       <li><a href="#services" data-i18n="nav.services"></a></li>
       <li><a href="#offers" data-i18n="nav.prices"></a></li>
       <li><a href="#work" data-i18n="nav.work"></a></li>
+      <li><a href="#reviews" data-i18n="nav.reviews"></a></li>
       <li><a href="#how" data-i18n="nav.how"></a></li>
       <li><a href="#faq" data-i18n="nav.faq"></a></li>
     </ul>
@@ -341,6 +362,23 @@
   </div>
 </section>
 
+<section id="reviews">
+  <div class="wrap">
+    <h2 data-i18n="rv.h"></h2>
+    <p class="sub" data-i18n="rv.sub"></p>
+    <div class="rv-stats">
+      <div class="rv-stat"><b>206</b><span data-i18n="rv.s1"></span></div>
+      <div class="rv-stat"><b>97%</b><span data-i18n="rv.s2"></span></div>
+      <div class="rv-stat"><b>10/10</b><span data-i18n="rv.s3"></span></div>
+    </div>
+    <div class="rv-proof"><img src="img/reviews/head.webp" width="1200" height="152" alt="Freelancehunt: 206 positive reviews" loading="lazy"></div>
+    <div class="rv-grid" id="rv-grid"></div>
+    <div class="rv-more"><button class="btn ghost" id="rv-more" type="button" data-i18n="rv.more"></button><span class="rv-count" id="rv-count"></span></div>
+    <p class="rv-note"><span data-i18n="rv.note"></span> <a href="https://web.archive.org/web/20241209035907/https://freelancehunt.com/freelancer/jobribakin.html#reviews" target="_blank" rel="noopener" data-i18n="rv.link"></a></p>
+  </div>
+</section>
+<dialog class="lb" id="lb"><button class="x" id="lb-x" type="button" aria-label="Close">&times;</button><img id="lb-img" alt=""></dialog>
+
 <section id="goals">
   <div class="wrap">
     <h2 data-i18n="g.h"></h2>
@@ -447,6 +485,7 @@ rot:["Більше клієнтів","Швидший сайт","Вище в Goog
 "s.go":"Детальніше →","nav.work":"Портфоліо",
 "w.h":"Проєкти, які вже працюють","w.sub":"Кілька прикладів того, що ми робили — від SaaS-інтеграцій до сайтів для малого бізнесу.",
 "mk.j1":"Тренування дня: 15 хв 🏋️","mk.j2":"Зробила ✅","mk.j3":"Супер! −0,4 кг за тиждень 📉","mk.f1":"Новий проєкт","mk.f2":"Лендінг для стоматології · 12 000 ₴","mk.f3":"щойно · 0 відгуків","mk.f4":"Відгукнутись","mk.a1":"Форма","mk.a2":"Договір.docx","mk.a3":"Акт.docx","mk.a4":"Рахунок.docx",
+"nav.reviews":"Відгуки","rv.h":"Відгуки клієнтів","rv.sub":"206 позитивних відгуків на біржі Freelancehunt за 2022–2024 роки. Нижче — знімки реальних відгуків із профілю.","rv.s1":"позитивних відгуків","rv.s2":"задоволених клієнтів","rv.s3":"середня оцінка якості","rv.more":"Показати ще","rv.count":"Показано {n} із {t}","rv.note":"Знімки зроблено з архівної копії профілю на Freelancehunt (грудень 2024).","rv.link":"Відкрити архів →",
 "w1.tag":"Інтеграції · Автоматизація","w1.p":"Плагіни-інтеграції сервісу планування змін Shifton із CRM: Bitrix24 та інші. Двостороння синхронізація даних, вебхуки, черги на Cloudflare Workers.",
 "w2.tag":"Сайти · SEO","w2.t1":"8 сайтів","w2.t2":"SEO-теги","w2.p":"Мережа з 8 сайтів-сателітів на піддоменах: вёрстка, SEO-теги, Open Graph, розгортання на GitHub Pages, оформлення Instagram-акаунтів.",
 "w4.tag":"Автоматизація · Бот","w4.h":"JanaFit — бот-тренер","w4.p":"Telegram-бот для марафону схуднення: програма тренувань, меню, нагадування й облік прогресу учасниць без ручної роботи тренера.","w4.t1":"Нагадування","w4.t2":"Прогрес",
@@ -497,6 +536,7 @@ rot:["Больше клиентов","Быстрее сайт","Выше в Goog
 "s.go":"Подробнее →","nav.work":"Портфолио",
 "w.h":"Проекты, которые уже работают","w.sub":"Несколько примеров того, что мы делали — от SaaS-интеграций до сайтов для малого бизнеса.",
 "mk.j1":"Тренировка дня: 15 мин 🏋️","mk.j2":"Сделала ✅","mk.j3":"Супер! −0,4 кг за неделю 📉","mk.f1":"Новый проект","mk.f2":"Лендинг для стоматологии · 12 000 ₴","mk.f3":"только что · 0 откликов","mk.f4":"Откликнуться","mk.a1":"Форма","mk.a2":"Договор.docx","mk.a3":"Акт.docx","mk.a4":"Счёт.docx",
+"nav.reviews":"Отзывы","rv.h":"Отзывы клиентов","rv.sub":"206 положительных отзывов на бирже Freelancehunt за 2022–2024 годы. Ниже — снимки реальных отзывов из профиля.","rv.s1":"положительных отзывов","rv.s2":"довольных клиентов","rv.s3":"средняя оценка качества","rv.more":"Показать ещё","rv.count":"Показано {n} из {t}","rv.note":"Снимки сделаны с архивной копии профиля на Freelancehunt (декабрь 2024).","rv.link":"Открыть архив →",
 "w1.tag":"Интеграции · Автоматизация","w1.p":"Плагины-интеграции сервиса планирования смен Shifton с CRM: Bitrix24 и другие. Двусторонняя синхронизация данных, вебхуки, очереди на Cloudflare Workers.",
 "w2.tag":"Сайты · SEO","w2.t1":"8 сайтов","w2.t2":"SEO-теги","w2.p":"Сеть из 8 сайтов-сателлитов на поддоменах: вёрстка, SEO-теги, Open Graph, развёртывание на GitHub Pages, оформление Instagram-аккаунтов.",
 "w4.tag":"Автоматизация · Бот","w4.h":"JanaFit — бот-тренер","w4.p":"Telegram-бот для марафона похудения: программа тренировок, меню, напоминания и учёт прогресса участниц без ручной работы тренера.","w4.t1":"Напоминания","w4.t2":"Прогресс",
@@ -547,6 +587,7 @@ rot:["More customers","A faster site","Higher on Google","No lost leads"],
 "s.go":"Learn more →","nav.work":"Portfolio",
 "w.h":"Projects already up and running","w.sub":"A few examples of what we've built — from SaaS integrations to small-business websites.",
 "mk.j1":"Today's workout: 15 min 🏋️","mk.j2":"Done ✅","mk.j3":"Great! −0.4 kg this week 📉","mk.f1":"New project","mk.f2":"Landing page for a dental clinic · ₴12,000","mk.f3":"just now · 0 bids","mk.f4":"Reply","mk.a1":"Form","mk.a2":"Contract.docx","mk.a3":"Act.docx","mk.a4":"Invoice.docx",
+"nav.reviews":"Reviews","rv.h":"Client reviews","rv.sub":"206 positive reviews on the Freelancehunt marketplace in 2022–2024. Below are screenshots of real reviews from the profile.","rv.s1":"positive reviews","rv.s2":"satisfied clients","rv.s3":"average quality score","rv.more":"Show more","rv.count":"Showing {n} of {t}","rv.note":"Screenshots taken from an archived copy of the Freelancehunt profile (December 2024).","rv.link":"Open the archive →",
 "w1.tag":"Integrations · Automation","w1.p":"Integration plugins connecting the Shifton shift-scheduling service to CRMs such as Bitrix24. Two-way data sync, webhooks and queues on Cloudflare Workers.",
 "w2.tag":"Websites · SEO","w2.t1":"8 sites","w2.t2":"SEO tags","w2.p":"A network of 8 satellite sites on subdomains: layout, SEO tags, Open Graph, GitHub Pages deployment and Instagram account styling.",
 "w4.tag":"Automation · Bot","w4.h":"JanaFit — coach bot","w4.p":"Telegram bot for a weight-loss marathon: workout plan, menu, reminders and progress tracking with no manual work for the coach.","w4.t1":"Reminders","w4.t2":"Progress",
@@ -583,6 +624,30 @@ rot:["More customers","A faster site","Higher on Google","No lost leads"],
 };
 
 (function(){
+  var RVH=[333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,362,333,333,333,333,333,333,333,333,333,362,333,333,333,333,333,333,333,333,362,333,333,333,333,333,333,362,333,333,333,333,333,333,333,333,333,362,333,333,333,333,333,333,333,333,333,333,362,520,333,611,333,333,333,333,362,333,333,333,333,333,333,333,333,362,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,362,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,331,333,324], RV_STEP=12, shown=0;
+  var grid=document.getElementById('rv-grid'), more=document.getElementById('rv-more'), cnt=document.getElementById('rv-count');
+  var lb=document.getElementById('lb'), lbImg=document.getElementById('lb-img');
+  window.rvCount=function(){
+    var d=I18N[document.documentElement.lang]||I18N.uk;
+    cnt.textContent=(d['rv.count']||'').replace('{n}',shown).replace('{t}',RVH.length);
+    more.style.display=shown>=RVH.length?'none':'';
+  };
+  function addMore(){
+    var frag=document.createDocumentFragment();
+    RVH.slice(shown,shown+RV_STEP).forEach(function(h,k){
+      var n=shown+k+1, f=document.createElement('figure'), i=document.createElement('img');
+      i.loading='lazy'; i.decoding='async'; i.width=1200; i.height=h;
+      i.src='img/reviews/'+('00'+n).slice(-3)+'.webp'; i.alt='Freelancehunt review #'+n;
+      f.appendChild(i); f.onclick=function(){lbImg.src=i.src; lb.showModal();};
+      frag.appendChild(f);
+    });
+    grid.appendChild(frag); shown=Math.min(shown+RV_STEP,RVH.length); window.rvCount();
+  }
+  more.onclick=addMore; addMore();
+  document.getElementById('lb-x').onclick=function(){lb.close();};
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.close();});
+})();
+(function(){
   var rotWords=[], rotI=0, rotEl=document.getElementById('rot');
   function setLang(l){
     if(!I18N[l]) l='uk';
@@ -594,6 +659,7 @@ rot:["More customers","A faster site","Higher on Google","No lost leads"],
     document.getElementById('hot').setAttribute('data-badge',d['o.badge']);
     document.querySelectorAll('#lang button').forEach(function(b){b.classList.toggle('on',b.dataset.lang===l);});
     rotWords=d.rot; rotI=0; rotEl.textContent=rotWords[0];
+    if(window.rvCount) window.rvCount();
     try{localStorage.setItem('sb-lang',l);}catch(e){}
   }
   var saved=null; try{saved=localStorage.getItem('sb-lang');}catch(e){}
