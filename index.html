@@ -110,7 +110,22 @@
   .work .shot{aspect-ratio:16/10;background:var(--soft);position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
   .work .shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
   .work .shot .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:44px;font-weight:700;color:#fff;letter-spacing:-1px}
-  .work .shot .ph.a{background:linear-gradient(135deg,#d93025,#f9ab00)} .work .shot .ph.b{background:linear-gradient(135deg,#1a73e8,#8430ce)} .work .shot .ph.c{background:linear-gradient(135deg,#1e8e3e,#1a73e8)}
+  .shot .a{background:linear-gradient(135deg,#d93025,#f9ab00)} .shot .b{background:linear-gradient(135deg,#1a73e8,#8430ce)} .shot .c{background:linear-gradient(135deg,#1e8e3e,#1a73e8)}
+  .work .shot,.pm .shot{container-type:inline-size}
+  .shot .mk{--u:1cqw;position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:calc(var(--u)*6);overflow:hidden}
+  .pm .shot .mk{--u:.62cqw}
+  .shot .chat{display:flex;flex-direction:column;gap:calc(var(--u)*2.6);width:calc(var(--u)*80)}
+  .shot .bb{background:#fff;color:#202124;border-radius:calc(var(--u)*4.5) calc(var(--u)*4.5) calc(var(--u)*4.5) calc(var(--u)*1.2);padding:calc(var(--u)*2.8) calc(var(--u)*4);font-size:calc(var(--u)*4.1);font-weight:500;line-height:1.35;max-width:88%;box-shadow:0 calc(var(--u)*2) calc(var(--u)*7) rgba(0,0,0,.22)}
+  .shot .bb.me{align-self:flex-end;background:#dcf8c6;border-radius:calc(var(--u)*4.5) calc(var(--u)*4.5) calc(var(--u)*1.2) calc(var(--u)*4.5)}
+  .shot .bb small{display:block;font-size:.78em;color:#5f6368;font-weight:400;margin-top:calc(var(--u)*.6)}
+  .shot .bb b{display:block;color:#1a73e8;font-size:.82em;text-transform:uppercase;letter-spacing:.4px;margin-bottom:calc(var(--u)*.8)}
+  .shot .bb .go{display:inline-block;margin-top:calc(var(--u)*2);background:#1a73e8;color:#fff;border-radius:calc(var(--u)*2);padding:calc(var(--u)*1.4) calc(var(--u)*3);font-size:.9em}
+  .shot .flow{display:flex;align-items:center;gap:calc(var(--u)*4)}
+  .shot .doc{background:#fff;color:#202124;border-radius:calc(var(--u)*2);padding:calc(var(--u)*3) calc(var(--u)*3.5);font-size:calc(var(--u)*3.8);font-weight:500;box-shadow:0 calc(var(--u)*2) calc(var(--u)*7) rgba(0,0,0,.22);display:flex;align-items:center;gap:calc(var(--u)*2);white-space:nowrap}
+  .shot .doc:before{content:"";width:calc(var(--u)*3.2);height:calc(var(--u)*4);border:2px solid #5f6368;border-radius:2px;flex:none}
+  .shot .doc.form:before{border-color:#1a73e8;background:repeating-linear-gradient(0deg,transparent 0 30%,#1a73e8 30% 45%)}
+  .shot .docs{display:flex;flex-direction:column;gap:calc(var(--u)*2.2)}
+  .shot .arr{color:#fff;font-size:calc(var(--u)*9);font-weight:300;line-height:1}
   .work .body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
   .work .tag{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.6px;color:var(--blue);margin-bottom:6px}
   .work h3{font-size:19px;font-weight:700;margin-bottom:6px}
@@ -293,31 +308,31 @@
     <p class="sub" data-i18n="w.sub"></p>
     <div class="grid g3">
       <div class="work" data-proj="shifton" role="button" tabindex="0">
-        <div class="shot"><img loading="lazy" src="https://image.thum.io/get/width/800/crop/500/https://shifton.com" alt="shifton.com" onerror="this.remove()"><div class="ph b" style="z-index:-1">Shifton</div></div>
+        <div class="shot"><img loading="lazy" src="img/shifton.webp" width="960" height="600" alt="shifton.com"></div>
         <div class="body"><div class="tag" data-i18n="w1.tag"></div><h3>Shifton</h3><p data-i18n="w1.p"></p>
         <div class="tags"><span>Cloudflare Workers</span><span>Bitrix24</span><span>CRM API</span><span>Webhooks</span></div>
         <div class="more" data-i18n="w.open"></div></div>
       </div>
       <div class="work" data-proj="spirit" role="button" tabindex="0">
-        <div class="shot"><img loading="lazy" src="https://image.thum.io/get/width/800/crop/500/https://spiritagency.space" alt="spiritagency.space" onerror="this.remove()"><div class="ph c" style="z-index:-1">Spirit</div></div>
+        <div class="shot"><img loading="lazy" src="img/spirit.webp" width="960" height="600" alt="spiritagency.space"></div>
         <div class="body"><div class="tag" data-i18n="w2.tag"></div><h3>Spirit Agency</h3><p data-i18n="w2.p"></p>
         <div class="tags"><span data-i18n="w2.t1"></span><span>GitHub Pages</span><span data-i18n="w2.t2"></span><span>Instagram</span></div>
         <div class="more" data-i18n="w.open"></div></div>
       </div>
       <div class="work" data-proj="janafit" role="button" tabindex="0">
-        <div class="shot"><div class="ph b">JanaFit</div></div>
+        <div class="shot"><div class="mk b"><div class="chat"><div class="bb" data-i18n="mk.j1"></div><div class="bb me" data-i18n="mk.j2"></div><div class="bb" data-i18n="mk.j3"></div></div></div></div>
         <div class="body"><div class="tag" data-i18n="w4.tag"></div><h3 data-i18n="w4.h"></h3><p data-i18n="w4.p"></p>
         <div class="tags"><span>Telegram Bot</span><span data-i18n="w4.t1"></span><span data-i18n="w4.t2"></span></div>
         <div class="more" data-i18n="w.open"></div></div>
       </div>
       <div class="work" data-proj="freelancehunt" role="button" tabindex="0">
-        <div class="shot"><div class="ph c">Freelancehunt</div></div>
+        <div class="shot"><div class="mk c"><div class="chat"><div class="bb"><b data-i18n="mk.f1"></b><span data-i18n="mk.f2"></span><small data-i18n="mk.f3"></small><span class="go" data-i18n="mk.f4"></span></div></div></div></div>
         <div class="body"><div class="tag" data-i18n="w5.tag"></div><h3 data-i18n="w5.h"></h3><p data-i18n="w5.p"></p>
         <div class="tags"><span>Telegram Bot</span><span>REST API</span><span data-i18n="w5.t1"></span></div>
         <div class="more" data-i18n="w.open"></div></div>
       </div>
       <div class="work" data-proj="appsscript" role="button" tabindex="0">
-        <div class="shot"><div class="ph a">Apps Script</div></div>
+        <div class="shot"><div class="mk a"><div class="flow"><div class="doc form" data-i18n="mk.a1"></div><span class="arr">&rarr;</span><div class="docs"><div class="doc" data-i18n="mk.a2"></div><div class="doc" data-i18n="mk.a3"></div><div class="doc" data-i18n="mk.a4"></div></div></div></div></div>
         <div class="body"><div class="tag" data-i18n="w6.tag"></div><h3 data-i18n="w6.h"></h3><p data-i18n="w6.p"></p>
         <div class="tags"><span>Google Apps Script</span><span>Google Forms</span><span>Docs</span></div>
         <div class="more" data-i18n="w.open"></div></div>
@@ -409,11 +424,11 @@
 <script>
 
 const PROJ = {
- shifton:{img:"https://image.thum.io/get/width/900/crop/450/https://shifton.com",ph:"b",name:"Shifton",url:"https://shifton.com",stack:["Cloudflare Workers","D1","Queues","Bitrix24 REST","Webhooks","TypeScript"]},
- spirit:{img:"https://image.thum.io/get/width/900/crop/450/https://spiritagency.space",ph:"c",name:"Spirit Agency",url:"https://spiritagency.space",stack:["HTML/CSS","GitHub Pages","Open Graph","SEO-теги","Instagram"]},
- janafit:{ph:"b",name:"JanaFit",stack:["Telegram Bot API","Python","Cron","Google Sheets"]},
- freelancehunt:{ph:"c",name:"Freelancehunt",stack:["Telegram Bot API","Freelancehunt API v2","Python"]},
- appsscript:{ph:"a",name:"Apps Script",stack:["Google Apps Script","Google Forms","Google Docs","Drive"]}
+ shifton:{name:"Shifton",url:"https://shifton.com",stack:["Cloudflare Workers","D1","Queues","Bitrix24 REST","Webhooks","TypeScript"]},
+ spirit:{name:"Spirit Agency",url:"https://spiritagency.space",stack:["HTML/CSS","GitHub Pages","Open Graph","SEO-теги","Instagram"]},
+ janafit:{name:"JanaFit",stack:["Telegram Bot API","Python","Cron","Google Sheets"]},
+ freelancehunt:{name:"Freelancehunt",stack:["Telegram Bot API","Freelancehunt API v2","Python"]},
+ appsscript:{name:"Apps Script",stack:["Google Apps Script","Google Forms","Google Docs","Drive"]}
 };
 const I18N = {
 uk:{title:"SiteBoosty — більше клієнтів завдяки швидкому сайту",desc:"Ремонт і прискорення сайтів, SEO, заявки з сайту в Telegram і CRM. Безкоштовна діагностика за 30 хвилин, фіксована ціна до старту робіт.",
@@ -431,6 +446,7 @@ rot:["Більше клієнтів","Швидший сайт","Вище в Goog
 "p.appsscript.l":["Google-форма як єдина точка введення даних","Автоматична генерація трьох .docx-документів за шаблонами","Готові файли складаються на Google Drive у потрібну папку","Нуль помилок від ручного передруку"],
 "s.go":"Детальніше →","nav.work":"Портфоліо",
 "w.h":"Проєкти, які вже працюють","w.sub":"Кілька прикладів того, що ми робили — від SaaS-інтеграцій до сайтів для малого бізнесу.",
+"mk.j1":"Тренування дня: 15 хв 🏋️","mk.j2":"Зробила ✅","mk.j3":"Супер! −0,4 кг за тиждень 📉","mk.f1":"Новий проєкт","mk.f2":"Лендінг для стоматології · 12 000 ₴","mk.f3":"щойно · 0 відгуків","mk.f4":"Відгукнутись","mk.a1":"Форма","mk.a2":"Договір.docx","mk.a3":"Акт.docx","mk.a4":"Рахунок.docx",
 "w1.tag":"Інтеграції · Автоматизація","w1.p":"Плагіни-інтеграції сервісу планування змін Shifton із CRM: Bitrix24 та інші. Двостороння синхронізація даних, вебхуки, черги на Cloudflare Workers.",
 "w2.tag":"Сайти · SEO","w2.t1":"8 сайтів","w2.t2":"SEO-теги","w2.p":"Мережа з 8 сайтів-сателітів на піддоменах: вёрстка, SEO-теги, Open Graph, розгортання на GitHub Pages, оформлення Instagram-акаунтів.",
 "w4.tag":"Автоматизація · Бот","w4.h":"JanaFit — бот-тренер","w4.p":"Telegram-бот для марафону схуднення: програма тренувань, меню, нагадування й облік прогресу учасниць без ручної роботи тренера.","w4.t1":"Нагадування","w4.t2":"Прогрес",
@@ -480,6 +496,7 @@ rot:["Больше клиентов","Быстрее сайт","Выше в Goog
 "p.appsscript.l":["Google-форма как единая точка ввода данных","Автоматическая генерация трёх .docx-документов по шаблонам","Готовые файлы складываются на Google Drive в нужную папку","Ноль ошибок от ручного перепечатывания"],
 "s.go":"Подробнее →","nav.work":"Портфолио",
 "w.h":"Проекты, которые уже работают","w.sub":"Несколько примеров того, что мы делали — от SaaS-интеграций до сайтов для малого бизнеса.",
+"mk.j1":"Тренировка дня: 15 мин 🏋️","mk.j2":"Сделала ✅","mk.j3":"Супер! −0,4 кг за неделю 📉","mk.f1":"Новый проект","mk.f2":"Лендинг для стоматологии · 12 000 ₴","mk.f3":"только что · 0 откликов","mk.f4":"Откликнуться","mk.a1":"Форма","mk.a2":"Договор.docx","mk.a3":"Акт.docx","mk.a4":"Счёт.docx",
 "w1.tag":"Интеграции · Автоматизация","w1.p":"Плагины-интеграции сервиса планирования смен Shifton с CRM: Bitrix24 и другие. Двусторонняя синхронизация данных, вебхуки, очереди на Cloudflare Workers.",
 "w2.tag":"Сайты · SEO","w2.t1":"8 сайтов","w2.t2":"SEO-теги","w2.p":"Сеть из 8 сайтов-сателлитов на поддоменах: вёрстка, SEO-теги, Open Graph, развёртывание на GitHub Pages, оформление Instagram-аккаунтов.",
 "w4.tag":"Автоматизация · Бот","w4.h":"JanaFit — бот-тренер","w4.p":"Telegram-бот для марафона похудения: программа тренировок, меню, напоминания и учёт прогресса участниц без ручной работы тренера.","w4.t1":"Напоминания","w4.t2":"Прогресс",
@@ -529,6 +546,7 @@ rot:["More customers","A faster site","Higher on Google","No lost leads"],
 "p.appsscript.l":["A Google Form as the single data entry point","Automatic generation of three .docx documents from templates","Finished files saved to the right Google Drive folder","Zero errors from manual retyping"],
 "s.go":"Learn more →","nav.work":"Portfolio",
 "w.h":"Projects already up and running","w.sub":"A few examples of what we've built — from SaaS integrations to small-business websites.",
+"mk.j1":"Today's workout: 15 min 🏋️","mk.j2":"Done ✅","mk.j3":"Great! −0.4 kg this week 📉","mk.f1":"New project","mk.f2":"Landing page for a dental clinic · ₴12,000","mk.f3":"just now · 0 bids","mk.f4":"Reply","mk.a1":"Form","mk.a2":"Contract.docx","mk.a3":"Act.docx","mk.a4":"Invoice.docx",
 "w1.tag":"Integrations · Automation","w1.p":"Integration plugins connecting the Shifton shift-scheduling service to CRMs such as Bitrix24. Two-way data sync, webhooks and queues on Cloudflare Workers.",
 "w2.tag":"Websites · SEO","w2.t1":"8 sites","w2.t2":"SEO tags","w2.p":"A network of 8 satellite sites on subdomains: layout, SEO tags, Open Graph, GitHub Pages deployment and Instagram account styling.",
 "w4.tag":"Automation · Bot","w4.h":"JanaFit — coach bot","w4.p":"Telegram bot for a weight-loss marathon: workout plan, menu, reminders and progress tracking with no manual work for the coach.","w4.t1":"Reminders","w4.t2":"Progress",
@@ -594,7 +612,7 @@ rot:["More customers","A faster site","Higher on Google","No lost leads"],
   function openProj(k){
     var P=PROJ[k], d=I18N[document.documentElement.lang]||I18N.uk; curProj=k;
     var shot=document.getElementById('pm-shot');
-    shot.innerHTML=(P.img?'<img src="'+P.img+'" alt="'+P.name+'" onerror="this.remove()">':'')+'<div class="ph '+P.ph+'" style="z-index:-1">'+P.name+'</div>';
+    shot.innerHTML=document.querySelector('.work[data-proj="'+k+'"] .shot').innerHTML;
     document.getElementById('pm-tag').textContent=d['p.'+k+'.tag'];
     document.getElementById('pm-h').textContent=P.name;
     document.getElementById('pm-lead').textContent=d['p.'+k+'.lead'];
