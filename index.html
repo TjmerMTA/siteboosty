@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>SiteBoosty — більше клієнтів завдяки швидкому сайту</title>
 <meta name="description" content="Ремонт і прискорення сайтів, SEO, заявки з сайту в Telegram і CRM. Безкоштовна діагностика за 30 хвилин, фіксована ціна до старту робіт.">
+<meta name="color-scheme" content="light dark">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <!--
@@ -14,6 +15,10 @@
   GADS_ID — конверсія Google Ads: AW-XXXXXXXXX/YYYYYYYY (і AW-XXXXXXXXX у двох місцях нижче)
 -->
 <script>window.SB = { TG: "ВАШ_НІК", PHONE: "+380000000000", GADS_ID: "AW-XXXXXXXXX/YYYYYYYY" };</script>
+<script>
+  // тема до рендеру, щоб не блимало
+  (function(){try{var t=localStorage.getItem('sb-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -22,43 +27,56 @@
   function lead(kind){ try { gtag('event','conversion',{ send_to: window.SB.GADS_ID, event_label: kind }); } catch(e){} }
 </script>
 <style>
-  :root{--blue:#1a73e8;--blue-d:#1765cc;--ink:#202124;--grey:#5f6368;--line:#dadce0;--soft:#f8f9fa;--green:#1e8e3e;--red:#d93025;--yellow:#f9ab00}
+  :root{--blue:#1a73e8;--blue-d:#1765cc;--ink:#202124;--grey:#5f6368;--line:#dadce0;--soft:#f8f9fa;--bg:#fff;--card:#fff;--green:#1e8e3e;--red:#d93025;--shadow:rgba(60,64,67,.14);
+    --ico-b:#e8f0fe;--ico-g:#e6f4ea;--ico-y:#fef7e0;--ico-r:#fce8e6;--ico-p:#f3e8fd;--ico-y-t:#b06000;--ico-p-t:#8430ce}
+  [data-theme="dark"]{--blue:#8ab4f8;--blue-d:#aecbfa;--ink:#e8eaed;--grey:#9aa0a6;--line:#3c4043;--soft:#202124;--bg:#171717;--card:#1f2023;--green:#81c995;--red:#f28b82;--shadow:rgba(0,0,0,.5);
+    --ico-b:#1f3a5f;--ico-g:#1e3a2a;--ico-y:#3d3416;--ico-r:#3f2422;--ico-p:#33244a;--ico-y-t:#fdd663;--ico-p-t:#d7aefb}
+  [data-theme="dark"] .btn{color:#202124}
+  [data-theme="dark"] .btn.ghost{color:var(--blue);background:transparent}
+  [data-theme="dark"] .final{background:#1f3a5f}
+  [data-theme="dark"] .final .btn{background:var(--blue);color:#202124}
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-family:Roboto,"Google Sans",-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.5;font-size:16px}
+  body{font-family:Roboto,"Google Sans",-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5;font-size:16px;transition:background .2s,color .2s}
   a{color:var(--blue);text-decoration:none}
   .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
-  /* header */
-  header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:10}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  header{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);z-index:10}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
   .logo{font-size:22px;font-weight:700;letter-spacing:-.3px;color:var(--ink)}
-  .logo b{color:var(--blue);font-weight:700}
+  .logo b{color:var(--blue)}
   .nav ul{display:none;gap:28px;list-style:none}
   .nav ul a{color:var(--grey);font-weight:500;font-size:15px}
+  .tools{display:flex;align-items:center;gap:8px}
+  .lang{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .lang button{background:transparent;border:0;color:var(--grey);font:500 13px Roboto,sans-serif;padding:7px 9px;cursor:pointer}
+  .lang button.on{background:var(--blue);color:#fff}
+  [data-theme="dark"] .lang button.on{color:#202124}
+  .theme{width:38px;height:38px;border:1px solid var(--line);border-radius:6px;background:transparent;color:var(--grey);cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .theme svg{width:18px;height:18px}
+  .theme .sun{display:none}
+  [data-theme="dark"] .theme .sun{display:block}
+  [data-theme="dark"] .theme .moon{display:none}
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--blue);color:#fff;font-weight:500;border-radius:6px;padding:12px 24px;font-size:15px;border:0;cursor:pointer;white-space:nowrap}
   .btn:hover{background:var(--blue-d)}
-  .btn.ghost{background:#fff;color:var(--blue);border:1px solid var(--line)}
+  .btn.ghost{background:var(--bg);color:var(--blue);border:1px solid var(--line)}
   .btn.ghost:hover{background:var(--soft)}
   .btn.lg{padding:15px 32px;font-size:17px;border-radius:8px}
-  /* hero */
   .hero{padding:72px 0 56px;text-align:center}
-  .hero h1{font-size:clamp(38px,6.5vw,68px);line-height:1.08;font-weight:700;letter-spacing:-1px;color:var(--ink);margin-bottom:20px}
-  .hero h1 .rot{display:block;color:var(--blue);min-height:1.1em}
+  .hero h1{font-size:clamp(38px,6.5vw,68px);line-height:1.08;font-weight:700;letter-spacing:-1px;margin-bottom:20px}
+  .hero h1 .rot{display:block;color:var(--blue);min-height:1.1em;transition:opacity .22s}
   .hero p{font-size:clamp(17px,2.2vw,21px);color:var(--grey);max-width:680px;margin:0 auto 32px}
   .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
   .hint{margin-top:14px;font-size:14px;color:var(--grey)}
-  /* mock browser */
-  .mock{margin:52px auto 0;max-width:820px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 30px rgba(60,64,67,.12);overflow:hidden;text-align:left}
+  .mock{margin:52px auto 0;max-width:820px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 30px var(--shadow);overflow:hidden;text-align:left;background:var(--card)}
   .mock .bar{background:var(--soft);border-bottom:1px solid var(--line);padding:10px 14px;display:flex;gap:6px;align-items:center}
   .mock .bar i{width:10px;height:10px;border-radius:50%;background:var(--line);display:inline-block}
-  .mock .bar span{margin-left:10px;font-size:12px;color:var(--grey);background:#fff;border:1px solid var(--line);border-radius:6px;padding:3px 10px;flex:1}
+  .mock .bar span{margin-left:10px;font-size:12px;color:var(--grey);background:var(--card);border:1px solid var(--line);border-radius:6px;padding:3px 10px;flex:1}
   .mock .body{padding:22px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
   .score{border:1px solid var(--line);border-radius:10px;padding:18px;text-align:center}
   .score small{display:block;color:var(--grey);font-size:12px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
   .score .n{font-size:44px;font-weight:700;line-height:1}
   .score .n.bad{color:var(--red)} .score .n.good{color:var(--green)}
   .score em{display:block;font-style:normal;color:var(--grey);font-size:13px;margin-top:6px}
-  /* sections */
   section{padding:72px 0}
   .sub{text-align:center;color:var(--grey);font-size:18px;max-width:640px;margin:0 auto 44px}
   h2{font-size:clamp(28px,4vw,40px);font-weight:700;letter-spacing:-.6px;text-align:center;margin-bottom:12px}
@@ -66,61 +84,57 @@
   .g5{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
   .g3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
   .g4{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-  .card{border:1px solid var(--line);border-radius:12px;padding:26px 22px;background:#fff;transition:box-shadow .2s}
-  .card:hover{box-shadow:0 6px 24px rgba(60,64,67,.14)}
+  .card{border:1px solid var(--line);border-radius:12px;padding:26px 22px;background:var(--card);transition:box-shadow .2s}
+  .card:hover{box-shadow:0 6px 24px var(--shadow)}
   .ico{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
   .ico svg{width:26px;height:26px}
-  .ico.b{background:#e8f0fe;color:var(--blue)} .ico.g{background:#e6f4ea;color:var(--green)} .ico.y{background:#fef7e0;color:#b06000} .ico.r{background:#fce8e6;color:var(--red)} .ico.p{background:#f3e8fd;color:#8430ce}
+  .ico.b{background:var(--ico-b);color:var(--blue)} .ico.g{background:var(--ico-g);color:var(--green)} .ico.y{background:var(--ico-y);color:var(--ico-y-t)} .ico.r{background:var(--ico-r);color:var(--red)} .ico.p{background:var(--ico-p);color:var(--ico-p-t)}
   .card h3{font-size:19px;font-weight:500;margin-bottom:8px}
   .card p{color:var(--grey);font-size:15px}
-  .card .from{display:block;margin-top:14px;font-weight:500;color:var(--ink)}
-  /* offers */
+  .card .from{display:block;margin-top:14px;font-weight:500}
   .offers{background:var(--soft)}
-  .offer{background:#fff;border:1px solid var(--line);border-radius:14px;padding:30px 26px;display:flex;flex-direction:column}
+  .offer{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:30px 26px;display:flex;flex-direction:column}
   .offer.hot{border:2px solid var(--blue);position:relative}
-  .offer.hot:before{content:"Найчастіше замовляють";position:absolute;top:-13px;left:22px;background:var(--blue);color:#fff;font-size:12px;font-weight:500;padding:4px 12px;border-radius:20px}
+  .offer.hot:before{content:attr(data-badge);position:absolute;top:-13px;left:22px;background:var(--blue);color:#fff;font-size:12px;font-weight:500;padding:4px 12px;border-radius:20px}
+  [data-theme="dark"] .offer.hot:before{color:#202124}
   .offer h3{font-size:20px;font-weight:500;margin-bottom:6px}
   .offer .price{font-size:36px;font-weight:700;letter-spacing:-.5px;margin:6px 0 2px}
   .offer .price small{font-size:15px;font-weight:400;color:var(--grey)}
   .offer .term{color:var(--grey);font-size:14px;margin-bottom:18px}
   .offer ul{list-style:none;margin-bottom:24px;flex:1}
-  .offer li{padding:7px 0 7px 28px;position:relative;font-size:15px;border-top:1px solid #f1f3f4}
+  .offer li{padding:7px 0 7px 28px;position:relative;font-size:15px;border-top:1px solid var(--line)}
   .offer li:before{content:"";position:absolute;left:2px;top:12px;width:16px;height:16px;border-radius:50%;background:var(--green) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>') center/11px no-repeat}
-  /* steps */
   .steps{counter-reset:s}
   .step{display:flex;gap:18px;align-items:flex-start;padding:22px;border-radius:12px}
   .step .num{counter-increment:s;flex:0 0 44px;height:44px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px}
+  [data-theme="dark"] .step .num{color:#202124}
   .step .num:before{content:counter(s)}
   .step h3{font-size:18px;font-weight:500;margin-bottom:4px}
   .step p{color:var(--grey);font-size:15px}
-  /* features */
   .feat{display:grid;gap:56px;align-items:center;grid-template-columns:1fr}
   .feat .txt h3{font-size:26px;font-weight:700;letter-spacing:-.4px;margin-bottom:12px}
   .feat .txt p{color:var(--grey);font-size:17px}
   .feat .pic{background:var(--soft);border-radius:16px;padding:32px;min-height:220px;display:flex;align-items:center;justify-content:center}
   .stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;width:100%}
-  .stat div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;text-align:center}
+  .stat div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;text-align:center}
   .stat b{display:block;font-size:34px;color:var(--blue);letter-spacing:-.5px}
   .stat span{font-size:13px;color:var(--grey)}
-  /* faq */
   details{border-bottom:1px solid var(--line);padding:18px 0}
   summary{cursor:pointer;font-size:18px;font-weight:500;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
   summary::-webkit-details-marker{display:none}
   summary:after{content:"+";font-size:26px;color:var(--blue);font-weight:400}
   details[open] summary:after{content:"–"}
   details p{color:var(--grey);margin-top:10px;font-size:16px;max-width:820px}
-  /* final */
   .final{background:var(--blue);color:#fff;text-align:center;border-radius:20px;padding:56px 28px}
   .final h2{color:#fff}
   .final p{opacity:.92;font-size:18px;max-width:600px;margin:0 auto 28px}
   .final .btn{background:#fff;color:var(--blue)}
   .final .btn:hover{background:#e8f0fe}
   footer{padding:36px 0;color:var(--grey);font-size:14px;border-top:1px solid var(--line);margin-top:40px;text-align:center}
-  /* mobile sticky */
-  .sticky{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line);z-index:9}
+  .sticky{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--line);z-index:9}
   .sticky .btn{width:100%}
-  @media(min-width:900px){.nav ul{display:flex}.sticky{display:none}.feat{grid-template-columns:1fr 1fr}.feat.rev .pic{order:-1}}
-  @media(max-width:600px){.mock .body{grid-template-columns:1fr}section{padding:52px 0}}
+  @media(min-width:960px){.nav ul{display:flex}.sticky{display:none}.feat{grid-template-columns:1fr 1fr}}
+  @media(max-width:600px){.mock .body{grid-template-columns:1fr}section{padding:52px 0}.nav .btn{display:none}}
 </style>
 </head>
 <body>
@@ -129,30 +143,38 @@
   <div class="wrap nav">
     <div class="logo">Site<b>Boosty</b></div>
     <ul>
-      <li><a href="#services">Послуги</a></li>
-      <li><a href="#offers">Ціни</a></li>
-      <li><a href="#how">Як це працює</a></li>
-      <li><a href="#faq">Питання</a></li>
+      <li><a href="#services" data-i18n="nav.services"></a></li>
+      <li><a href="#offers" data-i18n="nav.prices"></a></li>
+      <li><a href="#how" data-i18n="nav.how"></a></li>
+      <li><a href="#faq" data-i18n="nav.faq"></a></li>
     </ul>
-    <a class="btn js-tg" href="#" onclick="lead('telegram')">Почати</a>
+    <div class="tools">
+      <div class="lang" id="lang">
+        <button data-lang="uk">UA</button><button data-lang="ru">RU</button><button data-lang="en">EN</button>
+      </div>
+      <button class="theme" id="theme" aria-label="Theme">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <a class="btn js-tg" href="#" onclick="lead('telegram')" data-i18n="nav.cta"></a>
+    </div>
   </div>
 </header>
 
 <section class="hero">
   <div class="wrap">
-    <h1><span class="rot" id="rot">Більше клієнтів</span>завдяки SiteBoosty</h1>
-    <p>Полагодимо, прискоримо і виведемо ваш сайт у Google, щоб клієнти знаходили саме вас. Діагностика — безкоштовно, ціна фіксується до початку робіт.</p>
+    <h1><span class="rot" id="rot"></span><span data-i18n="hero.tail"></span></h1>
+    <p data-i18n="hero.sub"></p>
     <div class="cta-row">
-      <a class="btn lg js-tg" href="#" onclick="lead('telegram')">Написати в Telegram</a>
-      <a class="btn lg ghost js-phone" href="#" onclick="lead('phone')">Подзвонити</a>
+      <a class="btn lg js-tg" href="#" onclick="lead('telegram')" data-i18n="cta.tg"></a>
+      <a class="btn lg ghost js-phone" href="#" onclick="lead('phone')" data-i18n="cta.call"></a>
     </div>
-    <div class="hint">Відповідаємо за 30 хвилин · 8:00–22:00 без вихідних</div>
-
+    <div class="hint" data-i18n="hero.hint"></div>
     <div class="mock" aria-hidden="true">
-      <div class="bar"><i></i><i></i><i></i><span>pagespeed.web.dev — ваш-сайт.com.ua</span></div>
+      <div class="bar"><i></i><i></i><i></i><span>pagespeed.web.dev — <span data-i18n="mock.url"></span></span></div>
       <div class="body">
-        <div class="score"><small>Було</small><div class="n bad">34</div><em>Завантаження 7,8 с · клієнти йдуть</em></div>
-        <div class="score"><small>Стало</small><div class="n good">96</div><em>Завантаження 1,4 с · +конверсія</em></div>
+        <div class="score"><small data-i18n="mock.before"></small><div class="n bad">34</div><em data-i18n="mock.before_t"></em></div>
+        <div class="score"><small data-i18n="mock.after"></small><div class="n good">96</div><em data-i18n="mock.after_t"></em></div>
       </div>
     </div>
   </div>
@@ -160,111 +182,58 @@
 
 <section id="services">
   <div class="wrap">
-    <h2>Усі рішення для вашого сайту в одному місці</h2>
-    <p class="sub">Оберіть, що болить зараз, — а решту підкажемо після безкоштовної діагностики.</p>
+    <h2 data-i18n="s.h"></h2>
+    <p class="sub" data-i18n="s.sub"></p>
     <div class="grid g5">
-      <div class="card">
-        <div class="ico r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
-        <h3>Ремонт сайту</h3>
-        <p>Білий екран, помилки після оновлення, не працюють форми чи кошик.</p>
-        <span class="from">від 1 500 грн</span>
-      </div>
-      <div class="card">
-        <div class="ico y"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-        <h3>Прискорення</h3>
-        <p>Core Web Vitals у зелену зону. Швидкий сайт — вищі позиції та більше замовлень.</p>
-        <span class="from">від 2 500 грн</span>
-      </div>
-      <div class="card">
-        <div class="ico b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
-        <h3>SEO</h3>
-        <p>Зник із пошуку, впав трафік після редизайну, дублі та биті сторінки.</p>
-        <span class="from">від 2 500 грн</span>
-      </div>
-      <div class="card">
-        <div class="ico g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-        <h3>Заявки в Telegram і CRM</h3>
-        <p>Кожна заявка з сайту — миттєво у вас у месенджері або CRM. Жодна не губиться.</p>
-        <span class="from">від 3 000 грн</span>
-      </div>
-      <div class="card">
-        <div class="ico p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
-        <h3>Автоматизація</h3>
-        <p>Рахунки, звіти, розсилки та рутина — самі. Без ручного копіювання.</p>
-        <span class="from">від 5 000 грн</span>
-      </div>
+      <div class="card"><div class="ico r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div><h3 data-i18n="s1.h"></h3><p data-i18n="s1.p"></p><span class="from" data-i18n="s1.from"></span></div>
+      <div class="card"><div class="ico y"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><h3 data-i18n="s2.h"></h3><p data-i18n="s2.p"></p><span class="from" data-i18n="s2.from"></span></div>
+      <div class="card"><div class="ico b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div><h3 data-i18n="s3.h"></h3><p data-i18n="s3.p"></p><span class="from" data-i18n="s3.from"></span></div>
+      <div class="card"><div class="ico g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><h3 data-i18n="s4.h"></h3><p data-i18n="s4.p"></p><span class="from" data-i18n="s4.from"></span></div>
+      <div class="card"><div class="ico p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div><h3 data-i18n="s5.h"></h3><p data-i18n="s5.p"></p><span class="from" data-i18n="s5.from"></span></div>
     </div>
   </div>
 </section>
 
 <section class="offers" id="offers">
   <div class="wrap">
-    <h2>Оберіть пакет — і ціна не зміниться в процесі</h2>
-    <p class="sub">Половина оплати на старті, половина — після того, як ви перевірили результат.</p>
+    <h2 data-i18n="o.h"></h2>
+    <p class="sub" data-i18n="o.sub"></p>
     <div class="grid g3">
-      <div class="offer">
-        <h3>Швидка допомога</h3>
-        <div class="price">1 500 <small>грн</small></div>
-        <div class="term">Термін — до 24 годин</div>
-        <ul>
-          <li>Діагностика й точна причина поломки</li>
-          <li>Виправлення однієї проблеми</li>
-          <li>Резервна копія перед роботами</li>
-          <li>Звіт, що і чому було зроблено</li>
-        </ul>
-        <a class="btn js-tg" href="#" onclick="lead('telegram')">Замовити</a>
-      </div>
-      <div class="offer hot">
-        <h3>Прискорення + SEO-база</h3>
-        <div class="price">4 500 <small>грн</small></div>
-        <div class="term">Термін — 3–5 днів</div>
-        <ul>
-          <li>Швидкість: Lighthouse 90+ на мобільних</li>
-          <li>Виправлення технічних SEO-помилок</li>
-          <li>Індексація, robots, sitemap, дублі</li>
-          <li>Аналітика GA4 і цілі на заявки</li>
-          <li>Звіт «до / після» за даними Google</li>
-        </ul>
-        <a class="btn js-tg" href="#" onclick="lead('telegram')">Замовити</a>
-      </div>
-      <div class="offer">
-        <h3>Заявки без втрат</h3>
-        <div class="price">3 000 <small>грн</small></div>
-        <div class="term">Термін — 1–2 дні</div>
-        <ul>
-          <li>Форми з сайту → Telegram або CRM</li>
-          <li>Автовідповідь клієнту за секунду</li>
-          <li>Захист від спаму</li>
-          <li>Без абонплати за сторонні сервіси</li>
-        </ul>
-        <a class="btn js-tg" href="#" onclick="lead('telegram')">Замовити</a>
-      </div>
+      <div class="offer"><h3 data-i18n="o1.h"></h3><div class="price">1 500 <small data-i18n="cur"></small></div><div class="term" data-i18n="o1.term"></div>
+        <ul><li data-i18n="o1.l1"></li><li data-i18n="o1.l2"></li><li data-i18n="o1.l3"></li><li data-i18n="o1.l4"></li></ul>
+        <a class="btn js-tg" href="#" onclick="lead('telegram')" data-i18n="cta.order"></a></div>
+      <div class="offer hot" id="hot"><h3 data-i18n="o2.h"></h3><div class="price">4 500 <small data-i18n="cur"></small></div><div class="term" data-i18n="o2.term"></div>
+        <ul><li data-i18n="o2.l1"></li><li data-i18n="o2.l2"></li><li data-i18n="o2.l3"></li><li data-i18n="o2.l4"></li><li data-i18n="o2.l5"></li></ul>
+        <a class="btn js-tg" href="#" onclick="lead('telegram')" data-i18n="cta.order"></a></div>
+      <div class="offer"><h3 data-i18n="o3.h"></h3><div class="price">3 000 <small data-i18n="cur"></small></div><div class="term" data-i18n="o3.term"></div>
+        <ul><li data-i18n="o3.l1"></li><li data-i18n="o3.l2"></li><li data-i18n="o3.l3"></li><li data-i18n="o3.l4"></li></ul>
+        <a class="btn js-tg" href="#" onclick="lead('telegram')" data-i18n="cta.order"></a></div>
     </div>
   </div>
 </section>
 
 <section id="goals">
   <div class="wrap">
-    <h2>Досягайте своєї мети, а не «просто сайту»</h2>
-    <p class="sub">Кожна робота прив'язана до результату, який видно у цифрах.</p>
+    <h2 data-i18n="g.h"></h2>
+    <p class="sub" data-i18n="g.sub"></p>
     <div class="grid g4">
-      <div class="card"><div class="ico b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><h3>Більше замовлень</h3><p>Швидкий сайт і робочі форми конвертують відвідувачів у клієнтів.</p></div>
-      <div class="card"><div class="ico g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div><h3>Вище в Google</h3><p>Технічні помилки прибрані — пошук бачить сайт і піднімає його.</p></div>
-      <div class="card"><div class="ico y"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h3>Менше рутини</h3><p>Заявки, звіти й нагадування працюють самі — ви займаєтесь бізнесом.</p></div>
-      <div class="card"><div class="ico r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Спокій за сайт</h3><p>Резервні копії, моніторинг і людина, якій можна написати, коли щось не так.</p></div>
+      <div class="card"><div class="ico b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><h3 data-i18n="g1.h"></h3><p data-i18n="g1.p"></p></div>
+      <div class="card"><div class="ico g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div><h3 data-i18n="g2.h"></h3><p data-i18n="g2.p"></p></div>
+      <div class="card"><div class="ico y"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h3 data-i18n="g3.h"></h3><p data-i18n="g3.p"></p></div>
+      <div class="card"><div class="ico r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 data-i18n="g4.h"></h3><p data-i18n="g4.p"></p></div>
     </div>
   </div>
 </section>
 
 <section id="how" style="background:var(--soft)">
   <div class="wrap">
-    <h2>Як це працює</h2>
-    <p class="sub">Чотири кроки від «щось не так» до «працює і приносить клієнтів».</p>
+    <h2 data-i18n="h.h"></h2>
+    <p class="sub" data-i18n="h.sub"></p>
     <div class="grid g4 steps">
-      <div class="step"><div class="num"></div><div><h3>Пишете в Telegram</h3><p>Посилання на сайт і що саме турбує. Це займає хвилину.</p></div></div>
-      <div class="step"><div class="num"></div><div><h3>Безкоштовна діагностика</h3><p>За 30 хвилин кажемо, що сталося, і називаємо фіксовану ціну.</p></div></div>
-      <div class="step"><div class="num"></div><div><h3>Робота за домовленістю</h3><p>Дрібне — за 24 години, більше — з чітким терміном у договорі.</p></div></div>
-      <div class="step"><div class="num"></div><div><h3>Перевірка результату</h3><p>Показуємо «до / після» за даними Google. Другу половину платите після.</p></div></div>
+      <div class="step"><div class="num"></div><div><h3 data-i18n="h1.h"></h3><p data-i18n="h1.p"></p></div></div>
+      <div class="step"><div class="num"></div><div><h3 data-i18n="h2.h"></h3><p data-i18n="h2.p"></p></div></div>
+      <div class="step"><div class="num"></div><div><h3 data-i18n="h3.h"></h3><p data-i18n="h3.p"></p></div></div>
+      <div class="step"><div class="num"></div><div><h3 data-i18n="h4.h"></h3><p data-i18n="h4.p"></p></div></div>
     </div>
   </div>
 </section>
@@ -272,57 +241,164 @@
 <section>
   <div class="wrap">
     <div class="feat">
-      <div class="txt">
-        <h3>Ви говорите напряму з розробником</h3>
-        <p>Без менеджерів, «передам команді» і тижнів очікування. Той, хто відповідає у чаті, той і робить роботу — тому відповіді швидкі, а ціна без націнки агентства.</p>
-      </div>
-      <div class="pic">
-        <div class="stat">
-          <div><b>30 хв</b><span>до діагнозу та ціни</span></div>
-          <div><b>24 год</b><span>на дрібний ремонт</span></div>
-          <div><b>90+</b><span>Lighthouse після прискорення</span></div>
-        </div>
-      </div>
+      <div class="txt"><h3 data-i18n="f.h"></h3><p data-i18n="f.p"></p></div>
+      <div class="pic"><div class="stat">
+        <div><b data-i18n="f1.b"></b><span data-i18n="f1.s"></span></div>
+        <div><b data-i18n="f2.b"></b><span data-i18n="f2.s"></span></div>
+        <div><b>90+</b><span data-i18n="f3.s"></span></div>
+      </div></div>
     </div>
   </div>
 </section>
 
 <section id="faq" style="padding-top:24px">
   <div class="wrap">
-    <h2>Питання, які ставлять найчастіше</h2>
+    <h2 data-i18n="q.h"></h2>
     <div style="max-width:860px;margin:36px auto 0">
-      <details open><summary>Скільки коштує подивитися, що з сайтом?</summary><p>Нічого. Діагностика безкоштовна: ви надсилаєте посилання, за 30 хвилин отримуєте причину проблеми й фіксовану ціну. Далі вирішуєте ви.</p></details>
-      <details><summary>Ціна може зрости в процесі?</summary><p>Ні. Ціна фіксується до початку робіт і не змінюється. Якщо в процесі знайдемо ще щось — скажемо окремо, і ви самі вирішите, чи робити.</p></details>
-      <details><summary>З якими сайтами працюєте?</summary><p>WordPress, OpenCart, Хорошоп, Tilda, Shopify, самописні на PHP/JS. Якщо ваша платформа не в списку — напишіть, скоріш за все теж допоможемо.</p></details>
-      <details><summary>Як відбувається оплата?</summary><p>50% на старті, 50% після того, як ви перевірили результат. Оплата на картку або за рахунком для ФОП/ТОВ.</p></details>
-      <details><summary>Що якщо сайт «упав» просто зараз?</summary><p>Пишіть у Telegram одразу — критичні поломки беремо в роботу першими, зазвичай протягом години.</p></details>
+      <details open><summary data-i18n="q1.q"></summary><p data-i18n="q1.a"></p></details>
+      <details><summary data-i18n="q2.q"></summary><p data-i18n="q2.a"></p></details>
+      <details><summary data-i18n="q3.q"></summary><p data-i18n="q3.a"></p></details>
+      <details><summary data-i18n="q4.q"></summary><p data-i18n="q4.a"></p></details>
+      <details><summary data-i18n="q5.q"></summary><p data-i18n="q5.a"></p></details>
     </div>
   </div>
 </section>
 
 <section style="padding-top:0">
-  <div class="wrap">
-    <div class="final">
-      <h2>Почніть із безкоштовної діагностики</h2>
-      <p>Напишіть посилання на сайт — за 30 хвилин ви знатимете, що з ним і скільки коштує виправити.</p>
-      <a class="btn lg js-tg" href="#" onclick="lead('telegram')">Написати в Telegram</a>
-    </div>
-  </div>
+  <div class="wrap"><div class="final">
+    <h2 data-i18n="fin.h"></h2><p data-i18n="fin.p"></p>
+    <a class="btn lg js-tg" href="#" onclick="lead('telegram')" data-i18n="cta.tg"></a>
+  </div></div>
 </section>
 
-<footer><div class="wrap">SiteBoosty · сайти, SEO, автоматизація · Україна · <a class="js-phone" href="#" onclick="lead('phone')">Подзвонити</a></div></footer>
-
-<div class="sticky"><a class="btn lg js-tg" href="#" onclick="lead('telegram')">Написати в Telegram</a></div>
+<footer><div class="wrap"><span data-i18n="foot"></span> · <a class="js-phone" href="#" onclick="lead('phone')" data-i18n="cta.call"></a></div></footer>
+<div class="sticky"><a class="btn lg js-tg" href="#" onclick="lead('telegram')" data-i18n="cta.tg"></a></div>
 
 <script>
-  document.querySelectorAll('.js-tg').forEach(a=>a.href='https://t.me/'+SB.TG);
-  document.querySelectorAll('.js-phone').forEach(a=>a.href='tel:'+SB.PHONE);
-  // перебір слів у заголовку, як на лендингу Google Ads
-  (function(){
-    var w=['Більше клієнтів','Швидший сайт','Вище в Google','Заявки без втрат'],i=0,el=document.getElementById('rot');
-    setInterval(function(){ i=(i+1)%w.length; el.style.opacity=0; setTimeout(function(){ el.textContent=w[i]; el.style.opacity=1; },220); },2600);
-    el.style.transition='opacity .22s';
-  })();
+const I18N = {
+uk:{title:"SiteBoosty — більше клієнтів завдяки швидкому сайту",desc:"Ремонт і прискорення сайтів, SEO, заявки з сайту в Telegram і CRM. Безкоштовна діагностика за 30 хвилин, фіксована ціна до старту робіт.",
+rot:["Більше клієнтів","Швидший сайт","Вище в Google","Заявки без втрат"],
+"nav.services":"Послуги","nav.prices":"Ціни","nav.how":"Як це працює","nav.faq":"Питання","nav.cta":"Почати",
+"hero.tail":"завдяки SiteBoosty","hero.sub":"Полагодимо, прискоримо і виведемо ваш сайт у Google, щоб клієнти знаходили саме вас. Діагностика — безкоштовно, ціна фіксується до початку робіт.",
+"cta.tg":"Написати в Telegram","cta.call":"Подзвонити","cta.order":"Замовити","hero.hint":"Відповідаємо за 30 хвилин · 8:00–22:00 без вихідних",
+"mock.url":"ваш-сайт.com.ua","mock.before":"Було","mock.before_t":"Завантаження 7,8 с · клієнти йдуть","mock.after":"Стало","mock.after_t":"Завантаження 1,4 с · +конверсія",
+"s.h":"Усі рішення для вашого сайту в одному місці","s.sub":"Оберіть, що болить зараз, — а решту підкажемо після безкоштовної діагностики.",
+"s1.h":"Ремонт сайту","s1.p":"Білий екран, помилки після оновлення, не працюють форми чи кошик.","s1.from":"від 1 500 грн",
+"s2.h":"Прискорення","s2.p":"Core Web Vitals у зелену зону. Швидкий сайт — вищі позиції та більше замовлень.","s2.from":"від 2 500 грн",
+"s3.h":"SEO","s3.p":"Зник із пошуку, впав трафік після редизайну, дублі та биті сторінки.","s3.from":"від 2 500 грн",
+"s4.h":"Заявки в Telegram і CRM","s4.p":"Кожна заявка з сайту — миттєво у вас у месенджері або CRM. Жодна не губиться.","s4.from":"від 3 000 грн",
+"s5.h":"Автоматизація","s5.p":"Рахунки, звіти, розсилки та рутина — самі. Без ручного копіювання.","s5.from":"від 5 000 грн",
+"o.h":"Оберіть пакет — і ціна не зміниться в процесі","o.sub":"Половина оплати на старті, половина — після того, як ви перевірили результат.","o.badge":"Найчастіше замовляють","cur":"грн",
+"o1.h":"Швидка допомога","o1.term":"Термін — до 24 годин","o1.l1":"Діагностика й точна причина поломки","o1.l2":"Виправлення однієї проблеми","o1.l3":"Резервна копія перед роботами","o1.l4":"Звіт, що і чому було зроблено",
+"o2.h":"Прискорення + SEO-база","o2.term":"Термін — 3–5 днів","o2.l1":"Швидкість: Lighthouse 90+ на мобільних","o2.l2":"Виправлення технічних SEO-помилок","o2.l3":"Індексація, robots, sitemap, дублі","o2.l4":"Аналітика GA4 і цілі на заявки","o2.l5":"Звіт «до / після» за даними Google",
+"o3.h":"Заявки без втрат","o3.term":"Термін — 1–2 дні","o3.l1":"Форми з сайту → Telegram або CRM","o3.l2":"Автовідповідь клієнту за секунду","o3.l3":"Захист від спаму","o3.l4":"Без абонплати за сторонні сервіси",
+"g.h":"Досягайте своєї мети, а не «просто сайту»","g.sub":"Кожна робота прив'язана до результату, який видно у цифрах.",
+"g1.h":"Більше замовлень","g1.p":"Швидкий сайт і робочі форми конвертують відвідувачів у клієнтів.","g2.h":"Вище в Google","g2.p":"Технічні помилки прибрані — пошук бачить сайт і піднімає його.","g3.h":"Менше рутини","g3.p":"Заявки, звіти й нагадування працюють самі — ви займаєтесь бізнесом.","g4.h":"Спокій за сайт","g4.p":"Резервні копії, моніторинг і людина, якій можна написати, коли щось не так.",
+"h.h":"Як це працює","h.sub":"Чотири кроки від «щось не так» до «працює і приносить клієнтів».",
+"h1.h":"Пишете в Telegram","h1.p":"Посилання на сайт і що саме турбує. Це займає хвилину.","h2.h":"Безкоштовна діагностика","h2.p":"За 30 хвилин кажемо, що сталося, і називаємо фіксовану ціну.","h3.h":"Робота за домовленістю","h3.p":"Дрібне — за 24 години, більше — з чітким терміном у договорі.","h4.h":"Перевірка результату","h4.p":"Показуємо «до / після» за даними Google. Другу половину платите після.",
+"f.h":"Ви говорите напряму з розробником","f.p":"Без менеджерів, «передам команді» і тижнів очікування. Той, хто відповідає у чаті, той і робить роботу — тому відповіді швидкі, а ціна без націнки агентства.",
+"f1.b":"30 хв","f1.s":"до діагнозу та ціни","f2.b":"24 год","f2.s":"на дрібний ремонт","f3.s":"Lighthouse після прискорення",
+"q.h":"Питання, які ставлять найчастіше",
+"q1.q":"Скільки коштує подивитися, що з сайтом?","q1.a":"Нічого. Діагностика безкоштовна: ви надсилаєте посилання, за 30 хвилин отримуєте причину проблеми й фіксовану ціну. Далі вирішуєте ви.",
+"q2.q":"Ціна може зрости в процесі?","q2.a":"Ні. Ціна фіксується до початку робіт і не змінюється. Якщо в процесі знайдемо ще щось — скажемо окремо, і ви самі вирішите, чи робити.",
+"q3.q":"З якими сайтами працюєте?","q3.a":"WordPress, OpenCart, Хорошоп, Tilda, Shopify, самописні на PHP/JS. Якщо ваша платформа не в списку — напишіть, скоріш за все теж допоможемо.",
+"q4.q":"Як відбувається оплата?","q4.a":"50% на старті, 50% після того, як ви перевірили результат. Оплата на картку або за рахунком для ФОП/ТОВ.",
+"q5.q":"Що якщо сайт «упав» просто зараз?","q5.a":"Пишіть у Telegram одразу — критичні поломки беремо в роботу першими, зазвичай протягом години.",
+"fin.h":"Почніть із безкоштовної діагностики","fin.p":"Напишіть посилання на сайт — за 30 хвилин ви знатимете, що з ним і скільки коштує виправити.",
+"foot":"SiteBoosty · сайти, SEO, автоматизація · Україна"},
+
+ru:{title:"SiteBoosty — больше клиентов благодаря быстрому сайту",desc:"Ремонт и ускорение сайтов, SEO, заявки с сайта в Telegram и CRM. Бесплатная диагностика за 30 минут, фиксированная цена до старта работ.",
+rot:["Больше клиентов","Быстрее сайт","Выше в Google","Заявки без потерь"],
+"nav.services":"Услуги","nav.prices":"Цены","nav.how":"Как это работает","nav.faq":"Вопросы","nav.cta":"Начать",
+"hero.tail":"благодаря SiteBoosty","hero.sub":"Починим, ускорим и выведем ваш сайт в Google, чтобы клиенты находили именно вас. Диагностика — бесплатно, цена фиксируется до начала работ.",
+"cta.tg":"Написать в Telegram","cta.call":"Позвонить","cta.order":"Заказать","hero.hint":"Отвечаем за 30 минут · 8:00–22:00 без выходных",
+"mock.url":"ваш-сайт.com.ua","mock.before":"Было","mock.before_t":"Загрузка 7,8 с · клиенты уходят","mock.after":"Стало","mock.after_t":"Загрузка 1,4 с · +конверсия",
+"s.h":"Все решения для вашего сайта в одном месте","s.sub":"Выберите, что болит сейчас, — остальное подскажем после бесплатной диагностики.",
+"s1.h":"Ремонт сайта","s1.p":"Белый экран, ошибки после обновления, не работают формы или корзина.","s1.from":"от 1 500 грн",
+"s2.h":"Ускорение","s2.p":"Core Web Vitals в зелёную зону. Быстрый сайт — выше позиции и больше заказов.","s2.from":"от 2 500 грн",
+"s3.h":"SEO","s3.p":"Пропал из поиска, упал трафик после редизайна, дубли и битые страницы.","s3.from":"от 2 500 грн",
+"s4.h":"Заявки в Telegram и CRM","s4.p":"Каждая заявка с сайта — мгновенно у вас в мессенджере или CRM. Ни одна не теряется.","s4.from":"от 3 000 грн",
+"s5.h":"Автоматизация","s5.p":"Счета, отчёты, рассылки и рутина — сами. Без ручного копирования.","s5.from":"от 5 000 грн",
+"o.h":"Выберите пакет — и цена не изменится в процессе","o.sub":"Половина оплаты на старте, половина — после того, как вы проверили результат.","o.badge":"Заказывают чаще всего","cur":"грн",
+"o1.h":"Быстрая помощь","o1.term":"Срок — до 24 часов","o1.l1":"Диагностика и точная причина поломки","o1.l2":"Исправление одной проблемы","o1.l3":"Резервная копия перед работами","o1.l4":"Отчёт, что и почему сделано",
+"o2.h":"Ускорение + SEO-база","o2.term":"Срок — 3–5 дней","o2.l1":"Скорость: Lighthouse 90+ на мобильных","o2.l2":"Исправление технических SEO-ошибок","o2.l3":"Индексация, robots, sitemap, дубли","o2.l4":"Аналитика GA4 и цели на заявки","o2.l5":"Отчёт «до / после» по данным Google",
+"o3.h":"Заявки без потерь","o3.term":"Срок — 1–2 дня","o3.l1":"Формы с сайта → Telegram или CRM","o3.l2":"Автоответ клиенту за секунду","o3.l3":"Защита от спама","o3.l4":"Без абонплаты за сторонние сервисы",
+"g.h":"Достигайте своей цели, а не «просто сайта»","g.sub":"Каждая работа привязана к результату, который видно в цифрах.",
+"g1.h":"Больше заказов","g1.p":"Быстрый сайт и рабочие формы превращают посетителей в клиентов.","g2.h":"Выше в Google","g2.p":"Технические ошибки убраны — поиск видит сайт и поднимает его.","g3.h":"Меньше рутины","g3.p":"Заявки, отчёты и напоминания работают сами — вы занимаетесь бизнесом.","g4.h":"Спокойствие за сайт","g4.p":"Резервные копии, мониторинг и человек, которому можно написать, когда что-то не так.",
+"h.h":"Как это работает","h.sub":"Четыре шага от «что-то не так» до «работает и приносит клиентов».",
+"h1.h":"Пишете в Telegram","h1.p":"Ссылка на сайт и что именно беспокоит. Это занимает минуту.","h2.h":"Бесплатная диагностика","h2.p":"За 30 минут говорим, что случилось, и называем фиксированную цену.","h3.h":"Работа по договорённости","h3.p":"Мелкое — за 24 часа, крупное — с чётким сроком в договоре.","h4.h":"Проверка результата","h4.p":"Показываем «до / после» по данным Google. Вторую половину платите после.",
+"f.h":"Вы говорите напрямую с разработчиком","f.p":"Без менеджеров, «передам команде» и недель ожидания. Кто отвечает в чате, тот и делает работу — поэтому ответы быстрые, а цена без наценки агентства.",
+"f1.b":"30 мин","f1.s":"до диагноза и цены","f2.b":"24 ч","f2.s":"на мелкий ремонт","f3.s":"Lighthouse после ускорения",
+"q.h":"Вопросы, которые задают чаще всего",
+"q1.q":"Сколько стоит посмотреть, что с сайтом?","q1.a":"Ничего. Диагностика бесплатна: вы присылаете ссылку, через 30 минут получаете причину проблемы и фиксированную цену. Дальше решаете вы.",
+"q2.q":"Цена может вырасти в процессе?","q2.a":"Нет. Цена фиксируется до начала работ и не меняется. Если в процессе найдём ещё что-то — скажем отдельно, и вы сами решите, делать ли.",
+"q3.q":"С какими сайтами работаете?","q3.a":"WordPress, OpenCart, Хорошоп, Tilda, Shopify, самописные на PHP/JS. Если вашей платформы нет в списке — напишите, скорее всего тоже поможем.",
+"q4.q":"Как происходит оплата?","q4.a":"50% на старте, 50% после того, как вы проверили результат. Оплата на карту или по счёту для ФОП/ООО.",
+"q5.q":"Что если сайт «упал» прямо сейчас?","q5.a":"Пишите в Telegram сразу — критические поломки берём в работу первыми, обычно в течение часа.",
+"fin.h":"Начните с бесплатной диагностики","fin.p":"Пришлите ссылку на сайт — через 30 минут вы будете знать, что с ним и сколько стоит исправить.",
+"foot":"SiteBoosty · сайты, SEO, автоматизация · Украина"},
+
+en:{title:"SiteBoosty — more customers with a faster website",desc:"Website repair and speed optimization, SEO, leads from your site straight to Telegram and CRM. Free 30-minute diagnosis, fixed price before work starts.",
+rot:["More customers","A faster site","Higher on Google","No lost leads"],
+"nav.services":"Services","nav.prices":"Pricing","nav.how":"How it works","nav.faq":"FAQ","nav.cta":"Get started",
+"hero.tail":"with SiteBoosty","hero.sub":"We fix, speed up and get your website ranking on Google so customers find you first. Diagnosis is free, and the price is fixed before we start.",
+"cta.tg":"Message on Telegram","cta.call":"Call us","cta.order":"Order","hero.hint":"Reply within 30 minutes · 8:00–22:00, 7 days a week",
+"mock.url":"your-site.com","mock.before":"Before","mock.before_t":"Loads in 7.8 s · customers leave","mock.after":"After","mock.after_t":"Loads in 1.4 s · higher conversion",
+"s.h":"Everything your website needs, in one place","s.sub":"Pick what hurts right now — we'll point out the rest after a free diagnosis.",
+"s1.h":"Website repair","s1.p":"White screen, errors after an update, broken forms or checkout.","s1.from":"from ₴1,500",
+"s2.h":"Speed optimization","s2.p":"Core Web Vitals in the green. A fast site ranks higher and sells more.","s2.from":"from ₴2,500",
+"s3.h":"SEO","s3.p":"Dropped out of search, traffic fell after a redesign, duplicates and broken pages.","s3.from":"from ₴2,500",
+"s4.h":"Leads to Telegram & CRM","s4.p":"Every form submission lands instantly in your messenger or CRM. Nothing gets lost.","s4.from":"from ₴3,000",
+"s5.h":"Automation","s5.p":"Invoices, reports, mailings and routine — done automatically. No manual copy-paste.","s5.from":"from ₴5,000",
+"o.h":"Pick a package — the price won't change midway","o.sub":"Half upfront, half after you've checked the result.","o.badge":"Most popular","cur":"UAH",
+"o1.h":"Quick fix","o1.term":"Turnaround — up to 24 hours","o1.l1":"Diagnosis and the exact cause","o1.l2":"Fix for one issue","o1.l3":"Backup before any changes","o1.l4":"Report on what was done and why",
+"o2.h":"Speed + SEO foundation","o2.term":"Turnaround — 3–5 days","o2.l1":"Speed: Lighthouse 90+ on mobile","o2.l2":"Technical SEO issues fixed","o2.l3":"Indexing, robots, sitemap, duplicates","o2.l4":"GA4 analytics with lead goals","o2.l5":"Before/after report from Google data",
+"o3.h":"No lost leads","o3.term":"Turnaround — 1–2 days","o3.l1":"Site forms → Telegram or CRM","o3.l2":"Instant auto-reply to the customer","o3.l3":"Spam protection","o3.l4":"No monthly fees for third-party tools",
+"g.h":"Reach your goal, not just “a website”","g.sub":"Every job is tied to a result you can see in numbers.",
+"g1.h":"More orders","g1.p":"A fast site and working forms turn visitors into customers.","g2.h":"Higher on Google","g2.p":"Technical errors removed — search sees your site and lifts it.","g3.h":"Less routine","g3.p":"Leads, reports and reminders run themselves — you run the business.","g4.h":"Peace of mind","g4.p":"Backups, monitoring and a real person to message when something's off.",
+"h.h":"How it works","h.sub":"Four steps from “something's wrong” to “it works and brings customers”.",
+"h1.h":"Message us on Telegram","h1.p":"Send the site link and what's bothering you. Takes a minute.","h2.h":"Free diagnosis","h2.p":"Within 30 minutes we tell you what happened and quote a fixed price.","h3.h":"Work as agreed","h3.p":"Small fixes in 24 hours, bigger jobs with a clear deadline in writing.","h4.h":"Check the result","h4.p":"We show before/after from Google data. You pay the second half afterwards.",
+"f.h":"You talk directly to the developer","f.p":"No account managers, no “I'll pass it to the team”, no weeks of waiting. The person replying in the chat is the one doing the work — fast answers, no agency markup.",
+"f1.b":"30 min","f1.s":"to a diagnosis and price","f2.b":"24 h","f2.s":"for a quick fix","f3.s":"Lighthouse after optimization",
+"q.h":"Frequently asked questions",
+"q1.q":"How much does it cost to check my site?","q1.a":"Nothing. Diagnosis is free: you send a link, within 30 minutes you get the cause and a fixed price. Then it's your call.",
+"q2.q":"Can the price go up during the work?","q2.a":"No. The price is fixed before we start and doesn't change. If we find something else along the way, we'll tell you separately and you decide.",
+"q3.q":"Which platforms do you work with?","q3.a":"WordPress, OpenCart, Horoshop, Tilda, Shopify, custom PHP/JS. If yours isn't listed, ask — we most likely can help.",
+"q4.q":"How does payment work?","q4.a":"50% upfront, 50% after you've verified the result. Card payment or invoice for businesses.",
+"q5.q":"What if my site is down right now?","q5.a":"Message us on Telegram immediately — critical outages go first, usually within the hour.",
+"fin.h":"Start with a free diagnosis","fin.p":"Send us your site link — in 30 minutes you'll know what's wrong and what it costs to fix.",
+"foot":"SiteBoosty · websites, SEO, automation · Ukraine"}
+};
+
+(function(){
+  var rotWords=[], rotI=0, rotEl=document.getElementById('rot');
+  function setLang(l){
+    if(!I18N[l]) l='uk';
+    var d=I18N[l];
+    document.documentElement.lang=l;
+    document.title=d.title;
+    document.querySelector('meta[name=description]').content=d.desc;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n'); if(d[k]!=null) el.textContent=d[k];});
+    document.getElementById('hot').setAttribute('data-badge',d['o.badge']);
+    document.querySelectorAll('#lang button').forEach(function(b){b.classList.toggle('on',b.dataset.lang===l);});
+    rotWords=d.rot; rotI=0; rotEl.textContent=rotWords[0];
+    try{localStorage.setItem('sb-lang',l);}catch(e){}
+  }
+  var saved=null; try{saved=localStorage.getItem('sb-lang');}catch(e){}
+  var q=new URLSearchParams(location.search).get('lang');
+  var nav=(navigator.language||'uk').slice(0,2);
+  setLang(q||saved||(I18N[nav]?nav:'uk'));
+  document.querySelectorAll('#lang button').forEach(function(b){b.onclick=function(){setLang(b.dataset.lang);};});
+  setInterval(function(){ rotI=(rotI+1)%rotWords.length; rotEl.style.opacity=0; setTimeout(function(){ rotEl.textContent=rotWords[rotI]; rotEl.style.opacity=1; },220); },2600);
+
+  document.getElementById('theme').onclick=function(){
+    var cur=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+    document.documentElement.setAttribute('data-theme',cur);
+    try{localStorage.setItem('sb-theme',cur);}catch(e){}
+  };
+  document.querySelectorAll('.js-tg').forEach(function(a){a.href='https://t.me/'+SB.TG;});
+  document.querySelectorAll('.js-phone').forEach(function(a){a.href='tel:'+SB.PHONE;});
+})();
 </script>
 </body>
 </html>
