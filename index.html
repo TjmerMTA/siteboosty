@@ -27,7 +27,7 @@
   (function(){ var id=(window.SB.GADS_ID||'').split('/')[0]; if(!id||/X{3,}/.test(id)) return;
     var s=document.createElement('script'); s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id='+id; document.head.appendChild(s);
     gtag('js', new Date()); gtag('config', id); })();
-  function lead(kind){ try { gtag('event','conversion',{ send_to: window.SB.GADS_ID, event_label: kind }); } catch(e){} }
+  function lead(kind){ try { var g=new URLSearchParams(location.search).get('g')||'direct'; gtag('event','conversion',{ send_to: window.SB.GADS_ID, event_label: kind+'/'+g }); } catch(e){} }
 </script>
 <style>
   :root{--blue:#1a73e8;--blue-d:#1765cc;--ink:#202124;--grey:#5f6368;--line:#dadce0;--soft:#f8f9fa;--bg:#fff;--card:#fff;--green:#1e8e3e;--red:#d93025;--shadow:rgba(60,64,67,.14);
@@ -723,13 +723,36 @@ document.addEventListener('DOMContentLoaded',function(){
     rotWords=d.rot; rotI=0; rotEl.textContent=rotWords[0];
     if(window.rvCount) window.rvCount();
     try{localStorage.setItem('sb-lang',l);}catch(e){}
+    applyG();
+  }
+  var G={
+    repair:{uk:["Полагодимо сайт","за 24 години","Білий екран, помилки після оновлення, не працюють форми чи кошик. Знайдемо причину безкоштовно і назвемо фіксовану ціну до старту. Від 1 500 грн."],
+            ru:["Починим сайт","за 24 часа","Белый экран, ошибки после обновления, не работают формы или корзина. Найдём причину бесплатно и назовём фиксированную цену до старта. От 1 500 грн."],
+            en:["We fix your site","within 24 hours","White screen, errors after an update, broken forms or checkout. Free diagnosis, fixed price before we start. From 1 500 UAH."]},
+    speed:{uk:["Прискоримо сайт","за 1–3 дні","Lighthouse 90+ на мобільних і Core Web Vitals у зеленій зоні. Діагностика безкоштовно, ціна фіксується до старту. Від 2 500 грн."],
+           ru:["Ускорим сайт","за 1–3 дня","Lighthouse 90+ на мобильных и Core Web Vitals в зелёной зоне. Диагностика бесплатно, цена фиксируется до старта. От 2 500 грн."],
+           en:["We speed up your site","in 1–3 days","Lighthouse 90+ on mobile and green Core Web Vitals. Free diagnosis, fixed price before we start. From 2 500 UAH."]},
+    crm:{uk:["Заявки з сайту","прямо в Telegram або CRM","Форми, кошик, месенджери — усе в один чат або CRM за 1–2 дні. Жодна заявка не губиться. Від 3 000 грн, без абонплати за сервіси."],
+         ru:["Заявки с сайта","прямо в Telegram или CRM","Формы, корзина, мессенджеры — всё в один чат или CRM за 1–2 дня. Ни одна заявка не теряется. От 3 000 грн, без абонплаты за сервисы."],
+         en:["Website leads","straight to Telegram or CRM","Forms, checkout and messengers into one chat or CRM within 1–2 days. No lead gets lost. From 3 000 UAH, no monthly fees."]},
+    seo:{uk:["Повернемо трафік","з Google","Зник із пошуку, впав трафік після редизайну, дублі та биті сторінки. Знайдемо причину безкоштовно і виправимо за фіксовану ціну."],
+         ru:["Вернём трафик","из Google","Пропал из поиска, упал трафик после редизайна, дубли и битые страницы. Найдём причину бесплатно и исправим за фиксированную цену."],
+         en:["We bring traffic back","from Google","Dropped out of search, lost traffic after a redesign, duplicates and broken pages. Free diagnosis, fixed-price fix."]}
+  };
+  var g=new URLSearchParams(location.search).get('g');
+  function applyG(){
+    if(!g||!G[g]) return;
+    var v=G[g][document.documentElement.lang]||G[g].uk;
+    rotWords=[v[0]]; rotEl.textContent=v[0];
+    document.querySelector('[data-i18n="hero.tail"]').textContent=v[1];
+    document.querySelector('[data-i18n="hero.sub"]').textContent=v[2];
   }
   var saved=null; try{saved=localStorage.getItem('sb-lang');}catch(e){}
   var q=new URLSearchParams(location.search).get('lang');
   var nav=(navigator.language||'uk').slice(0,2);
   setLang(q||saved||(I18N[nav]?nav:'uk'));
   document.querySelectorAll('#lang button').forEach(function(b){b.onclick=function(){setLang(b.dataset.lang);};});
-  setInterval(function(){ rotI=(rotI+1)%rotWords.length; rotEl.style.opacity=0; setTimeout(function(){ rotEl.textContent=rotWords[rotI]; rotEl.style.opacity=1; },220); },2600);
+  setInterval(function(){ if(rotWords.length<2) return; rotI=(rotI+1)%rotWords.length; rotEl.style.opacity=0; setTimeout(function(){ rotEl.textContent=rotWords[rotI]; rotEl.style.opacity=1; },220); },2600);
 
   document.getElementById('theme').onclick=function(){
     var cur=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
