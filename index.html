@@ -6,8 +6,10 @@
 <title>SiteBoosty — більше клієнтів завдяки швидкому сайту</title>
 <meta name="description" content="Ремонт і прискорення сайтів, SEO, заявки з сайту в Telegram і CRM. Безкоштовна діагностика за 30 хвилин, фіксована ціна до старту робіт.">
 <meta name="color-scheme" content="light dark">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/roboto-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/roboto-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:Roboto;font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/roboto-400-cyrillic.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:Roboto;font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/roboto-400-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}</style>
 <!--
   ЗАПОВНИТИ ПЕРЕД ЗАПУСКОМ:
   TG      — нік у Telegram без @
@@ -19,11 +21,12 @@
   // тема до рендеру, щоб не блимало
   (function(){try{var t=localStorage.getItem('sb-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date()); gtag('config', 'AW-XXXXXXXXX');
+  (function(){ var id=(window.SB.GADS_ID||'').split('/')[0]; if(!id||/X{3,}/.test(id)) return;
+    var s=document.createElement('script'); s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id='+id; document.head.appendChild(s);
+    gtag('js', new Date()); gtag('config', id); })();
   function lead(kind){ try { gtag('event','conversion',{ send_to: window.SB.GADS_ID, event_label: kind }); } catch(e){} }
 </script>
 <style>
@@ -42,7 +45,7 @@
   .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
   header{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);z-index:10}
   .nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
-  .logo{font-size:22px;font-weight:700;letter-spacing:-.3px;color:var(--ink)}
+  .logo{text-decoration:none;font-size:22px;font-weight:700;letter-spacing:-.3px;color:var(--ink)}
   .logo b{color:var(--blue)}
   .nav ul{display:none;gap:28px;list-style:none}
   .nav ul a{color:var(--grey);font-weight:500;font-size:15px}
@@ -249,18 +252,18 @@
   @media(max-width:600px){.mock .body{grid-template-columns:1fr}section{padding:52px 0}.nav .btn{display:none}}
 </style>
 </head>
-<body>
+<body id="top">
 
 <header>
   <div class="wrap nav">
-    <div class="logo">Site<b>Boosty</b></div>
+    <a class="logo" href="#top" aria-label="SiteBoosty">Site<b>Boosty</b></a>
     <ul>
-      <li><a href="#services" data-i18n="nav.services"></a></li>
-      <li><a href="#offers" data-i18n="nav.prices"></a></li>
-      <li><a href="#work" data-i18n="nav.work"></a></li>
-      <li><a href="#reviews" data-i18n="nav.reviews"></a></li>
-      <li><a href="#how" data-i18n="nav.how"></a></li>
-      <li><a href="#faq" data-i18n="nav.faq"></a></li>
+      <li><a href="#services" data-i18n="nav.services">Послуги</a></li>
+      <li><a href="#offers" data-i18n="nav.prices">Ціни</a></li>
+      <li><a href="#work" data-i18n="nav.work">Портфоліо</a></li>
+      <li><a href="#reviews" data-i18n="nav.reviews">Відгуки</a></li>
+      <li><a href="#how" data-i18n="nav.how">Як це працює</a></li>
+      <li><a href="#faq" data-i18n="nav.faq">Питання</a></li>
     </ul>
     <div class="tools">
       <div class="lang" id="lang">
@@ -270,25 +273,26 @@
         <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
         <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
       </button>
-      <a class="btn js-tg" href="#" onclick="lead('telegram')" data-i18n="nav.cta"></a>
+      <a class="btn js-tg" href="#" onclick="lead('telegram')" data-i18n="nav.cta">Почати</a>
     </div>
   </div>
 </header>
 
+<main>
 <section class="hero">
   <div class="wrap">
-    <h1><span class="rot" id="rot"></span><span data-i18n="hero.tail"></span></h1>
-    <p data-i18n="hero.sub"></p>
+    <h1><span class="rot" id="rot">Більше клієнтів</span><span data-i18n="hero.tail">завдяки SiteBoosty</span></h1>
+    <p data-i18n="hero.sub">Полагодимо, прискоримо і виведемо ваш сайт у Google, щоб клієнти знаходили саме вас. Діагностика — безкоштовно, ціна фіксується до початку робіт.</p>
     <div class="cta-row">
-      <a class="btn lg js-tg" href="#" onclick="lead('telegram')" data-i18n="cta.tg"></a>
-      <a class="btn lg ghost js-phone" href="#" onclick="lead('phone')" data-i18n="cta.call"></a>
+      <a class="btn lg js-tg" href="#" onclick="lead('telegram')" data-i18n="cta.tg">Написати в Telegram</a>
+      <a class="btn lg ghost js-phone" href="#" onclick="lead('phone')" data-i18n="cta.call">Подзвонити</a>
     </div>
-    <div class="hint" data-i18n="hero.hint"></div>
+    <div class="hint" data-i18n="hero.hint">Відповідаємо за 30 хвилин · 8:00–22:00 без вихідних</div>
     <div class="mock" aria-hidden="true">
-      <div class="bar"><i></i><i></i><i></i><span>pagespeed.web.dev — <span data-i18n="mock.url"></span></span></div>
+      <div class="bar"><i></i><i></i><i></i><span>pagespeed.web.dev — <span data-i18n="mock.url">ваш-сайт.com.ua</span></span></div>
       <div class="body">
-        <div class="score"><small data-i18n="mock.before"></small><div class="n bad">34</div><em data-i18n="mock.before_t"></em></div>
-        <div class="score"><small data-i18n="mock.after"></small><div class="n good">96</div><em data-i18n="mock.after_t"></em></div>
+        <div class="score"><small data-i18n="mock.before">Було</small><div class="n bad">34</div><em data-i18n="mock.before_t">Завантаження 7,8 с · клієнти йдуть</em></div>
+        <div class="score"><small data-i18n="mock.after">Стало</small><div class="n good">96</div><em data-i18n="mock.after_t">Завантаження 1,4 с · +конверсія</em></div>
       </div>
     </div>
   </div>
@@ -296,37 +300,37 @@
 
 <section id="services">
   <div class="wrap">
-    <h2 data-i18n="s.h"></h2>
-    <p class="sub" data-i18n="s.sub"></p>
+    <h2 data-i18n="s.h">Усі рішення для вашого сайту в одному місці</h2>
+    <p class="sub" data-i18n="s.sub">Оберіть, що болить зараз, — а решту підкажемо після безкоштовної діагностики.</p>
     <div class="svc-grid">
       <div class="card svc r">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
-        <h3 data-i18n="s1.h"></h3><p data-i18n="s1.p"></p>
-        <div class="foot"><span class="chip" data-i18n="s1.from"></span><a class="go js-tg" href="#" onclick="lead('telegram')" data-i18n="s.go"></a></div>
+        <h3 data-i18n="s1.h">Ремонт сайту</h3><p data-i18n="s1.p">Білий екран, помилки після оновлення, не працюють форми чи кошик.</p>
+        <div class="foot"><span class="chip" data-i18n="s1.from">від 1 500 грн</span><a class="go js-tg" href="#" onclick="lead('telegram')" data-i18n="s.go">Детальніше →</a></div>
         <div class="ghost-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
       </div>
       <div class="card svc y">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-        <h3 data-i18n="s2.h"></h3><p data-i18n="s2.p"></p>
-        <div class="foot"><span class="chip" data-i18n="s2.from"></span><a class="go js-tg" href="#" onclick="lead('telegram')" data-i18n="s.go"></a></div>
+        <h3 data-i18n="s2.h">Прискорення</h3><p data-i18n="s2.p">Core Web Vitals у зелену зону. Швидкий сайт — вищі позиції та більше замовлень.</p>
+        <div class="foot"><span class="chip" data-i18n="s2.from">від 2 500 грн</span><a class="go js-tg" href="#" onclick="lead('telegram')" data-i18n="s.go">Детальніше →</a></div>
         <div class="ghost-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
       </div>
       <div class="card svc b">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
-        <h3 data-i18n="s3.h"></h3><p data-i18n="s3.p"></p>
-        <div class="foot"><span class="chip" data-i18n="s3.from"></span><a class="go js-tg" href="#" onclick="lead('telegram')" data-i18n="s.go"></a></div>
+        <h3 data-i18n="s3.h">SEO</h3><p data-i18n="s3.p">Зник із пошуку, впав трафік після редизайну, дублі та биті сторінки.</p>
+        <div class="foot"><span class="chip" data-i18n="s3.from">від 2 500 грн</span><a class="go js-tg" href="#" onclick="lead('telegram')" data-i18n="s.go">Детальніше →</a></div>
         <div class="ghost-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
       </div>
       <div class="card svc g">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-        <h3 data-i18n="s4.h"></h3><p data-i18n="s4.p"></p>
-        <div class="foot"><span class="chip" data-i18n="s4.from"></span><a class="go js-tg" href="#" onclick="lead('telegram')" data-i18n="s.go"></a></div>
+        <h3 data-i18n="s4.h">Заявки в Telegram і CRM</h3><p data-i18n="s4.p">Кожна заявка з сайту — миттєво у вас у месенджері або CRM. Жодна не губиться.</p>
+        <div class="foot"><span class="chip" data-i18n="s4.from">від 3 000 грн</span><a class="go js-tg" href="#" onclick="lead('telegram')" data-i18n="s.go">Детальніше →</a></div>
         <div class="ghost-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
       </div>
       <div class="card svc p">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
-        <h3 data-i18n="s5.h"></h3><p data-i18n="s5.p"></p>
-        <div class="foot"><span class="chip" data-i18n="s5.from"></span><a class="go js-tg" href="#" onclick="lead('telegram')" data-i18n="s.go"></a></div>
+        <h3 data-i18n="s5.h">Автоматизація</h3><p data-i18n="s5.p">Рахунки, звіти, розсилки та рутина — самі. Без ручного копіювання.</p>
+        <div class="foot"><span class="chip" data-i18n="s5.from">від 5 000 грн</span><a class="go js-tg" href="#" onclick="lead('telegram')" data-i18n="s.go">Детальніше →</a></div>
         <div class="ghost-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
       </div>
     </div>
@@ -335,62 +339,62 @@
 
 <section class="offers" id="offers">
   <div class="wrap">
-    <h2 data-i18n="o.h"></h2>
-    <p class="sub" data-i18n="o.sub"></p>
+    <h2 data-i18n="o.h">Оберіть пакет — і ціна не зміниться в процесі</h2>
+    <p class="sub" data-i18n="o.sub">Половина оплати на старті, половина — після того, як ви перевірили результат.</p>
     <div class="grid g3">
-      <div class="offer"><h3 data-i18n="o1.h"></h3><div class="price">1 500 <small data-i18n="cur"></small></div><div class="term" data-i18n="o1.term"></div>
-        <ul><li data-i18n="o1.l1"></li><li data-i18n="o1.l2"></li><li data-i18n="o1.l3"></li><li data-i18n="o1.l4"></li></ul>
-        <a class="btn js-tg" href="#" onclick="lead('telegram')" data-i18n="cta.order"></a></div>
-      <div class="offer hot" id="hot"><h3 data-i18n="o2.h"></h3><div class="price">4 500 <small data-i18n="cur"></small></div><div class="term" data-i18n="o2.term"></div>
-        <ul><li data-i18n="o2.l1"></li><li data-i18n="o2.l2"></li><li data-i18n="o2.l3"></li><li data-i18n="o2.l4"></li><li data-i18n="o2.l5"></li></ul>
-        <a class="btn js-tg" href="#" onclick="lead('telegram')" data-i18n="cta.order"></a></div>
-      <div class="offer"><h3 data-i18n="o3.h"></h3><div class="price">3 000 <small data-i18n="cur"></small></div><div class="term" data-i18n="o3.term"></div>
-        <ul><li data-i18n="o3.l1"></li><li data-i18n="o3.l2"></li><li data-i18n="o3.l3"></li><li data-i18n="o3.l4"></li></ul>
-        <a class="btn js-tg" href="#" onclick="lead('telegram')" data-i18n="cta.order"></a></div>
+      <div class="offer"><h3 data-i18n="o1.h">Швидка допомога</h3><div class="price">1 500 <small data-i18n="cur">грн</small></div><div class="term" data-i18n="o1.term">Термін — до 24 годин</div>
+        <ul><li data-i18n="o1.l1">Діагностика й точна причина поломки</li><li data-i18n="o1.l2">Виправлення однієї проблеми</li><li data-i18n="o1.l3">Резервна копія перед роботами</li><li data-i18n="o1.l4">Звіт, що і чому було зроблено</li></ul>
+        <a class="btn js-tg" href="#" onclick="lead('telegram')" data-i18n="cta.order">Замовити</a></div>
+      <div class="offer hot" id="hot"><h3 data-i18n="o2.h">Прискорення + SEO-база</h3><div class="price">4 500 <small data-i18n="cur">грн</small></div><div class="term" data-i18n="o2.term">Термін — 3–5 днів</div>
+        <ul><li data-i18n="o2.l1">Швидкість: Lighthouse 90+ на мобільних</li><li data-i18n="o2.l2">Виправлення технічних SEO-помилок</li><li data-i18n="o2.l3">Індексація, robots, sitemap, дублі</li><li data-i18n="o2.l4">Аналітика GA4 і цілі на заявки</li><li data-i18n="o2.l5">Звіт «до / після» за даними Google</li></ul>
+        <a class="btn js-tg" href="#" onclick="lead('telegram')" data-i18n="cta.order">Замовити</a></div>
+      <div class="offer"><h3 data-i18n="o3.h">Заявки без втрат</h3><div class="price">3 000 <small data-i18n="cur">грн</small></div><div class="term" data-i18n="o3.term">Термін — 1–2 дні</div>
+        <ul><li data-i18n="o3.l1">Форми з сайту → Telegram або CRM</li><li data-i18n="o3.l2">Автовідповідь клієнту за секунду</li><li data-i18n="o3.l3">Захист від спаму</li><li data-i18n="o3.l4">Без абонплати за сторонні сервіси</li></ul>
+        <a class="btn js-tg" href="#" onclick="lead('telegram')" data-i18n="cta.order">Замовити</a></div>
     </div>
   </div>
 </section>
 
 <section id="work" style="background:var(--soft)">
   <div class="wrap">
-    <h2 data-i18n="w.h"></h2>
-    <p class="sub" data-i18n="w.sub"></p>
+    <h2 data-i18n="w.h">Проєкти, які вже працюють</h2>
+    <p class="sub" data-i18n="w.sub">Кілька прикладів того, що ми робили — від SaaS-інтеграцій до сайтів для малого бізнесу.</p>
     <div class="grid g3">
       <div class="work" data-proj="shifton" role="button" tabindex="0">
-        <div class="shot"><img loading="lazy" src="img/shifton.webp" width="960" height="600" alt="shifton.com"></div>
-        <div class="body"><div class="tag" data-i18n="w1.tag"></div><h3>Shifton</h3><p data-i18n="w1.p"></p>
+        <div class="shot"><img loading="lazy" src="img/shifton.webp" width="640" height="400" alt="shifton.com"></div>
+        <div class="body"><div class="tag" data-i18n="w1.tag">Інтеграції · Автоматизація</div><h3>Shifton</h3><p data-i18n="w1.p">Плагіни-інтеграції сервісу планування змін Shifton із CRM: Bitrix24 та інші. Двостороння синхронізація даних, вебхуки, черги на Cloudflare Workers.</p>
         <div class="tags"><span>Cloudflare Workers</span><span>Bitrix24</span><span>CRM API</span><span>Webhooks</span></div>
-        <div class="more" data-i18n="w.open"></div></div>
+        <div class="more" data-i18n="w.open">Відкрити кейс →</div></div>
       </div>
       <div class="work" data-proj="odin" role="button" tabindex="0">
-        <div class="shot"><div class="mk c"><div class="gr"><div class="gr-top"><div class="gr-st"><small data-i18n="mk.o1"></small><b>&uarr;</b></div><div class="gr-st"><small data-i18n="mk.o2"></small><b>&uarr;</b></div><div class="gr-st"><small data-i18n="mk.o3"></small><b>&uarr;</b></div></div><svg class="gr-ch" viewBox="0 0 300 100" preserveAspectRatio="none"><defs><linearGradient id="grf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1e8e3e" stop-opacity=".35"/><stop offset="1" stop-color="#1e8e3e" stop-opacity="0"/></linearGradient></defs><path d="M0 88 C30 84 40 78 60 76 S95 70 110 62 S150 58 170 46 S210 40 230 28 S270 18 300 6 L300 100 L0 100Z" fill="url(#grf)"/><path d="M0 88 C30 84 40 78 60 76 S95 70 110 62 S150 58 170 46 S210 40 230 28 S270 18 300 6" fill="none" stroke="#1e8e3e" stroke-width="3" stroke-linecap="round"/></svg></div></div></div>
-        <div class="body"><div class="tag" data-i18n="w7.tag"></div><h3>Odin Originals</h3><p data-i18n="w7.p"></p>
-        <div class="tags"><span>SEO</span><span>WooCommerce</span><span>Search Console</span><span data-i18n="w7.t1"></span></div>
-        <div class="more" data-i18n="w.open"></div></div>
+        <div class="shot"><div class="mk c"><div class="gr"><div class="gr-top"><div class="gr-st"><small data-i18n="mk.o1">Кліки</small><b>&uarr;</b></div><div class="gr-st"><small data-i18n="mk.o2">Покази</small><b>&uarr;</b></div><div class="gr-st"><small data-i18n="mk.o3">Позиції</small><b>&uarr;</b></div></div><svg class="gr-ch" viewBox="0 0 300 100" preserveAspectRatio="none"><defs><linearGradient id="grf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1e8e3e" stop-opacity=".35"/><stop offset="1" stop-color="#1e8e3e" stop-opacity="0"/></linearGradient></defs><path d="M0 88 C30 84 40 78 60 76 S95 70 110 62 S150 58 170 46 S210 40 230 28 S270 18 300 6 L300 100 L0 100Z" fill="url(#grf)"/><path d="M0 88 C30 84 40 78 60 76 S95 70 110 62 S150 58 170 46 S210 40 230 28 S270 18 300 6" fill="none" stroke="#1e8e3e" stroke-width="3" stroke-linecap="round"/></svg></div></div></div>
+        <div class="body"><div class="tag" data-i18n="w7.tag">SEO · Магазин</div><h3>Odin Originals</h3><p data-i18n="w7.p">Інтернет-магазин на WooCommerce: SEO-просування і технічні доробки. Стабільне зростання позицій, показів і кліків із Google.</p>
+        <div class="tags"><span>SEO</span><span>WooCommerce</span><span>Search Console</span><span data-i18n="w7.t1">Доробки</span></div>
+        <div class="more" data-i18n="w.open">Відкрити кейс →</div></div>
       </div>
       <div class="work" data-proj="spirit" role="button" tabindex="0">
-        <div class="shot"><img loading="lazy" src="img/spirit.webp" width="960" height="600" alt="spiritagency.space"></div>
-        <div class="body"><div class="tag" data-i18n="w2.tag"></div><h3>Spirit Agency</h3><p data-i18n="w2.p"></p>
-        <div class="tags"><span data-i18n="w2.t1"></span><span>GitHub Pages</span><span data-i18n="w2.t2"></span><span>Instagram</span></div>
-        <div class="more" data-i18n="w.open"></div></div>
+        <div class="shot"><img loading="lazy" src="img/spirit.webp" width="640" height="400" alt="spiritagency.space"></div>
+        <div class="body"><div class="tag" data-i18n="w2.tag">Сайти · SEO</div><h3>Spirit Agency</h3><p data-i18n="w2.p">Мережа з 8 сайтів-сателітів на піддоменах: вёрстка, SEO-теги, Open Graph, розгортання на GitHub Pages, оформлення Instagram-акаунтів.</p>
+        <div class="tags"><span data-i18n="w2.t1">8 сайтів</span><span>GitHub Pages</span><span data-i18n="w2.t2">SEO-теги</span><span>Instagram</span></div>
+        <div class="more" data-i18n="w.open">Відкрити кейс →</div></div>
       </div>
       <div class="work" data-proj="janafit" role="button" tabindex="0">
-        <div class="shot"><div class="mk b"><div class="chat"><div class="bb" data-i18n="mk.j1"></div><div class="bb me" data-i18n="mk.j2"></div><div class="bb" data-i18n="mk.j3"></div></div></div></div>
-        <div class="body"><div class="tag" data-i18n="w4.tag"></div><h3 data-i18n="w4.h"></h3><p data-i18n="w4.p"></p>
-        <div class="tags"><span>Telegram Bot</span><span data-i18n="w4.t1"></span><span data-i18n="w4.t2"></span></div>
-        <div class="more" data-i18n="w.open"></div></div>
+        <div class="shot"><div class="mk b"><div class="chat"><div class="bb" data-i18n="mk.j1">Тренування дня: 15 хв 🏋️</div><div class="bb me" data-i18n="mk.j2">Зробила ✅</div><div class="bb" data-i18n="mk.j3">Супер! −0,4 кг за тиждень 📉</div></div></div></div>
+        <div class="body"><div class="tag" data-i18n="w4.tag">Автоматизація · Бот</div><h3 data-i18n="w4.h">JanaFit — бот-тренер</h3><p data-i18n="w4.p">Telegram-бот для марафону схуднення: програма тренувань, меню, нагадування й облік прогресу учасниць без ручної роботи тренера.</p>
+        <div class="tags"><span>Telegram Bot</span><span data-i18n="w4.t1">Нагадування</span><span data-i18n="w4.t2">Прогрес</span></div>
+        <div class="more" data-i18n="w.open">Відкрити кейс →</div></div>
       </div>
       <div class="work" data-proj="freelancehunt" role="button" tabindex="0">
-        <div class="shot"><div class="mk c"><div class="chat"><div class="bb"><b data-i18n="mk.f1"></b><span data-i18n="mk.f2"></span><small data-i18n="mk.f3"></small><span class="go" data-i18n="mk.f4"></span></div></div></div></div>
-        <div class="body"><div class="tag" data-i18n="w5.tag"></div><h3 data-i18n="w5.h"></h3><p data-i18n="w5.p"></p>
-        <div class="tags"><span>Telegram Bot</span><span>REST API</span><span data-i18n="w5.t1"></span></div>
-        <div class="more" data-i18n="w.open"></div></div>
+        <div class="shot"><div class="mk c"><div class="chat"><div class="bb"><b data-i18n="mk.f1">Новий проєкт</b><span data-i18n="mk.f2">Лендінг для стоматології · 12 000 ₴</span><small data-i18n="mk.f3">щойно · 0 відгуків</small><span class="go" data-i18n="mk.f4">Відгукнутись</span></div></div></div></div>
+        <div class="body"><div class="tag" data-i18n="w5.tag">Автоматизація · Бот</div><h3 data-i18n="w5.h">Freelancehunt — бот проєктів</h3><p data-i18n="w5.p">Бот, який ловить нові проєкти на біржі за фільтрами і миттєво надсилає їх у Telegram — перша відповідь швидша за конкурентів.</p>
+        <div class="tags"><span>Telegram Bot</span><span>REST API</span><span data-i18n="w5.t1">Фільтри</span></div>
+        <div class="more" data-i18n="w.open">Відкрити кейс →</div></div>
       </div>
       <div class="work" data-proj="appsscript" role="button" tabindex="0">
-        <div class="shot"><div class="mk a"><div class="flow"><div class="doc form" data-i18n="mk.a1"></div><span class="arr">&rarr;</span><div class="docs"><div class="doc" data-i18n="mk.a2"></div><div class="doc" data-i18n="mk.a3"></div><div class="doc" data-i18n="mk.a4"></div></div></div></div></div>
-        <div class="body"><div class="tag" data-i18n="w6.tag"></div><h3 data-i18n="w6.h"></h3><p data-i18n="w6.p"></p>
+        <div class="shot"><div class="mk a"><div class="flow"><div class="doc form" data-i18n="mk.a1">Форма</div><span class="arr">&rarr;</span><div class="docs"><div class="doc" data-i18n="mk.a2">Договір.docx</div><div class="doc" data-i18n="mk.a3">Акт.docx</div><div class="doc" data-i18n="mk.a4">Рахунок.docx</div></div></div></div></div>
+        <div class="body"><div class="tag" data-i18n="w6.tag">Автоматизація · Документи</div><h3 data-i18n="w6.h">Форма → 3 документи</h3><p data-i18n="w6.p">Система на Google Apps Script: одна заповнена форма автоматично генерує три готові .docx-документи за шаблонами. Нуль ручного набору.</p>
         <div class="tags"><span>Google Apps Script</span><span>Google Forms</span><span>Docs</span></div>
-        <div class="more" data-i18n="w.open"></div></div>
+        <div class="more" data-i18n="w.open">Відкрити кейс →</div></div>
       </div>
     </div>
   </div>
@@ -398,44 +402,44 @@
 
 <section id="reviews">
   <div class="wrap">
-    <h2 data-i18n="rv.h"></h2>
-    <p class="sub" data-i18n="rv.sub"></p>
+    <h2 data-i18n="rv.h">Відгуки клієнтів</h2>
+    <p class="sub" data-i18n="rv.sub">206 позитивних відгуків на біржі Freelancehunt за 2022–2024 роки. Нижче — реальні відгуки замовників з профілю.</p>
     <div class="fh-wrap">
       <div class="fh-kpi">
-        <div><div class="fh-kpi-l" data-i18n="rv.k1"></div><div class="fh-kpi-v">206</div><div class="fh-tags"><span class="fh-tag ok" data-i18n="rv.k1b"></span></div></div>
-        <div><div class="fh-kpi-l" data-i18n="rv.k2"></div><div class="fh-kpi-v"><svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><span id="rv-avg"></span></div><div class="fh-tags"><span class="fh-tag" id="rv-total"></span></div></div>
+        <div><div class="fh-kpi-l" data-i18n="rv.k1">Позитивних відгуків</div><div class="fh-kpi-v">206</div><div class="fh-tags"><span class="fh-tag ok" data-i18n="rv.k1b">97% успішних проєктів</span></div></div>
+        <div><div class="fh-kpi-l" data-i18n="rv.k2">Середня оцінка</div><div class="fh-kpi-v"><svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><span id="rv-avg"></span></div><div class="fh-tags"><span class="fh-tag" id="rv-total"></span></div></div>
         <ul class="fh-crit" id="rv-crit"></ul>
       </div>
-      <div class="fh-head"><h3 data-i18n="rv.list"></h3><span data-i18n="rv.sort"></span></div>
+      <div class="fh-head"><h3 data-i18n="rv.list">Відгуки замовників</h3><span data-i18n="rv.sort">Спочатку нові</span></div>
       <div class="fh-list" id="rv-list"></div>
-      <div class="rv-more"><button class="btn ghost" id="rv-more" type="button" data-i18n="rv.more"></button><span class="rv-count" id="rv-count"></span></div>
-      <p class="rv-note"><span data-i18n="rv.note"></span> <a href="https://web.archive.org/web/20241209035907/https://freelancehunt.com/freelancer/jobribakin.html#reviews" target="_blank" rel="noopener" data-i18n="rv.link"></a></p>
+      <div class="rv-more"><button class="btn ghost" id="rv-more" type="button" data-i18n="rv.more">Показати ще</button><span class="rv-count" id="rv-count"></span></div>
+      <p class="rv-note"><span data-i18n="rv.note">Дані взято з архівної копії профілю на Freelancehunt (грудень 2024).</span> <a href="https://web.archive.org/web/20241209035907/https://freelancehunt.com/freelancer/jobribakin.html#reviews" target="_blank" rel="noopener" data-i18n="rv.link">Відкрити архів →</a></p>
     </div>
   </div>
 </section>
 
 <section id="goals">
   <div class="wrap">
-    <h2 data-i18n="g.h"></h2>
-    <p class="sub" data-i18n="g.sub"></p>
+    <h2 data-i18n="g.h">Досягайте своєї мети, а не «просто сайту»</h2>
+    <p class="sub" data-i18n="g.sub">Кожна робота прив'язана до результату, який видно у цифрах.</p>
     <div class="grid g4">
-      <div class="card"><div class="ico b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><h3 data-i18n="g1.h"></h3><p data-i18n="g1.p"></p></div>
-      <div class="card"><div class="ico g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div><h3 data-i18n="g2.h"></h3><p data-i18n="g2.p"></p></div>
-      <div class="card"><div class="ico y"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h3 data-i18n="g3.h"></h3><p data-i18n="g3.p"></p></div>
-      <div class="card"><div class="ico r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 data-i18n="g4.h"></h3><p data-i18n="g4.p"></p></div>
+      <div class="card"><div class="ico b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><h3 data-i18n="g1.h">Більше замовлень</h3><p data-i18n="g1.p">Швидкий сайт і робочі форми конвертують відвідувачів у клієнтів.</p></div>
+      <div class="card"><div class="ico g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div><h3 data-i18n="g2.h">Вище в Google</h3><p data-i18n="g2.p">Технічні помилки прибрані — пошук бачить сайт і піднімає його.</p></div>
+      <div class="card"><div class="ico y"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h3 data-i18n="g3.h">Менше рутини</h3><p data-i18n="g3.p">Заявки, звіти й нагадування працюють самі — ви займаєтесь бізнесом.</p></div>
+      <div class="card"><div class="ico r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 data-i18n="g4.h">Спокій за сайт</h3><p data-i18n="g4.p">Резервні копії, моніторинг і людина, якій можна написати, коли щось не так.</p></div>
     </div>
   </div>
 </section>
 
 <section id="how">
   <div class="wrap">
-    <h2 data-i18n="h.h"></h2>
-    <p class="sub" data-i18n="h.sub"></p>
+    <h2 data-i18n="h.h">Як це працює</h2>
+    <p class="sub" data-i18n="h.sub">Чотири кроки від «щось не так» до «працює і приносить клієнтів».</p>
     <div class="grid g4 steps">
-      <div class="step"><div class="num"></div><div><h3 data-i18n="h1.h"></h3><p data-i18n="h1.p"></p></div></div>
-      <div class="step"><div class="num"></div><div><h3 data-i18n="h2.h"></h3><p data-i18n="h2.p"></p></div></div>
-      <div class="step"><div class="num"></div><div><h3 data-i18n="h3.h"></h3><p data-i18n="h3.p"></p></div></div>
-      <div class="step"><div class="num"></div><div><h3 data-i18n="h4.h"></h3><p data-i18n="h4.p"></p></div></div>
+      <div class="step"><div class="num"></div><div><h3 data-i18n="h1.h">Пишете в Telegram</h3><p data-i18n="h1.p">Посилання на сайт і що саме турбує. Це займає хвилину.</p></div></div>
+      <div class="step"><div class="num"></div><div><h3 data-i18n="h2.h">Безкоштовна діагностика</h3><p data-i18n="h2.p">За 30 хвилин кажемо, що сталося, і називаємо фіксовану ціну.</p></div></div>
+      <div class="step"><div class="num"></div><div><h3 data-i18n="h3.h">Робота за домовленістю</h3><p data-i18n="h3.p">Дрібне — за 24 години, більше — з чітким терміном у договорі.</p></div></div>
+      <div class="step"><div class="num"></div><div><h3 data-i18n="h4.h">Перевірка результату</h3><p data-i18n="h4.p">Показуємо «до / після» за даними Google. Другу половину платите після.</p></div></div>
     </div>
   </div>
 </section>
@@ -443,11 +447,11 @@
 <section>
   <div class="wrap">
     <div class="feat">
-      <div class="txt"><h3 data-i18n="f.h"></h3><p data-i18n="f.p"></p></div>
+      <div class="txt"><h3 data-i18n="f.h">Ви говорите напряму з розробником</h3><p data-i18n="f.p">Без менеджерів, «передам команді» і тижнів очікування. Той, хто відповідає у чаті, той і робить роботу — тому відповіді швидкі, а ціна без націнки агентства.</p></div>
       <div class="pic"><div class="stat">
-        <div><b data-i18n="f1.b"></b><span data-i18n="f1.s"></span></div>
-        <div><b data-i18n="f2.b"></b><span data-i18n="f2.s"></span></div>
-        <div><b>90+</b><span data-i18n="f3.s"></span></div>
+        <div><b data-i18n="f1.b">30 хв</b><span data-i18n="f1.s">до діагнозу та ціни</span></div>
+        <div><b data-i18n="f2.b">24 год</b><span data-i18n="f2.s">на дрібний ремонт</span></div>
+        <div><b>90+</b><span data-i18n="f3.s">Lighthouse після прискорення</span></div>
       </div></div>
     </div>
   </div>
@@ -455,25 +459,26 @@
 
 <section id="faq" style="padding-top:24px">
   <div class="wrap">
-    <h2 data-i18n="q.h"></h2>
+    <h2 data-i18n="q.h">Питання, які ставлять найчастіше</h2>
     <div style="max-width:860px;margin:36px auto 0">
-      <details open><summary data-i18n="q1.q"></summary><p data-i18n="q1.a"></p></details>
-      <details><summary data-i18n="q2.q"></summary><p data-i18n="q2.a"></p></details>
-      <details><summary data-i18n="q3.q"></summary><p data-i18n="q3.a"></p></details>
-      <details><summary data-i18n="q4.q"></summary><p data-i18n="q4.a"></p></details>
-      <details><summary data-i18n="q5.q"></summary><p data-i18n="q5.a"></p></details>
+      <details open><summary data-i18n="q1.q">Скільки коштує подивитися, що з сайтом?</summary><p data-i18n="q1.a">Нічого. Діагностика безкоштовна: ви надсилаєте посилання, за 30 хвилин отримуєте причину проблеми й фіксовану ціну. Далі вирішуєте ви.</p></details>
+      <details><summary data-i18n="q2.q">Ціна може зрости в процесі?</summary><p data-i18n="q2.a">Ні. Ціна фіксується до початку робіт і не змінюється. Якщо в процесі знайдемо ще щось — скажемо окремо, і ви самі вирішите, чи робити.</p></details>
+      <details><summary data-i18n="q3.q">З якими сайтами працюєте?</summary><p data-i18n="q3.a">WordPress, OpenCart, Хорошоп, Tilda, Shopify, самописні на PHP/JS. Якщо ваша платформа не в списку — напишіть, скоріш за все теж допоможемо.</p></details>
+      <details><summary data-i18n="q4.q">Як відбувається оплата?</summary><p data-i18n="q4.a">50% на старті, 50% після того, як ви перевірили результат. Оплата на картку, за рахунком для ФОП/ТОВ, або через фриланс-біржу (Freelancehunt, Upwork) із безпечною угодою — гроші резервуються на біржі й списуються лише після здачі роботи.</p></details>
+      <details><summary data-i18n="q5.q">Що якщо сайт «упав» просто зараз?</summary><p data-i18n="q5.a">Пишіть у Telegram одразу — критичні поломки беремо в роботу першими, зазвичай протягом години.</p></details>
     </div>
   </div>
 </section>
 
 <section style="padding-top:0">
   <div class="wrap"><div class="final">
-    <h2 data-i18n="fin.h"></h2><p data-i18n="fin.p"></p>
-    <a class="btn lg js-tg" href="#" onclick="lead('telegram')" data-i18n="cta.tg"></a>
+    <h2 data-i18n="fin.h">Почніть із безкоштовної діагностики</h2><p data-i18n="fin.p">Напишіть посилання на сайт — за 30 хвилин ви знатимете, що з ним і скільки коштує виправити.</p>
+    <a class="btn lg js-tg" href="#" onclick="lead('telegram')" data-i18n="cta.tg">Написати в Telegram</a>
   </div></div>
 </section>
+</main>
 
-<footer><div class="wrap"><span data-i18n="foot"></span> · <a class="js-phone" href="#" onclick="lead('phone')" data-i18n="cta.call"></a></div></footer>
+<footer><div class="wrap"><span data-i18n="foot">SiteBoosty · сайти, SEO, автоматизація · Україна</span> · <a class="js-phone" href="#" onclick="lead('phone')" data-i18n="cta.call">Подзвонити</a></div></footer>
 
 <dialog class="pm" id="pm">
   <div class="shot" id="pm-shot"></div>
@@ -482,19 +487,19 @@
     <div class="tag" id="pm-tag"></div>
     <h3 id="pm-h"></h3>
     <p class="lead" id="pm-lead"></p>
-    <h4 data-i18n="pm.done"></h4>
+    <h4 data-i18n="pm.done">Що зроблено</h4>
     <ul id="pm-list"></ul>
-    <h4 data-i18n="pm.stack"></h4>
+    <h4 data-i18n="pm.stack">Технології</h4>
     <div class="tags" id="pm-tags"></div>
     <div class="row">
       <a class="btn" id="pm-site" target="_blank" rel="noopener"></a>
-      <a class="btn ghost js-tg" href="#" onclick="lead('telegram')" data-i18n="pm.same"></a>
+      <a class="btn ghost js-tg" href="#" onclick="lead('telegram')" data-i18n="pm.same">Хочу так само</a>
     </div>
   </div>
 </dialog>
-<div class="sticky"><a class="btn lg js-tg" href="#" onclick="lead('telegram')" data-i18n="cta.tg"></a></div>
+<div class="sticky"><a class="btn lg js-tg" href="#" onclick="lead('telegram')" data-i18n="cta.tg">Написати в Telegram</a></div>
 
-<script src="reviews.js"></script>
+<script src="reviews.js" defer></script>
 <script>
 
 const PROJ = {
@@ -669,7 +674,7 @@ rot:["More customers","A faster site","Higher on Google","No lost leads"],
 "foot":"SiteBoosty · websites, SEO, automation · Ukraine"}
 };
 
-(function(){
+document.addEventListener('DOMContentLoaded',function(){
   var STEP=10, shown=0;
   var list=document.getElementById('rv-list'), more=document.getElementById('rv-more'), cnt=document.getElementById('rv-count');
   var THUMB='<svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.3l1-4.6v-.3c0-.4-.2-.8-.4-1.1L13.2 1 6.6 7.6C6.2 7.9 6 8.4 6 9v10c0 1.1.9 2 2 2h9c.8 0 1.5-.5 1.8-1.2l3-7.1c.1-.2.2-.5.2-.7v-2z"/></svg>';
@@ -703,7 +708,7 @@ rot:["More customers","A faster site","Higher on Google","No lost leads"],
   window.rvCount=render;
   more.onclick=function(){shown=Math.min(shown+STEP,RV.length);render();};
   shown=STEP; render();
-})();
+});
 (function(){
   var rotWords=[], rotI=0, rotEl=document.getElementById('rot');
   function setLang(l){
