@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SiteBoosty — полагодимо і прискоримо ваш сайт за 24 години</title>
+<meta name="description" content="Ремонт і прискорення сайтів, виправлення SEO-помилок, підключення CRM і Telegram до сайту. Безкоштовна діагностика за 30 хвилин, фіксована ціна до старту робіт.">
+<meta name="robots" content="index,follow">
+<!--
+  ЗАПОВНИТИ ПЕРЕД ЗАПУСКОМ:
+  1. TG      — ваш нік у Telegram без @
+  2. PHONE   — телефон у форматі +380XXXXXXXXX
+  3. GADS_ID — ідентифікатор конверсії Google Ads: AW-XXXXXXXXX/YYYYYYYY
+-->
+<script>
+  window.SB = { TG: "ВАШ_НІК", PHONE: "+380000000000", GADS_ID: "AW-XXXXXXXXX/YYYYYYYY" };
+</script>
+<!-- Google Ads tag: замінити AW-XXXXXXXXX на свій -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-XXXXXXXXX');
+  // Лід = клік по Telegram або телефону. Це і є конверсія для Google Ads.
+  function lead(kind){
+    try { gtag('event', 'conversion', { send_to: window.SB.GADS_ID, event_label: kind }); } catch(e){}
+  }
+</script>
+<style>
+  :root{--bg:#0b0f14;--card:#121821;--text:#e8edf3;--muted:#9aa7b5;--accent:#2fd67b;--accent2:#1fb866}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font:17px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,sans-serif;background:var(--bg);color:var(--text)}
+  .wrap{max-width:720px;margin:0 auto;padding:28px 20px 60px}
+  header{display:flex;align-items:center;justify-content:space-between;margin-bottom:36px}
+  .logo{font-weight:800;letter-spacing:.5px;font-size:22px}
+  .logo span{color:var(--accent)}
+  .tel{color:var(--muted);text-decoration:none;font-size:15px}
+  h1{font-size:clamp(28px,6vw,40px);line-height:1.15;font-weight:800;margin-bottom:14px}
+  .sub{color:var(--muted);font-size:18px;margin-bottom:26px}
+  .cta{display:block;width:100%;text-align:center;background:var(--accent);color:#04120a;font-weight:800;font-size:19px;padding:17px 20px;border-radius:12px;text-decoration:none;margin-bottom:10px}
+  .cta:active{background:var(--accent2)}
+  .cta.ghost{background:transparent;color:var(--text);border:1px solid #2a3542;font-weight:600}
+  .note{color:var(--muted);font-size:14px;text-align:center;margin:8px 0 40px}
+  h2{font-size:22px;margin:38px 0 14px}
+  .grid{display:grid;gap:12px}
+  .card{background:var(--card);border:1px solid #1d2632;border-radius:12px;padding:18px}
+  .card b{display:block;font-size:17px;margin-bottom:6px}
+  .card p{color:var(--muted);font-size:15px}
+  .card .price{color:var(--accent);font-weight:700;font-size:15px;margin-top:8px;display:block}
+  ol{padding-left:20px;color:var(--muted)}
+  ol li{margin-bottom:10px}
+  ol li b{color:var(--text)}
+  .fixed{position:fixed;left:0;right:0;bottom:0;padding:10px 16px;background:linear-gradient(transparent,var(--bg) 40%);}
+  .fixed .cta{margin:0;max-width:720px;margin:0 auto;box-shadow:0 8px 30px rgba(47,214,123,.25)}
+  footer{color:#5c6976;font-size:13px;margin-top:50px;text-align:center}
+  @media(min-width:600px){.grid{grid-template-columns:1fr 1fr 1fr}.fixed{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">Site<span>Boosty</span></div>
+    <a class="tel js-phone" href="#" onclick="lead('phone')">Подзвонити</a>
+  </header>
+
+  <h1>Полагодимо і прискоримо ваш сайт за 24 години</h1>
+  <p class="sub">Сайт зламався, повільно вантажиться або зник із Google? Напишіть у Telegram — за 30 хвилин скажемо, що сталося і скільки коштує виправити. Ціна фіксується до початку робіт.</p>
+
+  <a class="cta js-tg" href="#" onclick="lead('telegram')">Написати в Telegram</a>
+  <a class="cta ghost js-phone" href="#" onclick="lead('phone')">Подзвонити</a>
+  <p class="note">Діагностика безкоштовна. Відповідаємо з 8:00 до 22:00 без вихідних.</p>
+
+  <h2>З чим допомагаємо</h2>
+  <div class="grid">
+    <div class="card">
+      <b>Ремонт і прискорення</b>
+      <p>Сайт не відкривається, білий екран, помилки після оновлення, повільне завантаження на телефоні.</p>
+      <span class="price">від 1 500 грн</span>
+    </div>
+    <div class="card">
+      <b>Помилки SEO</b>
+      <p>Зник із пошуку, впав трафік після редизайну, не індексується, дублі сторінок, биті посилання.</p>
+      <span class="price">від 2 500 грн</span>
+    </div>
+    <div class="card">
+      <b>Заявки та CRM</b>
+      <p>Форми з сайту прямо в Telegram або CRM, автоматичні відповіді, щоб жодна заявка не губилася.</p>
+      <span class="price">від 3 000 грн</span>
+    </div>
+  </div>
+
+  <h2>Як це працює</h2>
+  <ol>
+    <li><b>Пишете в Telegram</b> — посилання на сайт і що саме не так.</li>
+    <li><b>За 30 хвилин</b> отримуєте діагноз і фіксовану ціну. Безкоштовно.</li>
+    <li><b>Дрібні роботи — за 24 години</b>, більші — з чітким терміном у домовленості.</li>
+    <li><b>Оплата частинами:</b> половина на старті, половина після перевірки результату.</li>
+  </ol>
+
+  <h2>Чому ми, а не «студія»</h2>
+  <div class="grid">
+    <div class="card"><b>Без менеджерів</b><p>Пишете напряму розробнику, який і робитиме роботу.</p></div>
+    <div class="card"><b>Фіксована ціна</b><p>Називаємо суму до старту. Не змінюємо її в процесі.</p></div>
+    <div class="card"><b>Результат, який видно</b><p>Показуємо швидкість «до» і «після» за даними Google.</p></div>
+  </div>
+
+  <footer>SiteBoosty · сайти, SEO, автоматизація · Україна</footer>
+</div>
+
+<div class="fixed"><a class="cta js-tg" href="#" onclick="lead('telegram')">Написати в Telegram</a></div>
+
+<script>
+  document.querySelectorAll('.js-tg').forEach(a=>a.href='https://t.me/'+SB.TG);
+  document.querySelectorAll('.js-phone').forEach(a=>a.href='tel:'+SB.PHONE);
+</script>
+</body>
+</html>
