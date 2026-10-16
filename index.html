@@ -158,8 +158,12 @@ header{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1.
 
 /* hero */
 .hero{display:grid;gap:40px;padding-top:36px;padding-bottom:64px}
-.kick{display:flex;gap:10px;align-items:center;font:500 13px/1.3 var(--mono);color:var(--mute);margin-bottom:20px;white-space:nowrap}
-.kick .sq{width:10px;height:10px}
+.byline{display:flex;gap:12px;align-items:center;margin-bottom:22px}
+.byline b{display:block;font-weight:600;font-size:15px;line-height:1.3}
+.byline b a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.byline .mono{display:block;font-size:12.5px;line-height:1.35;color:var(--mute);margin-top:2px}
+/* «Н» monogram; becomes the photo automatically once #me is an <img> (see the photo slot in #direct) */
+.me-mini{flex:none;width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:var(--mark);font:800 21px/1 var(--sans);object-fit:cover}
 h1{font-weight:800;font-size:clamp(40px,7.2vw,100px);line-height:.95;letter-spacing:-.045em;max-width:11.5ch;text-wrap:balance}
 h1 .tail:empty{display:none}
 .answer{margin-top:24px;font-size:clamp(21px,2.3vw,29px);line-height:1.24;letter-spacing:-.02em;font-weight:500;max-width:22ch}
@@ -187,12 +191,15 @@ h1 .tail:empty{display:none}
 .row dd{text-align:right}
 .row dd small{display:block;color:var(--mute);font-size:12px}
 .row.free dd span{background:var(--mark);padding:0 6px}
-.t-foot{margin-top:18px;display:flex;flex-wrap:wrap;gap:12px;align-items:flex-start;font:400 13px/1.45 var(--sans)}
-.t-foot>div:not(.stamp){flex:1;min-width:210px}
+.t-foot{margin-top:18px;display:flex;gap:12px;align-items:flex-start;font:400 13px/1.45 var(--sans)}
+.t-sign{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin-top:16px;padding-top:14px;border-top:1.5px dashed var(--ink);font-family:var(--sans)}
+.t-sign small{display:block;font-size:12px;color:var(--mute)}
+.t-sign b{display:block;font-size:15px;font-weight:600}
+.t-sign .me-mini{width:34px;height:34px;font-size:18px}
 .t-foot img{width:34px;height:34px;border-radius:50%;flex:none;filter:grayscale(1)}
 .t-foot q{display:block;font-weight:600;font-size:14px}
 .t-foot span{color:var(--mute);font-size:12px}
-.stamp{flex:none;margin-left:auto;align-self:center;max-width:9.5em;border:2.5px solid var(--stamp);color:var(--stamp);font:500 12px/1.15 var(--mono);letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:7px 9px;transform:rotate(-9deg);border-radius:4px;opacity:.88}
+.stamp{flex:none;margin-left:auto;align-self:center;font-family:var(--mono);max-width:9.5em;border:2.5px solid var(--stamp);color:var(--stamp);font:500 12px/1.15 var(--mono);letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:7px 9px;transform:rotate(-9deg);border-radius:4px;opacity:.88}
 
 /* section rhythm */
 section{scroll-margin-top:64px}
@@ -296,6 +303,11 @@ span.av{display:inline-flex;align-items:center;justify-content:center;font:500 1
 /* direct */
 .direct{padding-top:84px;padding-bottom:84px}
 .direct-in{display:grid;gap:40px}
+.me-card{display:flex;gap:18px;align-items:flex-end}
+.me{flex:none;width:132px;height:auto;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;background:var(--ink);color:var(--mark);font:800 76px/1 var(--sans);letter-spacing:-.04em;object-fit:cover}
+.me-card figcaption b{display:block;font-size:26px;font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.me-card figcaption span{display:block;color:var(--mute);font-size:15px;margin-top:4px}
+.me-card figcaption a{display:inline-block;margin-top:10px;font:500 15px/1 var(--mono);text-decoration:none;border-bottom:1.5px solid var(--ink);padding-bottom:3px}
 .direct .lead{max-width:44ch;font-size:18px;color:var(--ink)}
 .stats{display:flex;flex-wrap:wrap;gap:22px 36px;margin-top:30px}
 .stats div{border-top:1.5px solid var(--ink);padding-top:12px;min-width:120px}
@@ -381,7 +393,10 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
   .steps{grid-template-columns:repeat(4,1fr);column-gap:28px}
   .step{grid-template-columns:1fr;border-top:1.5px solid var(--ink);padding-top:18px}
   .step .m{grid-row:auto;font-size:34px;margin-bottom:14px}
-  .direct-in{grid-template-columns:6fr 5fr;gap:80px}
+  .direct-in{grid-template-columns:4fr 8fr;gap:72px}
+  .me-card{flex-direction:column;align-items:flex-start}
+  .me{width:100%;max-width:320px;font-size:170px}
+  .direct .goals{margin-top:40px}
   .final-in{grid-template-columns:1fr auto;align-items:end;gap:48px}
 }
 @media(max-width:999px){ body{padding-bottom:78px} }
@@ -419,9 +434,9 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
 <main>
 <section class="wrap hero" id="hero">
   <div>
-    <div class="kick"><i class="sq"></i><span data-i18n="hero.hint">Відповідь за 30 хв · 8:00–22:00 щодня</span></div>
+    <div class="byline"><span class="me-mini" aria-hidden="true">Н</span><span><b><span data-i18n="me.name">Назарій</span> · <span data-i18n="me.role">розробник</span> · <a class="js-tg" href="https://t.me/webdev342" target="_blank" rel="noopener" onclick="lead('telegram')">@webdev342</a></b><span class="mono" data-i18n="hero.hint">Відповідь за 30 хв · 8:00–22:00 щодня</span></span></div>
     <h1><span id="h-main" data-i18n="hero.h">Сайт зламався, гальмує або зник із Google?</span> <mark class="tail" id="h-tail"></mark></h1>
-    <p class="answer d"><span data-i18n="hero.a1">Скажемо, в чому причина, </span><mark data-i18n="hero.mark">за 30 хвилин</mark><span data-i18n="hero.a2"> — і скільки коштує це виправити.</span></p>
+    <p class="answer d"><span data-i18n="hero.a1">Скажу, в чому причина, </span><mark data-i18n="hero.mark">за 30 хвилин</mark><span data-i18n="hero.a2"> — і скільки коштує це виправити.</span></p>
     <p class="answer g-sub" id="g-sub"></p>
     <div class="ctas" id="hero-ctas">
       <a class="btn js-tg" href="https://t.me/webdev342" target="_blank" rel="noopener" onclick="lead('telegram')"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.6-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.1l-4.7-1.5c-1-.3-1-1 .2-1.5L20.6 3c.9-.3 1.6.2 1.3 1.3z"/></svg><span data-i18n="cta.tg">Написати в Telegram</span></a>
@@ -437,7 +452,6 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
   <aside class="ticket" aria-label="SiteBoosty">
     <div class="t-head"><b data-i18n="tk.h">Заявка на ремонт</b><span>siteboosty.com</span></div>
     <dl>
-      <div class="row"><dt data-i18n="tk.site">Сайт</dt><span class="dots"></span><dd data-i18n="mock.url">ваш-сайт.com.ua</dd></div>
       <div class="row free"><dt data-i18n="tk.diag">Діагностика</dt><span class="dots"></span><dd><span data-i18n="tk.diag_v">0 грн · 30 хв</span></dd></div>
       <div class="row"><dt data-i18n="tk.fix">Дрібний ремонт</dt><span class="dots"></span><dd><span data-i18n="s1.from">від 1 500 грн</span><small data-i18n="s1.t">до 24 годин</small></dd></div>
       <div class="row"><dt data-i18n="s2.h">Прискорення</dt><span class="dots"></span><dd><span data-i18n="s2.from">від 2 500 грн</span><small>Core Web Vitals</small></dd></div>
@@ -446,8 +460,8 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
     <div class="t-foot">
       <img src="img/reviews/av/S03026.webp" width="34" height="34" alt="">
       <div><q>Назарий, помог очень быстро, решил мою проблему.</q><span>Евгеній Кислухо · «Помощь на сайте WordPress» · Freelancehunt</span></div>
-      <div class="stamp" data-i18n="tk.stamp">Ціна фіксована</div>
     </div>
+    <div class="t-sign"><span class="me-mini" aria-hidden="true">Н</span><div><small data-i18n="tk.sign">Приймає і виконує</small><b><span data-i18n="me.name">Назарій</span> · @webdev342</b></div><div class="stamp" data-i18n="tk.stamp">Ціна фіксована</div></div>
   </aside>
 </section>
 
@@ -455,15 +469,15 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
   <div class="wrap svc">
     <div class="side">
       <div class="eyebrow"><i class="sq"></i><span data-i18n="nav.services">Послуги</span></div>
-      <h2 data-i18n="s.h">Що лагодимо і скільки це коштує</h2>
-      <p class="lead"><span data-i18n="s.sub">Оберіть, що болить зараз. Точну ціну назвемо після безкоштовної діагностики</span> <b data-i18n="s.sub2">— і вона вже не зміниться.</b></p>
+      <h2 data-i18n="s.h">Що лагоджу і скільки це коштує</h2>
+      <p class="lead"><span data-i18n="s.sub">Оберіть, що болить зараз. Точну ціну назву після безкоштовної діагностики</span> <b data-i18n="s.sub2">— і вона вже не зміниться.</b></p>
     </div>
     <ol class="items">
       <li><a class="item zero js-tg" href="https://t.me/webdev342" target="_blank" rel="noopener" onclick="lead('telegram')"><span class="n">00</span><h3 data-i18n="s0.h">Діагностика</h3><p data-i18n="s0.p">Надсилаєте посилання на сайт — отримуєте причину проблеми й фіксовану ціну.</p><div class="p"><span data-i18n="s0.from">0 грн</span><em data-i18n="s0.t">30 хвилин</em></div><span class="go" data-i18n="s.go">Обговорити →</span></a></li>
       <li><a class="item js-tg" href="https://t.me/webdev342" target="_blank" rel="noopener" onclick="lead('telegram')"><span class="n">01</span><h3 data-i18n="s1.h">Ремонт сайту</h3><p data-i18n="s1.p">Білий екран, помилки після оновлення, не працюють форми чи кошик.</p><div class="p"><span data-i18n="s1.from">від 1 500 грн</span><em data-i18n="s1.t">до 24 годин</em></div><span class="go" data-i18n="s.go">Обговорити →</span></a></li>
       <li><a class="item js-tg" href="https://t.me/webdev342" target="_blank" rel="noopener" onclick="lead('telegram')"><span class="n">02</span><h3 data-i18n="s2.h">Прискорення</h3><p data-i18n="s2.p">Core Web Vitals у зелену зону. Швидкий сайт — вищі позиції та більше замовлень.</p><div class="p"><span data-i18n="s2.from">від 2 500 грн</span></div><span class="go" data-i18n="s.go">Обговорити →</span></a></li>
       <li><a class="item js-tg" href="https://t.me/webdev342" target="_blank" rel="noopener" onclick="lead('telegram')"><span class="n">03</span><h3 data-i18n="s3.h">SEO</h3><p data-i18n="s3.p">Зник із пошуку, впав трафік після редизайну, дублі та биті сторінки.</p><div class="p"><span data-i18n="s3.from">від 2 500 грн</span></div><span class="go" data-i18n="s.go">Обговорити →</span></a></li>
-      <li><a class="item js-tg" href="https://t.me/webdev342" target="_blank" rel="noopener" onclick="lead('telegram')"><span class="n">04</span><h3 data-i18n="s4.h">Заявки в Telegram і CRM</h3><p data-i18n="s4.p">Кожна заявка з сайту — миттєво у вас у месенджері або CRM. Жодна не губиться.</p><div class="p"><span data-i18n="s4.from">від 3 000 грн</span><em data-i18n="s4.t">1–2 дні</em></div><span class="go" data-i18n="s.go">Обговорити →</span></a></li>
+      <li><a class="item js-tg" href="https://t.me/webdev342" target="_blank" rel="noopener" onclick="lead('telegram')"><span class="n">04</span><h3 data-i18n="s4.h">Заявки в Telegram і CRM</h3><p data-i18n="s4.p">Заявка з форми приходить вам у Telegram або CRM одразу, а не лежить непрочитаною в пошті.</p><div class="p"><span data-i18n="s4.from">від 3 000 грн</span><em data-i18n="s4.t">1–2 дні</em></div><span class="go" data-i18n="s.go">Обговорити →</span></a></li>
       <li><a class="item js-tg" href="https://t.me/webdev342" target="_blank" rel="noopener" onclick="lead('telegram')"><span class="n">05</span><h3 data-i18n="s5.h">Автоматизація</h3><p data-i18n="s5.p">Рахунки, звіти, розсилки та рутина — самі. Без ручного копіювання.</p><div class="p"><span data-i18n="s5.from">від 5 000 грн</span></div><span class="go" data-i18n="s.go">Обговорити →</span></a></li>
     </ol>
   </div>
@@ -515,7 +529,7 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
   <div class="wrap work-s">
     <div class="eyebrow"><i class="sq"></i><span data-i18n="nav.work">Портфоліо</span></div>
     <h2 data-i18n="w.h">Проєкти, які вже працюють</h2>
-    <p class="lead" data-i18n="w.sub">Кілька прикладів того, що ми робили — від SaaS-інтеграцій до сайтів для малого бізнесу.</p>
+    <p class="lead" data-i18n="w.sub">Кілька моїх робіт — від інтеграцій для SaaS до магазину на WooCommerce і Telegram-ботів.</p>
 
     <div class="feat work" data-proj="shifton" role="button" tabindex="0">
       <div><div class="shot"><img loading="lazy" src="img/shifton.webp" width="640" height="400" alt="Головна сторінка shifton.com — сервісу планування змін, для якого зроблено інтеграції з CRM" data-i18n-alt="w1.alt"></div><div class="cap">shifton.com</div></div>
@@ -530,7 +544,7 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
 
     <ol class="cases">
       <li class="case work" data-proj="odin" role="button" tabindex="0"><span class="n">02</span><div class="w-tag" data-i18n="w7.tag">SEO · Магазин</div><h3>Odin Originals</h3><p data-i18n="w7.p">Інтернет-магазин на WooCommerce: SEO-просування і технічні доробки. Стабільне зростання позицій, показів і кліків із Google.</p><div class="tags"><span>SEO</span><span>WooCommerce</span><span>Search Console</span><span data-i18n="w7.t1">Доробки</span></div></li>
-      <li class="case work" data-proj="appsscript" role="button" tabindex="0"><span class="n">03</span><div class="w-tag" data-i18n="w6.tag">Автоматизація · Документи</div><h3 data-i18n="w6.h">Форма → 3 документи</h3><p data-i18n="w6.p">Система на Google Apps Script: одна заповнена форма автоматично генерує три готові .docx-документи за шаблонами. Нуль ручного набору.</p><div class="tags"><span>Google Apps Script</span><span>Google Forms</span><span>Docs</span></div></li>
+      <li class="case work" data-proj="appsscript" role="button" tabindex="0"><span class="n">03</span><div class="w-tag" data-i18n="w6.tag">Автоматизація · Документи</div><h3 data-i18n="w6.h">Форма → 3 документи</h3><p data-i18n="w6.p">Система на Google Apps Script: одна заповнена форма — і три готові .docx-документи за шаблонами, без ручного передруку.</p><div class="tags"><span>Google Apps Script</span><span>Google Forms</span><span>Docs</span></div></li>
       <li class="case work" data-proj="janafit" role="button" tabindex="0"><span class="n">04</span><div class="w-tag" data-i18n="w4.tag">Автоматизація · Бот</div><h3 data-i18n="w4.h">JanaFit — бот-тренер</h3><p data-i18n="w4.p">Telegram-бот для марафону схуднення: програма тренувань, меню, нагадування й облік прогресу учасниць без ручної роботи тренера.</p><div class="tags"><span>Telegram Bot</span><span data-i18n="w4.t1">Нагадування</span><span data-i18n="w4.t2">Прогрес</span></div></li>
       <li class="case work" data-proj="freelancehunt" role="button" tabindex="0"><span class="n">05</span><div class="w-tag" data-i18n="w5.tag">Автоматизація · Бот</div><h3 data-i18n="w5.h">Freelancehunt — бот проєктів</h3><p data-i18n="w5.p">Бот, який ловить нові проєкти на біржі за фільтрами і миттєво надсилає їх у Telegram — перша відповідь швидша за конкурентів.</p><div class="tags"><span>Telegram Bot</span><span>REST API</span><span data-i18n="w5.t1">Фільтри</span></div></li>
       <li class="case work" data-proj="spirit" role="button" tabindex="0"><span class="n">06</span><div class="w-tag" data-i18n="w2.tag">Сайти · SEO</div><h3>Spirit Agency</h3><p data-i18n="w2.p">Мережа з 8 сайтів-сателітів на піддоменах: вёрстка, SEO-теги, Open Graph, розгортання на GitHub Pages, оформлення Instagram-акаунтів.</p><div class="tags"><span data-i18n="w2.t1">8 сайтів</span><span>GitHub Pages</span><span data-i18n="w2.t2">SEO-теги</span><span>Instagram</span></div><div class="thumb shot"><img loading="lazy" src="img/spirit.webp" width="640" height="400" alt="Перший екран сайту Spirit Agency — одного з восьми сайтів мережі" data-i18n-alt="w2.alt"></div></li>
@@ -544,29 +558,39 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
   <p class="lead" data-i18n="h.sub">Чотири кроки від «щось не так» до «працює і приносить клієнтів».</p>
   <ol class="steps">
     <li class="step"><div class="m" data-i18n="hm1">1 хв</div><h3 data-i18n="h1.h">Пишете в Telegram</h3><p data-i18n="h1.p">Посилання на сайт і що саме турбує. Це займає хвилину.</p></li>
-    <li class="step"><div class="m" data-i18n="hm2">30 хв</div><h3 data-i18n="h2.h">Безкоштовна діагностика</h3><p data-i18n="h2.p">За 30 хвилин кажемо, що сталося, і називаємо фіксовану ціну.</p></li>
+    <li class="step"><div class="m" data-i18n="hm2">30 хв</div><h3 data-i18n="h2.h">Безкоштовна діагностика</h3><p data-i18n="h2.p">За 30 хвилин кажу, що сталося, і називаю фіксовану ціну.</p></li>
     <li class="step"><div class="m" data-i18n="hm3">24 год</div><h3 data-i18n="h3.h">Робота за домовленістю</h3><p data-i18n="h3.p">Дрібне — за 24 години, більше — з чітким терміном у договорі.</p></li>
-    <li class="step"><div class="m">50 / 50</div><h3 data-i18n="h4.h">Перевірка результату</h3><p data-i18n="h4.p">Показуємо «до / після» за даними Google. Другу половину платите після.</p></li>
+    <li class="step"><div class="m">50 / 50</div><h3 data-i18n="h4.h">Перевірка результату</h3><p data-i18n="h4.p">Показую «до / після» за даними Google. Другу половину платите після.</p></li>
   </ol>
 </div></section>
 
 <section class="direct" id="direct">
   <div class="wrap direct-in">
+    <figure class="me-card">
+      <!--
+        PHOTO SLOT. Drop a real photo of Nazarii to /Users/nazar/siteboosty/wt-design/img/nazarii.webp
+        (WebP, 640x800 = 4:5, under 60 KB) and replace the ONE <span id="me"> line below with:
+        <img class="me" id="me" src="img/nazarii.webp" width="640" height="800" alt="Назарій — розробник SiteBoosty" data-i18n-alt="me.alt" loading="lazy">
+        The small «Н» squares in the hero and on the receipt switch to the same photo by themselves.
+      -->
+      <span class="me" id="me" role="img" aria-label="Назарій" data-i18n-aria="me.name">Н</span>
+      <figcaption><b data-i18n="me.name">Назарій</b><span data-i18n="me.cap">розробник, Київ</span><a class="js-tg" href="https://t.me/webdev342" target="_blank" rel="noopener" onclick="lead('telegram')">@webdev342</a></figcaption>
+    </figure>
     <div>
-      <h2 data-i18n="f.h">Ви говорите напряму з розробником</h2>
-      <p class="lead" data-i18n="f.p">Без менеджерів, «передам команді» і тижнів очікування. Той, хто відповідає у чаті, той і робить роботу — тому відповіді швидкі, а ціна без націнки агентства.</p>
+      <h2 data-i18n="f.h">Відповідаю і роблю роботу сам</h2>
+      <p class="lead" data-i18n="f.p">Я — Назарій, розробник. Ви пишете мені в Telegram, я дивлюся сайт, називаю ціну й роблю роботу сам — від першого повідомлення до звіту. Тому відповідаю швидко, а в ціні немає націнки агентства.</p>
       <div class="stats">
         <div><b data-i18n="f1.b">30 хв</b><span data-i18n="f1.s">до діагнозу та ціни</span></div>
         <div><b data-i18n="f2.b">24 год</b><span data-i18n="f2.s">на дрібний ремонт</span></div>
         <div><b>90+</b><span data-i18n="f3.s">Lighthouse після прискорення</span></div>
       </div>
-    </div>
     <ul class="goals">
-      <li><h3><i class="sq"></i><span data-i18n="g1.h">Більше замовлень</span></h3><p data-i18n="g1.p">Швидкий сайт і робочі форми конвертують відвідувачів у клієнтів.</p></li>
-      <li><h3><i class="sq"></i><span data-i18n="g2.h">Вище в Google</span></h3><p data-i18n="g2.p">Технічні помилки прибрані — пошук бачить сайт і піднімає його.</p></li>
-      <li><h3><i class="sq"></i><span data-i18n="g3.h">Менше рутини</span></h3><p data-i18n="g3.p">Заявки, звіти й нагадування працюють самі — ви займаєтесь бізнесом.</p></li>
-      <li><h3><i class="sq"></i><span data-i18n="g4.h">Спокій за сайт</span></h3><p data-i18n="g4.p">Резервні копії, моніторинг і людина, якій можна написати, коли щось не так.</p></li>
+      <li><h3><i class="sq"></i><span data-i18n="g1.h">Спершу причина, потім ціна</span></h3><p data-i18n="g1.p">Дивлюся сайт і пишу, що зламалося і чому. Ціну називаю до початку робіт — і вона не змінюється.</p></li>
+      <li><h3><i class="sq"></i><span data-i18n="g2.h">Резервна копія перед роботою</span></h3><p data-i18n="g2.p">Перед змінами зберігаю копію сайту, щоб будь-що можна було повернути назад.</p></li>
+      <li><h3><i class="sq"></i><span data-i18n="g3.h">Звіт після роботи</span></h3><p data-i18n="g3.p">Пишу, що змінено і навіщо. Після прискорення — «до / після» за даними Google.</p></li>
+      <li><h3><i class="sq"></i><span data-i18n="g4.h">Друга половина — після перевірки</span></h3><p data-i18n="g4.p">50% на старті, 50% — коли ви самі перевірили результат.</p></li>
     </ul>
+    </div>
   </div>
 </section>
 
@@ -574,10 +598,10 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
   <h2 data-i18n="q.h">Питання, які ставлять найчастіше</h2>
   <div class="qa">
     <div><h3 data-i18n="q1.q">Скільки коштує подивитися, що з сайтом?</h3><p data-i18n="q1.a">Нічого. Діагностика безкоштовна: ви надсилаєте посилання, за 30 хвилин отримуєте причину проблеми й фіксовану ціну. Далі вирішуєте ви.</p></div>
-    <div><h3 data-i18n="q2.q">Ціна може зрости в процесі?</h3><p data-i18n="q2.a">Ні. Ціна фіксується до початку робіт і не змінюється. Якщо в процесі знайдемо ще щось — скажемо окремо, і ви самі вирішите, чи робити.</p></div>
-    <div><h3 data-i18n="q3.q">З якими сайтами працюєте?</h3><p data-i18n="q3.a">WordPress, OpenCart, Хорошоп, Tilda, Shopify, самописні на PHP/JS. Якщо ваша платформа не в списку — напишіть, скоріш за все теж допоможемо.</p></div>
+    <div><h3 data-i18n="q2.q">Ціна може зрости в процесі?</h3><p data-i18n="q2.a">Ні. Ціна фіксується до початку робіт і не змінюється. Якщо в процесі знайду ще щось — скажу окремо, і ви самі вирішите, чи робити.</p></div>
+    <div><h3 data-i18n="q3.q">З якими сайтами працюєте?</h3><p data-i18n="q3.a">WordPress, OpenCart, Хорошоп, Tilda, Shopify, самописні на PHP/JS. Якщо ваша платформа не в списку — напишіть, скоріш за все теж допоможу.</p></div>
     <div><h3 data-i18n="q4.q">Як відбувається оплата?</h3><p data-i18n="q4.a">50% на старті, 50% після того, як ви перевірили результат. Оплата на картку, за рахунком для ФОП/ТОВ, або через фриланс-біржу (Freelancehunt, Upwork) із безпечною угодою — гроші резервуються на біржі й списуються лише після здачі роботи.</p></div>
-    <div><h3 data-i18n="q5.q">Що якщо сайт «упав» просто зараз?</h3><p data-i18n="q5.a">Пишіть у Telegram одразу — критичні поломки беремо в роботу першими, зазвичай протягом години.</p></div>
+    <div><h3 data-i18n="q5.q">Що якщо сайт «упав» просто зараз?</h3><p data-i18n="q5.a">Пишіть у Telegram одразу — критичні поломки беру в роботу першими, зазвичай протягом години.</p></div>
   </div>
 </div></section>
 
@@ -592,7 +616,7 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
 </section>
 </main>
 
-<footer><div class="wrap foot"><a class="logo" href="#top" aria-label="SiteBoosty"><i class="sq"></i>siteboosty</a><span data-i18n="foot">SiteBoosty · сайти, SEO, автоматизація · Україна</span><a class="js-phone" href="tel:+380686573262" onclick="lead('phone')" data-i18n="cta.call">Подзвонити</a><a class="js-tg" href="https://t.me/webdev342" target="_blank" rel="noopener" onclick="lead('telegram')">Telegram</a></div></footer>
+<footer><div class="wrap foot"><a class="logo" href="#top" aria-label="SiteBoosty"><i class="sq"></i>siteboosty</a><span data-i18n="foot">SiteBoosty · Назарій, розробник · сайти, SEO, автоматизація · Україна</span><a class="js-phone" href="tel:+380686573262" onclick="lead('phone')" data-i18n="cta.call">Подзвонити</a><a class="js-tg" href="https://t.me/webdev342" target="_blank" rel="noopener" onclick="lead('telegram')">Telegram</a></div></footer>
 
 <dialog class="pm" id="pm" aria-labelledby="pm-h">
   <div class="shot" id="pm-shot"></div>
@@ -630,7 +654,7 @@ const PROJ = {
 const I18N = {
 uk:{title:"SiteBoosty — ремонт, прискорення сайтів і SEO",desc:"Ремонт і прискорення сайтів, SEO, заявки з сайту в Telegram і CRM. Безкоштовна діагностика за 30 хвилин, фіксована ціна до старту. Від 1 500 грн.",
 "w.open":"Відкрити кейс →","pm.done":"Що зроблено","pm.stack":"Технології","pm.same":"Хочу так само","pm.visit":"Відкрити сайт ↗",
-"p.shifton.tag":"Інтеграції · Автоматизація","p.shifton.lead":"Shifton — SaaS для планування змін і обліку робочого часу. Ми розробляємо плагіни, які з'єднують Shifton із зовнішніми системами клієнтів.",
+"p.shifton.tag":"Інтеграції · Автоматизація","p.shifton.lead":"Shifton — SaaS для планування змін і обліку робочого часу. Я розробляю плагіни, які з'єднують Shifton із зовнішніми системами клієнтів.",
 "p.shifton.l":["Інтеграція з Bitrix24: двостороння синхронізація співробітників, змін і відсутностей","Обробка вебхуків і черги подій на Cloudflare Workers — без втрат при піках","Зберігання стану інтеграції в D1, повторні спроби при збоях","Каркас для наступних інтеграцій: CRM, хелпдеск, телефонія, календарі"],
 "p.spirit.tag":"Сайти · SEO","p.spirit.lead":"Мережа сайтів агентства на піддоменах одного домену — кожен під свою аудиторію і свій Instagram-акаунт.",
 "p.spirit.l":["8 сайтів-сателітів: вёрстка, адаптив, швидке завантаження","SEO-теги, мова сторінки, Open Graph для коректних прев'ю в месенджерах","Безкоштовний хостинг на GitHub Pages, домен і DNS налаштовані","Оформлення Instagram-акаунтів під кожен сайт"],
@@ -639,9 +663,9 @@ uk:{title:"SiteBoosty — ремонт, прискорення сайтів і S
 "p.freelancehunt.tag":"Автоматизація · Бот","p.freelancehunt.lead":"Бот, який моніторить біржу Freelancehunt і за секунди приносить нові проєкти у Telegram — щоб відповідати першим.",
 "p.freelancehunt.l":["Моніторинг нових проєктів за категоріями та ключовими словами","Миттєве сповіщення у Telegram з бюджетом і посиланням","Фільтри: бюджет, категорія, стоп-слова","Робота через офіційний API біржі"],
 "p.appsscript.tag":"Автоматизація · Документи","p.appsscript.lead":"Система документообігу на Google Apps Script: одна заповнена форма замість трьох документів, набраних вручну.",
-"p.appsscript.l":["Google-форма як єдина точка введення даних","Автоматична генерація трьох .docx-документів за шаблонами","Готові файли складаються на Google Drive у потрібну папку","Нуль помилок від ручного передруку"],
+"p.appsscript.l":["Google-форма як єдина точка введення даних","Автоматична генерація трьох .docx-документів за шаблонами","Готові файли складаються на Google Drive у потрібну папку","Дані вводяться один раз — без передруку в кожен документ"],
 "s.go":"Обговорити →","nav.work":"Портфоліо",
-"w.h":"Проєкти, які вже працюють","w.sub":"Кілька прикладів того, що ми робили — від SaaS-інтеграцій до сайтів для малого бізнесу.",
+"w.h":"Проєкти, які вже працюють","w.sub":"Кілька моїх робіт — від інтеграцій для SaaS до магазину на WooCommerce і Telegram-ботів.",
 "w1.alt":"Головна сторінка shifton.com — сервісу планування змін, для якого зроблено інтеграції з CRM","w2.alt":"Перший екран сайту Spirit Agency — одного з восьми сайтів мережі",
 "nav.reviews":"Відгуки","rv.h":"Що пишуть замовники — дослівно","rv.sub":"206 позитивних відгуків на біржі Freelancehunt за 2022–2024 роки. Нижче — реальні відгуки замовників з профілю.","rv.k1":"Позитивних відгуків","rv.k3":"успішних проєктів","rv.k2":"Середня оцінка","rv.k2b":"відгуків з оцінками","rv.c1":"Якість","rv.c2":"Професіоналізм","rv.c3":"Ціна","rv.c4":"Контактність","rv.c5":"Терміни","rv.safe":"Сейф","rv.pers":"Персональний","rv.more":"Показати ще","rv.count":"Показано {n} із {t}","rv.orig":"Відгуки наведено мовою оригіналу.","rv.note":"Дані взято з архівної копії профілю на Freelancehunt (грудень 2024).","rv.link":"Відкрити архів →",
 "proof.a":"206 позитивних відгуків","proof.b":"на Freelancehunt · {avg} із 5",
@@ -652,41 +676,41 @@ uk:{title:"SiteBoosty — ремонт, прискорення сайтів і S
 "w2.tag":"Сайти · SEO","w2.t1":"8 сайтів","w2.t2":"SEO-теги","w2.p":"Мережа з 8 сайтів-сателітів на піддоменах: вёрстка, SEO-теги, Open Graph, розгортання на GitHub Pages, оформлення Instagram-акаунтів.",
 "w4.tag":"Автоматизація · Бот","w4.h":"JanaFit — бот-тренер","w4.p":"Telegram-бот для марафону схуднення: програма тренувань, меню, нагадування й облік прогресу учасниць без ручної роботи тренера.","w4.t1":"Нагадування","w4.t2":"Прогрес",
 "w5.tag":"Автоматизація · Бот","w5.h":"Freelancehunt — бот проєктів","w5.p":"Бот, який ловить нові проєкти на біржі за фільтрами і миттєво надсилає їх у Telegram — перша відповідь швидша за конкурентів.","w5.t1":"Фільтри",
-"w6.tag":"Автоматизація · Документи","w6.h":"Форма → 3 документи","w6.p":"Система на Google Apps Script: одна заповнена форма автоматично генерує три готові .docx-документи за шаблонами. Нуль ручного набору.",
+"w6.tag":"Автоматизація · Документи","w6.h":"Форма → 3 документи","w6.p":"Система на Google Apps Script: одна заповнена форма — і три готові .docx-документи за шаблонами, без ручного передруку.",
 "q4.a":"50% на старті, 50% після того, як ви перевірили результат. Оплата на картку, за рахунком для ФОП/ТОВ, або через фриланс-біржу (Freelancehunt, Upwork) із безпечною угодою — гроші резервуються на біржі й списуються лише після здачі роботи.",
 "nav.services":"Послуги","nav.prices":"Ціни","nav.how":"Як це працює","nav.faq":"Питання","nav.cta":"Написати",
-"hero.h":"Сайт зламався, гальмує або зник із Google?","hero.a1":"Скажемо, в чому причина, ","hero.mark":"за 30 хвилин","hero.a2":" — і скільки коштує це виправити.",
+"hero.h":"Сайт зламався, гальмує або зник із Google?","hero.a1":"Скажу, в чому причина, ","hero.mark":"за 30 хвилин","hero.a2":" — і скільки коштує це виправити.",
 "hero.terms":"Діагностика безкоштовна. Ціна фіксується до початку робіт, половину оплати — після того, як ви перевірили результат.",
 "cta.tg":"Написати в Telegram","cta.call":"Подзвонити","cta.order":"Замовити","hero.hint":"Відповідь за 30 хв · 8:00–22:00 щодня",
-"mock.url":"ваш-сайт.com.ua",
-"tk.h":"Заявка на ремонт","tk.site":"Сайт","tk.diag":"Діагностика","tk.diag_v":"0 грн · 30 хв","tk.fix":"Дрібний ремонт","tk.pay":"Оплата","tk.pay_t":"друга — після перевірки","tk.stamp":"Ціна фіксована",
-"s.h":"Що лагодимо і скільки це коштує","s.sub":"Оберіть, що болить зараз. Точну ціну назвемо після безкоштовної діагностики","s.sub2":"— і вона вже не зміниться.",
+"tk.h":"Умови роботи","tk.sign":"Приймає і виконує","tk.diag":"Діагностика","tk.diag_v":"0 грн · 30 хв","tk.fix":"Дрібний ремонт","tk.pay":"Оплата","tk.pay_t":"друга — після перевірки","tk.stamp":"Ціна фіксована",
+"s.h":"Що лагоджу і скільки це коштує","s.sub":"Оберіть, що болить зараз. Точну ціну назву після безкоштовної діагностики","s.sub2":"— і вона вже не зміниться.",
 "s0.h":"Діагностика","s0.p":"Надсилаєте посилання на сайт — отримуєте причину проблеми й фіксовану ціну.","s0.from":"0 грн","s0.t":"30 хвилин",
 "s1.h":"Ремонт сайту","s1.p":"Білий екран, помилки після оновлення, не працюють форми чи кошик.","s1.from":"від 1 500 грн","s1.t":"до 24 годин",
 "s2.h":"Прискорення","s2.p":"Core Web Vitals у зелену зону. Швидкий сайт — вищі позиції та більше замовлень.","s2.from":"від 2 500 грн",
 "s3.h":"SEO","s3.p":"Зник із пошуку, впав трафік після редизайну, дублі та биті сторінки.","s3.from":"від 2 500 грн",
-"s4.h":"Заявки в Telegram і CRM","s4.p":"Кожна заявка з сайту — миттєво у вас у месенджері або CRM. Жодна не губиться.","s4.from":"від 3 000 грн","s4.t":"1–2 дні",
+"s4.h":"Заявки в Telegram і CRM","s4.p":"Заявка з форми приходить вам у Telegram або CRM одразу, а не лежить непрочитаною в пошті.","s4.from":"від 3 000 грн","s4.t":"1–2 дні",
 "s5.h":"Автоматизація","s5.p":"Рахунки, звіти, розсилки та рутина — самі. Без ручного копіювання.","s5.from":"від 5 000 грн",
 "o.h":"Оберіть пакет — і ціна не зміниться в процесі","o.sub":"Половина оплати на старті, половина — після того, як ви перевірили результат.","o.badge":"Найчастіше замовляють","cur":"грн",
 "o1.h":"Швидка допомога","o1.term":"Термін — до 24 годин","o1.l1":"Діагностика й точна причина поломки","o1.l2":"Виправлення однієї проблеми","o1.l3":"Резервна копія перед роботами","o1.l4":"Звіт, що і чому було зроблено",
 "o2.h":"Прискорення + SEO-база","o2.term":"Термін — 3–5 днів","o2.l1":"Швидкість: Lighthouse 90+ на мобільних","o2.l2":"Виправлення технічних SEO-помилок","o2.l3":"Індексація, robots, sitemap, дублі","o2.l4":"Аналітика GA4 і цілі на заявки","o2.l5":"Звіт «до / після» за даними Google",
 "o3.h":"Заявки без втрат","o3.term":"Термін — 1–2 дні","o3.l1":"Форми з сайту → Telegram або CRM","o3.l2":"Автовідповідь клієнту за секунду","o3.l3":"Захист від спаму","o3.l4":"Без абонплати за сторонні сервіси",
-"g1.h":"Більше замовлень","g1.p":"Швидкий сайт і робочі форми конвертують відвідувачів у клієнтів.","g2.h":"Вище в Google","g2.p":"Технічні помилки прибрані — пошук бачить сайт і піднімає його.","g3.h":"Менше рутини","g3.p":"Заявки, звіти й нагадування працюють самі — ви займаєтесь бізнесом.","g4.h":"Спокій за сайт","g4.p":"Резервні копії, моніторинг і людина, якій можна написати, коли щось не так.",
+"g1.h":"Спершу причина, потім ціна","g1.p":"Дивлюся сайт і пишу, що зламалося і чому. Ціну називаю до початку робіт — і вона не змінюється.","g2.h":"Резервна копія перед роботою","g2.p":"Перед змінами зберігаю копію сайту, щоб будь-що можна було повернути назад.","g3.h":"Звіт після роботи","g3.p":"Пишу, що змінено і навіщо. Після прискорення — «до / після» за даними Google.","g4.h":"Друга половина — після перевірки","g4.p":"50% на старті, 50% — коли ви самі перевірили результат.",
+"me.name":"Назарій","me.role":"розробник","me.cap":"розробник, Київ","me.alt":"Назарій — розробник SiteBoosty",
 "h.h":"Як це працює","h.sub":"Чотири кроки від «щось не так» до «працює і приносить клієнтів».","hm1":"1 хв","hm2":"30 хв","hm3":"24 год",
-"h1.h":"Пишете в Telegram","h1.p":"Посилання на сайт і що саме турбує. Це займає хвилину.","h2.h":"Безкоштовна діагностика","h2.p":"За 30 хвилин кажемо, що сталося, і називаємо фіксовану ціну.","h3.h":"Робота за домовленістю","h3.p":"Дрібне — за 24 години, більше — з чітким терміном у договорі.","h4.h":"Перевірка результату","h4.p":"Показуємо «до / після» за даними Google. Другу половину платите після.",
-"f.h":"Ви говорите напряму з розробником","f.p":"Без менеджерів, «передам команді» і тижнів очікування. Той, хто відповідає у чаті, той і робить роботу — тому відповіді швидкі, а ціна без націнки агентства.",
+"h1.h":"Пишете в Telegram","h1.p":"Посилання на сайт і що саме турбує. Це займає хвилину.","h2.h":"Безкоштовна діагностика","h2.p":"За 30 хвилин кажу, що сталося, і називаю фіксовану ціну.","h3.h":"Робота за домовленістю","h3.p":"Дрібне — за 24 години, більше — з чітким терміном у договорі.","h4.h":"Перевірка результату","h4.p":"Показую «до / після» за даними Google. Другу половину платите після.",
+"f.h":"Відповідаю і роблю роботу сам","f.p":"Я — Назарій, розробник. Ви пишете мені в Telegram, я дивлюся сайт, називаю ціну й роблю роботу сам — від першого повідомлення до звіту. Тому відповідаю швидко, а в ціні немає націнки агентства.",
 "f1.b":"30 хв","f1.s":"до діагнозу та ціни","f2.b":"24 год","f2.s":"на дрібний ремонт","f3.s":"Lighthouse після прискорення",
 "q.h":"Питання, які ставлять найчастіше",
 "q1.q":"Скільки коштує подивитися, що з сайтом?","q1.a":"Нічого. Діагностика безкоштовна: ви надсилаєте посилання, за 30 хвилин отримуєте причину проблеми й фіксовану ціну. Далі вирішуєте ви.",
-"q2.q":"Ціна може зрости в процесі?","q2.a":"Ні. Ціна фіксується до початку робіт і не змінюється. Якщо в процесі знайдемо ще щось — скажемо окремо, і ви самі вирішите, чи робити.",
-"q3.q":"З якими сайтами працюєте?","q3.a":"WordPress, OpenCart, Хорошоп, Tilda, Shopify, самописні на PHP/JS. Якщо ваша платформа не в списку — напишіть, скоріш за все теж допоможемо.",
-"q4.q":"Як відбувається оплата?","q5.q":"Що якщо сайт «упав» просто зараз?","q5.a":"Пишіть у Telegram одразу — критичні поломки беремо в роботу першими, зазвичай протягом години.",
+"q2.q":"Ціна може зрости в процесі?","q2.a":"Ні. Ціна фіксується до початку робіт і не змінюється. Якщо в процесі знайду ще щось — скажу окремо, і ви самі вирішите, чи робити.",
+"q3.q":"З якими сайтами працюєте?","q3.a":"WordPress, OpenCart, Хорошоп, Tilda, Shopify, самописні на PHP/JS. Якщо ваша платформа не в списку — напишіть, скоріш за все теж допоможу.",
+"q4.q":"Як відбувається оплата?","q5.q":"Що якщо сайт «упав» просто зараз?","q5.a":"Пишіть у Telegram одразу — критичні поломки беру в роботу першими, зазвичай протягом години.",
 "fin.h":"Почніть із безкоштовної діагностики","fin.p":"Напишіть посилання на сайт — за 30 хвилин ви знатимете, що з ним і скільки коштує виправити.",
-"foot":"SiteBoosty · сайти, SEO, автоматизація · Україна"},
+"foot":"SiteBoosty · Назарій, розробник · сайти, SEO, автоматизація · Україна"},
 
 ru:{title:"SiteBoosty — ремонт, ускорение сайтов и SEO",desc:"Ремонт и ускорение сайтов, SEO, заявки с сайта в Telegram и CRM. Бесплатная диагностика за 30 минут, фиксированная цена до старта. От 1 500 грн.",
 "w.open":"Открыть кейс →","pm.done":"Что сделано","pm.stack":"Технологии","pm.same":"Хочу так же","pm.visit":"Открыть сайт ↗",
-"p.shifton.tag":"Интеграции · Автоматизация","p.shifton.lead":"Shifton — SaaS для планирования смен и учёта рабочего времени. Мы разрабатываем плагины, которые соединяют Shifton с внешними системами клиентов.",
+"p.shifton.tag":"Интеграции · Автоматизация","p.shifton.lead":"Shifton — SaaS для планирования смен и учёта рабочего времени. Я разрабатываю плагины, которые соединяют Shifton с внешними системами клиентов.",
 "p.shifton.l":["Интеграция с Bitrix24: двусторонняя синхронизация сотрудников, смен и отсутствий","Обработка вебхуков и очереди событий на Cloudflare Workers — без потерь при пиках","Хранение состояния интеграции в D1, повторные попытки при сбоях","Каркас для следующих интеграций: CRM, хелпдеск, телефония, календари"],
 "p.spirit.tag":"Сайты · SEO","p.spirit.lead":"Сеть сайтов агентства на поддоменах одного домена — каждый под свою аудиторию и свой Instagram-аккаунт.",
 "p.spirit.l":["8 сайтов-сателлитов: вёрстка, адаптив, быстрая загрузка","SEO-теги, язык страницы, Open Graph для корректных превью в мессенджерах","Бесплатный хостинг на GitHub Pages, домен и DNS настроены","Оформление Instagram-аккаунтов под каждый сайт"],
@@ -695,9 +719,9 @@ ru:{title:"SiteBoosty — ремонт, ускорение сайтов и SEO",
 "p.freelancehunt.tag":"Автоматизация · Бот","p.freelancehunt.lead":"Бот, который мониторит биржу Freelancehunt и за секунды приносит новые проекты в Telegram — чтобы отвечать первым.",
 "p.freelancehunt.l":["Мониторинг новых проектов по категориям и ключевым словам","Мгновенное уведомление в Telegram с бюджетом и ссылкой","Фильтры: бюджет, категория, стоп-слова","Работа через официальный API биржи"],
 "p.appsscript.tag":"Автоматизация · Документы","p.appsscript.lead":"Система документооборота на Google Apps Script: одна заполненная форма вместо трёх документов, набранных вручную.",
-"p.appsscript.l":["Google-форма как единая точка ввода данных","Автоматическая генерация трёх .docx-документов по шаблонам","Готовые файлы складываются на Google Drive в нужную папку","Ноль ошибок от ручного перепечатывания"],
+"p.appsscript.l":["Google-форма как единая точка ввода данных","Автоматическая генерация трёх .docx-документов по шаблонам","Готовые файлы складываются на Google Drive в нужную папку","Данные вводятся один раз — без перепечатки в каждый документ"],
 "s.go":"Обсудить →","nav.work":"Портфолио",
-"w.h":"Проекты, которые уже работают","w.sub":"Несколько примеров того, что мы делали — от SaaS-интеграций до сайтов для малого бизнеса.",
+"w.h":"Проекты, которые уже работают","w.sub":"Несколько моих работ — от интеграций для SaaS до магазина на WooCommerce и Telegram-ботов.",
 "w1.alt":"Главная страница shifton.com — сервиса планирования смен, для которого сделаны интеграции с CRM","w2.alt":"Первый экран сайта Spirit Agency — одного из восьми сайтов сети",
 "nav.reviews":"Отзывы","rv.h":"Что пишут заказчики — дословно","rv.sub":"206 положительных отзывов на бирже Freelancehunt за 2022–2024 годы. Ниже — реальные отзывы заказчиков из профиля.","rv.k1":"Положительных отзывов","rv.k3":"успешных проектов","rv.k2":"Средняя оценка","rv.k2b":"отзывов с оценками","rv.c1":"Качество","rv.c2":"Профессионализм","rv.c3":"Цена","rv.c4":"Контактность","rv.c5":"Сроки","rv.safe":"Сейф","rv.pers":"Персональный","rv.more":"Показать ещё","rv.count":"Показано {n} из {t}","rv.orig":"Отзывы приведены на языке оригинала.","rv.note":"Данные взяты из архивной копии профиля на Freelancehunt (декабрь 2024).","rv.link":"Открыть архив →",
 "proof.a":"206 положительных отзывов","proof.b":"на Freelancehunt · {avg} из 5",
@@ -708,41 +732,41 @@ ru:{title:"SiteBoosty — ремонт, ускорение сайтов и SEO",
 "w2.tag":"Сайты · SEO","w2.t1":"8 сайтов","w2.t2":"SEO-теги","w2.p":"Сеть из 8 сайтов-сателлитов на поддоменах: вёрстка, SEO-теги, Open Graph, развёртывание на GitHub Pages, оформление Instagram-аккаунтов.",
 "w4.tag":"Автоматизация · Бот","w4.h":"JanaFit — бот-тренер","w4.p":"Telegram-бот для марафона похудения: программа тренировок, меню, напоминания и учёт прогресса участниц без ручной работы тренера.","w4.t1":"Напоминания","w4.t2":"Прогресс",
 "w5.tag":"Автоматизация · Бот","w5.h":"Freelancehunt — бот проектов","w5.p":"Бот, который ловит новые проекты на бирже по фильтрам и мгновенно присылает их в Telegram — первый ответ быстрее конкурентов.","w5.t1":"Фильтры",
-"w6.tag":"Автоматизация · Документы","w6.h":"Форма → 3 документа","w6.p":"Система на Google Apps Script: одна заполненная форма автоматически генерирует три готовых .docx-документа по шаблонам. Ноль ручного набора.",
+"w6.tag":"Автоматизация · Документы","w6.h":"Форма → 3 документа","w6.p":"Система на Google Apps Script: одна заполненная форма — и три готовых .docx-документа по шаблонам, без ручной перепечатки.",
 "q4.a":"50% на старте, 50% после того, как вы проверили результат. Оплата на карту, по счёту для ФОП/ООО или через фриланс-биржу (Freelancehunt, Upwork) с безопасной сделкой — деньги резервируются на бирже и списываются только после сдачи работы.",
 "nav.services":"Услуги","nav.prices":"Цены","nav.how":"Как это работает","nav.faq":"Вопросы","nav.cta":"Написать",
-"hero.h":"Сайт сломался, тормозит или пропал из Google?","hero.a1":"Скажем, в чём причина, ","hero.mark":"за 30 минут","hero.a2":" — и сколько стоит это исправить.",
+"hero.h":"Сайт сломался, тормозит или пропал из Google?","hero.a1":"Скажу, в чём причина, ","hero.mark":"за 30 минут","hero.a2":" — и сколько стоит это исправить.",
 "hero.terms":"Диагностика бесплатна. Цена фиксируется до начала работ, половину оплаты — после того, как вы проверили результат.",
 "cta.tg":"Написать в Telegram","cta.call":"Позвонить","cta.order":"Заказать","hero.hint":"Ответ за 30 мин · 8:00–22:00 ежедневно",
-"mock.url":"ваш-сайт.com.ua",
-"tk.h":"Заявка на ремонт","tk.site":"Сайт","tk.diag":"Диагностика","tk.diag_v":"0 грн · 30 мин","tk.fix":"Мелкий ремонт","tk.pay":"Оплата","tk.pay_t":"вторая — после проверки","tk.stamp":"Цена фиксированная",
-"s.h":"Что чиним и сколько это стоит","s.sub":"Выберите, что болит сейчас. Точную цену назовём после бесплатной диагностики","s.sub2":"— и она уже не изменится.",
+"tk.h":"Условия работы","tk.sign":"Принимает и выполняет","tk.diag":"Диагностика","tk.diag_v":"0 грн · 30 мин","tk.fix":"Мелкий ремонт","tk.pay":"Оплата","tk.pay_t":"вторая — после проверки","tk.stamp":"Цена фиксированная",
+"s.h":"Что чиню и сколько это стоит","s.sub":"Выберите, что болит сейчас. Точную цену назову после бесплатной диагностики","s.sub2":"— и она уже не изменится.",
 "s0.h":"Диагностика","s0.p":"Присылаете ссылку на сайт — получаете причину проблемы и фиксированную цену.","s0.from":"0 грн","s0.t":"30 минут",
 "s1.h":"Ремонт сайта","s1.p":"Белый экран, ошибки после обновления, не работают формы или корзина.","s1.from":"от 1 500 грн","s1.t":"до 24 часов",
 "s2.h":"Ускорение","s2.p":"Core Web Vitals в зелёную зону. Быстрый сайт — выше позиции и больше заказов.","s2.from":"от 2 500 грн",
 "s3.h":"SEO","s3.p":"Пропал из поиска, упал трафик после редизайна, дубли и битые страницы.","s3.from":"от 2 500 грн",
-"s4.h":"Заявки в Telegram и CRM","s4.p":"Каждая заявка с сайта — мгновенно у вас в мессенджере или CRM. Ни одна не теряется.","s4.from":"от 3 000 грн","s4.t":"1–2 дня",
+"s4.h":"Заявки в Telegram и CRM","s4.p":"Заявка с формы приходит вам в Telegram или CRM сразу, а не лежит непрочитанной в почте.","s4.from":"от 3 000 грн","s4.t":"1–2 дня",
 "s5.h":"Автоматизация","s5.p":"Счета, отчёты, рассылки и рутина — сами. Без ручного копирования.","s5.from":"от 5 000 грн",
 "o.h":"Выберите пакет — и цена не изменится в процессе","o.sub":"Половина оплаты на старте, половина — после того, как вы проверили результат.","o.badge":"Заказывают чаще всего","cur":"грн",
 "o1.h":"Быстрая помощь","o1.term":"Срок — до 24 часов","o1.l1":"Диагностика и точная причина поломки","o1.l2":"Исправление одной проблемы","o1.l3":"Резервная копия перед работами","o1.l4":"Отчёт, что и почему сделано",
 "o2.h":"Ускорение + SEO-база","o2.term":"Срок — 3–5 дней","o2.l1":"Скорость: Lighthouse 90+ на мобильных","o2.l2":"Исправление технических SEO-ошибок","o2.l3":"Индексация, robots, sitemap, дубли","o2.l4":"Аналитика GA4 и цели на заявки","o2.l5":"Отчёт «до / после» по данным Google",
 "o3.h":"Заявки без потерь","o3.term":"Срок — 1–2 дня","o3.l1":"Формы с сайта → Telegram или CRM","o3.l2":"Автоответ клиенту за секунду","o3.l3":"Защита от спама","o3.l4":"Без абонплаты за сторонние сервисы",
-"g1.h":"Больше заказов","g1.p":"Быстрый сайт и рабочие формы превращают посетителей в клиентов.","g2.h":"Выше в Google","g2.p":"Технические ошибки убраны — поиск видит сайт и поднимает его.","g3.h":"Меньше рутины","g3.p":"Заявки, отчёты и напоминания работают сами — вы занимаетесь бизнесом.","g4.h":"Спокойствие за сайт","g4.p":"Резервные копии, мониторинг и человек, которому можно написать, когда что-то не так.",
+"g1.h":"Сначала причина, потом цена","g1.p":"Смотрю сайт и пишу, что сломалось и почему. Цену называю до начала работ — и она не меняется.","g2.h":"Резервная копия перед работой","g2.p":"Перед изменениями сохраняю копию сайта, чтобы что угодно можно было вернуть назад.","g3.h":"Отчёт после работы","g3.p":"Пишу, что изменено и зачем. После ускорения — «до / после» по данным Google.","g4.h":"Вторая половина — после проверки","g4.p":"50% на старте, 50% — когда вы сами проверили результат.",
+"me.name":"Назарий","me.role":"разработчик","me.cap":"разработчик, Киев","me.alt":"Назарий — разработчик SiteBoosty",
 "h.h":"Как это работает","h.sub":"Четыре шага от «что-то не так» до «работает и приносит клиентов».","hm1":"1 мин","hm2":"30 мин","hm3":"24 ч",
-"h1.h":"Пишете в Telegram","h1.p":"Ссылка на сайт и что именно беспокоит. Это занимает минуту.","h2.h":"Бесплатная диагностика","h2.p":"За 30 минут говорим, что случилось, и называем фиксированную цену.","h3.h":"Работа по договорённости","h3.p":"Мелкое — за 24 часа, крупное — с чётким сроком в договоре.","h4.h":"Проверка результата","h4.p":"Показываем «до / после» по данным Google. Вторую половину платите после.",
-"f.h":"Вы говорите напрямую с разработчиком","f.p":"Без менеджеров, «передам команде» и недель ожидания. Кто отвечает в чате, тот и делает работу — поэтому ответы быстрые, а цена без наценки агентства.",
+"h1.h":"Пишете в Telegram","h1.p":"Ссылка на сайт и что именно беспокоит. Это занимает минуту.","h2.h":"Бесплатная диагностика","h2.p":"За 30 минут говорю, что случилось, и называю фиксированную цену.","h3.h":"Работа по договорённости","h3.p":"Мелкое — за 24 часа, крупное — с чётким сроком в договоре.","h4.h":"Проверка результата","h4.p":"Показываю «до / после» по данным Google. Вторую половину платите после.",
+"f.h":"Отвечаю и делаю работу сам","f.p":"Я — Назарий, разработчик. Вы пишете мне в Telegram, я смотрю сайт, называю цену и делаю работу сам — от первого сообщения до отчёта. Поэтому отвечаю быстро, а в цене нет наценки агентства.",
 "f1.b":"30 мин","f1.s":"до диагноза и цены","f2.b":"24 ч","f2.s":"на мелкий ремонт","f3.s":"Lighthouse после ускорения",
 "q.h":"Вопросы, которые задают чаще всего",
 "q1.q":"Сколько стоит посмотреть, что с сайтом?","q1.a":"Ничего. Диагностика бесплатна: вы присылаете ссылку, через 30 минут получаете причину проблемы и фиксированную цену. Дальше решаете вы.",
-"q2.q":"Цена может вырасти в процессе?","q2.a":"Нет. Цена фиксируется до начала работ и не меняется. Если в процессе найдём ещё что-то — скажем отдельно, и вы сами решите, делать ли.",
-"q3.q":"С какими сайтами работаете?","q3.a":"WordPress, OpenCart, Хорошоп, Tilda, Shopify, самописные на PHP/JS. Если вашей платформы нет в списке — напишите, скорее всего тоже поможем.",
-"q4.q":"Как происходит оплата?","q5.q":"Что если сайт «упал» прямо сейчас?","q5.a":"Пишите в Telegram сразу — критические поломки берём в работу первыми, обычно в течение часа.",
+"q2.q":"Цена может вырасти в процессе?","q2.a":"Нет. Цена фиксируется до начала работ и не меняется. Если в процессе найду ещё что-то — скажу отдельно, и вы сами решите, делать ли.",
+"q3.q":"С какими сайтами работаете?","q3.a":"WordPress, OpenCart, Хорошоп, Tilda, Shopify, самописные на PHP/JS. Если вашей платформы нет в списке — напишите, скорее всего тоже помогу.",
+"q4.q":"Как происходит оплата?","q5.q":"Что если сайт «упал» прямо сейчас?","q5.a":"Пишите в Telegram сразу — критические поломки беру в работу первыми, обычно в течение часа.",
 "fin.h":"Начните с бесплатной диагностики","fin.p":"Пришлите ссылку на сайт — через 30 минут вы будете знать, что с ним и сколько стоит исправить.",
-"foot":"SiteBoosty · сайты, SEO, автоматизация · Украина"},
+"foot":"SiteBoosty · Назарий, разработчик · сайты, SEO, автоматизация · Украина"},
 
 en:{title:"SiteBoosty — website repair, speed-up and SEO",desc:"Website repair and speed-up, SEO, leads from your site to Telegram and CRM. Free 30-minute diagnosis, fixed price before work starts. From 1 500 UAH.",
 "w.open":"Open case →","pm.done":"What was done","pm.stack":"Stack","pm.same":"I want the same","pm.visit":"Visit site ↗",
-"p.shifton.tag":"Integrations · Automation","p.shifton.lead":"Shifton is a SaaS for shift scheduling and time tracking. We build the plugins that connect Shifton to customers' external systems.",
+"p.shifton.tag":"Integrations · Automation","p.shifton.lead":"Shifton is a SaaS for shift scheduling and time tracking. I build the plugins that connect Shifton to customers' external systems.",
 "p.shifton.l":["Bitrix24 integration: two-way sync of employees, shifts and absences","Webhook handling and event queues on Cloudflare Workers — no data loss at peaks","Integration state stored in D1, retries on failures","A framework for the next integrations: CRM, helpdesk, telephony, calendars"],
 "p.spirit.tag":"Websites · SEO","p.spirit.lead":"An agency's network of sites on subdomains of one domain — each for its own audience and its own Instagram account.",
 "p.spirit.l":["8 satellite sites: layout, responsive, fast loading","SEO tags, page language, Open Graph for correct previews in messengers","Free hosting on GitHub Pages, domain and DNS configured","Instagram account styling for each site"],
@@ -751,10 +775,10 @@ en:{title:"SiteBoosty — website repair, speed-up and SEO",desc:"Website repair
 "p.freelancehunt.tag":"Automation · Bot","p.freelancehunt.lead":"A bot that monitors the Freelancehunt marketplace and delivers new projects to Telegram in seconds — so you reply first.",
 "p.freelancehunt.l":["Monitoring new projects by category and keywords","Instant Telegram alert with budget and link","Filters: budget, category, stop words","Built on the marketplace's official API"],
 "p.appsscript.tag":"Automation · Documents","p.appsscript.lead":"A document workflow on Google Apps Script: one submitted form instead of three documents typed by hand.",
-"p.appsscript.l":["A Google Form as the single data entry point","Automatic generation of three .docx documents from templates","Finished files saved to the right Google Drive folder","Zero errors from manual retyping"],
+"p.appsscript.l":["A Google Form as the single data entry point","Automatic generation of three .docx documents from templates","Finished files saved to the right Google Drive folder","Data is entered once, not retyped into each document"],
 "s.go":"Discuss →","nav.work":"Portfolio",
-"w.h":"Projects already up and running","w.sub":"A few examples of what we've built — from SaaS integrations to small-business websites.",
-"w1.alt":"Home page of shifton.com, the shift-scheduling service we build CRM integrations for","w2.alt":"First screen of the Spirit Agency site, one of the eight sites in the network",
+"w.h":"Projects already up and running","w.sub":"A few of my projects — from SaaS integrations to a WooCommerce store and Telegram bots.",
+"w1.alt":"Home page of shifton.com, the shift-scheduling service I build CRM integrations for","w2.alt":"First screen of the Spirit Agency site, one of the eight sites in the network",
 "nav.reviews":"Reviews","rv.h":"What clients say, word for word","rv.sub":"206 positive reviews on the Freelancehunt marketplace in 2022–2024. Below are real client reviews from the profile.","rv.k1":"Positive reviews","rv.k3":"successful projects","rv.k2":"Average rating","rv.k2b":"rated reviews","rv.c1":"Quality","rv.c2":"Professionalism","rv.c3":"Price","rv.c4":"Communication","rv.c5":"Deadlines","rv.safe":"Safe deal","rv.pers":"Personal","rv.more":"Show more","rv.count":"Showing {n} of {t}","rv.orig":"Reviews are quoted in their original language.","rv.note":"Data taken from an archived copy of the Freelancehunt profile (December 2024).","rv.link":"Open the archive →",
 "proof.a":"206 positive reviews","proof.b":"on Freelancehunt · {avg} out of 5",
 "w7.tag":"SEO · Store","w7.p":"WooCommerce online store: SEO promotion and technical improvements. Steady growth in Google rankings, impressions and clicks.","w7.t1":"Improvements",
@@ -764,37 +788,37 @@ en:{title:"SiteBoosty — website repair, speed-up and SEO",desc:"Website repair
 "w2.tag":"Websites · SEO","w2.t1":"8 sites","w2.t2":"SEO tags","w2.p":"A network of 8 satellite sites on subdomains: layout, SEO tags, Open Graph, GitHub Pages deployment and Instagram account styling.",
 "w4.tag":"Automation · Bot","w4.h":"JanaFit — coach bot","w4.p":"Telegram bot for a weight-loss marathon: workout plan, menu, reminders and progress tracking with no manual work for the coach.","w4.t1":"Reminders","w4.t2":"Progress",
 "w5.tag":"Automation · Bot","w5.h":"Freelancehunt — project bot","w5.p":"A bot that catches new marketplace projects by filters and pushes them to Telegram instantly — first reply ahead of competitors.","w5.t1":"Filters",
-"w6.tag":"Automation · Documents","w6.h":"Form → 3 documents","w6.p":"Google Apps Script system: one submitted form automatically generates three ready .docx documents from templates. Zero manual typing.",
+"w6.tag":"Automation · Documents","w6.h":"Form → 3 documents","w6.p":"Google Apps Script system: one submitted form produces three ready .docx documents from templates, with no retyping.",
 "q4.a":"50% upfront, 50% after you've verified the result. Pay by card, by invoice for businesses, or via a freelance marketplace (Freelancehunt, Upwork) with escrow — funds are held by the platform and released only after delivery.",
-"nav.services":"Services","nav.prices":"Pricing","nav.how":"How it works","nav.faq":"FAQ","nav.cta":"Message us",
-"hero.h":"Website broken, slow or gone from Google?","hero.a1":"We'll tell you what's wrong ","hero.mark":"within 30 minutes","hero.a2":" — and what it costs to fix.",
-"hero.terms":"Diagnosis is free. The price is fixed before we start, and you pay the second half after you've checked the result.",
-"cta.tg":"Message on Telegram","cta.call":"Call us","cta.order":"Order","hero.hint":"Reply in 30 min · 8:00–22:00 daily",
-"mock.url":"your-site.com",
-"tk.h":"Repair ticket","tk.site":"Website","tk.diag":"Diagnosis","tk.diag_v":"0 UAH · 30 min","tk.fix":"Quick fix","tk.pay":"Payment","tk.pay_t":"second half after you check","tk.stamp":"Fixed price",
-"s.h":"What we fix and what it costs","s.sub":"Pick what hurts right now. We'll name the exact price after a free diagnosis","s.sub2":"— and it won't change.",
-"s0.h":"Diagnosis","s0.p":"Send us the site link — get the cause of the problem and a fixed price.","s0.from":"0 UAH","s0.t":"30 minutes",
+"nav.services":"Services","nav.prices":"Pricing","nav.how":"How it works","nav.faq":"FAQ","nav.cta":"Message me",
+"hero.h":"Website broken, slow or gone from Google?","hero.a1":"I'll tell you what's wrong ","hero.mark":"within 30 minutes","hero.a2":" — and what it costs to fix.",
+"hero.terms":"Diagnosis is free. The price is fixed before I start, and you pay the second half after you've checked the result.",
+"cta.tg":"Message on Telegram","cta.call":"Call me","cta.order":"Order","hero.hint":"Reply in 30 min · 8:00–22:00 daily",
+"tk.h":"Terms of work","tk.sign":"Taken and done by","tk.diag":"Diagnosis","tk.diag_v":"0 UAH · 30 min","tk.fix":"Quick fix","tk.pay":"Payment","tk.pay_t":"second half after you check","tk.stamp":"Fixed price",
+"s.h":"What I fix and what it costs","s.sub":"Pick what hurts right now. I'll name the exact price after a free diagnosis","s.sub2":"— and it won't change.",
+"s0.h":"Diagnosis","s0.p":"Send me the site link — get the cause of the problem and a fixed price.","s0.from":"0 UAH","s0.t":"30 minutes",
 "s1.h":"Website repair","s1.p":"White screen, errors after an update, broken forms or checkout.","s1.from":"from ₴1,500","s1.t":"within 24 hours",
 "s2.h":"Speed optimization","s2.p":"Core Web Vitals in the green. A fast site ranks higher and sells more.","s2.from":"from ₴2,500",
 "s3.h":"SEO","s3.p":"Dropped out of search, traffic fell after a redesign, duplicates and broken pages.","s3.from":"from ₴2,500",
-"s4.h":"Leads to Telegram & CRM","s4.p":"Every form submission lands instantly in your messenger or CRM. Nothing gets lost.","s4.from":"from ₴3,000","s4.t":"1–2 days",
+"s4.h":"Leads to Telegram & CRM","s4.p":"A form submission reaches your Telegram or CRM straight away instead of sitting unread in an inbox.","s4.from":"from ₴3,000","s4.t":"1–2 days",
 "s5.h":"Automation","s5.p":"Invoices, reports, mailings and routine — done automatically. No manual copy-paste.","s5.from":"from ₴5,000",
 "o.h":"Pick a package — the price won't change midway","o.sub":"Half upfront, half after you've checked the result.","o.badge":"Most popular","cur":"UAH",
 "o1.h":"Quick fix","o1.term":"Turnaround — up to 24 hours","o1.l1":"Diagnosis and the exact cause","o1.l2":"Fix for one issue","o1.l3":"Backup before any changes","o1.l4":"Report on what was done and why",
 "o2.h":"Speed + SEO foundation","o2.term":"Turnaround — 3–5 days","o2.l1":"Speed: Lighthouse 90+ on mobile","o2.l2":"Technical SEO issues fixed","o2.l3":"Indexing, robots, sitemap, duplicates","o2.l4":"GA4 analytics with lead goals","o2.l5":"Before/after report from Google data",
 "o3.h":"No lost leads","o3.term":"Turnaround — 1–2 days","o3.l1":"Site forms → Telegram or CRM","o3.l2":"Instant auto-reply to the customer","o3.l3":"Spam protection","o3.l4":"No monthly fees for third-party tools",
-"g1.h":"More orders","g1.p":"A fast site and working forms turn visitors into customers.","g2.h":"Higher on Google","g2.p":"Technical errors removed — search sees your site and lifts it.","g3.h":"Less routine","g3.p":"Leads, reports and reminders run themselves — you run the business.","g4.h":"Peace of mind","g4.p":"Backups, monitoring and a real person to message when something's off.",
+"g1.h":"Cause first, then the price","g1.p":"I look at the site and tell you what broke and why. The price is named before work starts and doesn't change.","g2.h":"A backup before any work","g2.p":"Before changing anything I save a copy of the site, so any change can be rolled back.","g3.h":"A report afterwards","g3.p":"What was changed and why. After a speed-up — before/after from Google data.","g4.h":"Second half after you check","g4.p":"50% upfront, 50% once you've checked the result yourself.",
+"me.name":"Nazarii","me.role":"developer","me.cap":"developer, Kyiv","me.alt":"Nazarii, the developer behind SiteBoosty",
 "h.h":"How it works","h.sub":"Four steps from “something's wrong” to “it works and brings customers”.","hm1":"1 min","hm2":"30 min","hm3":"24 h",
-"h1.h":"Message us on Telegram","h1.p":"Send the site link and what's bothering you. Takes a minute.","h2.h":"Free diagnosis","h2.p":"Within 30 minutes we tell you what happened and quote a fixed price.","h3.h":"Work as agreed","h3.p":"Small fixes in 24 hours, bigger jobs with a clear deadline in writing.","h4.h":"Check the result","h4.p":"We show before/after from Google data. You pay the second half afterwards.",
-"f.h":"You talk directly to the developer","f.p":"No account managers, no “I'll pass it to the team”, no weeks of waiting. The person replying in the chat is the one doing the work — fast answers, no agency markup.",
+"h1.h":"Message me on Telegram","h1.p":"Send the site link and what's bothering you. Takes a minute.","h2.h":"Free diagnosis","h2.p":"Within 30 minutes I tell you what happened and quote a fixed price.","h3.h":"Work as agreed","h3.p":"Small fixes in 24 hours, bigger jobs with a clear deadline in writing.","h4.h":"Check the result","h4.p":"I show before/after from Google data. You pay the second half afterwards.",
+"f.h":"I answer, and I do the work myself","f.p":"I'm Nazarii, a developer. You message me on Telegram, I look at the site, quote a price and do the work myself, from the first message to the report. That's why replies are fast and there's no agency markup.",
 "f1.b":"30 min","f1.s":"to a diagnosis and price","f2.b":"24 h","f2.s":"for a quick fix","f3.s":"Lighthouse after optimization",
 "q.h":"Frequently asked questions",
 "q1.q":"How much does it cost to check my site?","q1.a":"Nothing. Diagnosis is free: you send a link, within 30 minutes you get the cause and a fixed price. Then it's your call.",
-"q2.q":"Can the price go up during the work?","q2.a":"No. The price is fixed before we start and doesn't change. If we find something else along the way, we'll tell you separately and you decide.",
-"q3.q":"Which platforms do you work with?","q3.a":"WordPress, OpenCart, Horoshop, Tilda, Shopify, custom PHP/JS. If yours isn't listed, ask — we most likely can help.",
-"q4.q":"How does payment work?","q5.q":"What if my site is down right now?","q5.a":"Message us on Telegram immediately — critical outages go first, usually within the hour.",
-"fin.h":"Start with a free diagnosis","fin.p":"Send us your site link — in 30 minutes you'll know what's wrong and what it costs to fix.",
-"foot":"SiteBoosty · websites, SEO, automation · Ukraine"}
+"q2.q":"Can the price go up during the work?","q2.a":"No. The price is fixed before I start and doesn't change. If I find something else along the way, I'll tell you separately and you decide.",
+"q3.q":"Which platforms do you work with?","q3.a":"WordPress, OpenCart, Horoshop, Tilda, Shopify, custom PHP/JS. If yours isn't listed, ask — I can most likely help.",
+"q4.q":"How does payment work?","q5.q":"What if my site is down right now?","q5.a":"Message me on Telegram immediately — I take critical outages first, usually within the hour.",
+"fin.h":"Start with a free diagnosis","fin.p":"Send me your site link — in 30 minutes you'll know what's wrong and what it costs to fix.",
+"foot":"SiteBoosty · Nazarii, developer · websites, SEO, automation · Ukraine"}
 };
 
 document.addEventListener('DOMContentLoaded',function(){
@@ -848,18 +872,18 @@ document.addEventListener('DOMContentLoaded',function(){
     applyG();
   }
   var G={
-    repair:{uk:["Полагодимо сайт","за 24 години","Білий екран, помилки після оновлення, не працюють форми чи кошик. Знайдемо причину безкоштовно і назвемо фіксовану ціну до старту. Від 1 500 грн."],
-            ru:["Починим сайт","за 24 часа","Белый экран, ошибки после обновления, не работают формы или корзина. Найдём причину бесплатно и назовём фиксированную цену до старта. От 1 500 грн."],
-            en:["We fix your site","within 24 hours","White screen, errors after an update, broken forms or checkout. Free diagnosis, fixed price before we start. From 1 500 UAH."]},
-    speed:{uk:["Прискоримо сайт","за 1–3 дні","Lighthouse 90+ на мобільних і Core Web Vitals у зеленій зоні. Діагностика безкоштовно, ціна фіксується до старту. Від 2 500 грн."],
-           ru:["Ускорим сайт","за 1–3 дня","Lighthouse 90+ на мобильных и Core Web Vitals в зелёной зоне. Диагностика бесплатно, цена фиксируется до старта. От 2 500 грн."],
-           en:["We speed up your site","in 1–3 days","Lighthouse 90+ on mobile and green Core Web Vitals. Free diagnosis, fixed price before we start. From 2 500 UAH."]},
-    crm:{uk:["Заявки з сайту","прямо в Telegram або CRM","Форми, кошик, месенджери — усе в один чат або CRM за 1–2 дні. Жодна заявка не губиться. Від 3 000 грн, без абонплати за сервіси."],
-         ru:["Заявки с сайта","прямо в Telegram или CRM","Формы, корзина, мессенджеры — всё в один чат или CRM за 1–2 дня. Ни одна заявка не теряется. От 3 000 грн, без абонплаты за сервисы."],
-         en:["Website leads","straight to Telegram or CRM","Forms, checkout and messengers into one chat or CRM within 1–2 days. No lead gets lost. From 3 000 UAH, no monthly fees."]},
-    seo:{uk:["Повернемо трафік","з Google","Зник із пошуку, впав трафік після редизайну, дублі та биті сторінки. Знайдемо причину безкоштовно і виправимо за фіксовану ціну."],
-         ru:["Вернём трафик","из Google","Пропал из поиска, упал трафик после редизайна, дубли и битые страницы. Найдём причину бесплатно и исправим за фиксированную цену."],
-         en:["We bring traffic back","from Google","Dropped out of search, lost traffic after a redesign, duplicates and broken pages. Free diagnosis, fixed-price fix."]}
+    repair:{uk:["Полагоджу сайт","за 24 години","Білий екран, помилки після оновлення, не працюють форми чи кошик. Знайду причину безкоштовно і назву фіксовану ціну до старту. Від 1 500 грн."],
+            ru:["Починю сайт","за 24 часа","Белый экран, ошибки после обновления, не работают формы или корзина. Найду причину бесплатно и назову фиксированную цену до старта. От 1 500 грн."],
+            en:["I'll fix your site","within 24 hours","White screen, errors after an update, broken forms or checkout. Free diagnosis, fixed price before I start. From 1 500 UAH."]},
+    speed:{uk:["Прискорю сайт","за 1–3 дні","Lighthouse 90+ на мобільних і Core Web Vitals у зеленій зоні. Діагностика безкоштовно, ціна фіксується до старту. Від 2 500 грн."],
+           ru:["Ускорю сайт","за 1–3 дня","Lighthouse 90+ на мобильных и Core Web Vitals в зелёной зоне. Диагностика бесплатно, цена фиксируется до старта. От 2 500 грн."],
+           en:["I'll speed up your site","in 1–3 days","Lighthouse 90+ on mobile and green Core Web Vitals. Free diagnosis, fixed price before I start. From 2 500 UAH."]},
+    crm:{uk:["Заявки з сайту","прямо в Telegram або CRM","Налаштую за 1–2 дні: форми, кошик і месенджери — в один чат або CRM. Від 3 000 грн, без абонплати за сервіси."],
+         ru:["Заявки с сайта","прямо в Telegram или CRM","Настрою за 1–2 дня: формы, корзина и мессенджеры — в один чат или CRM. От 3 000 грн, без абонплаты за сервисы."],
+         en:["Website leads","straight to Telegram or CRM","Set up in 1–2 days: forms, checkout and messengers into one chat or CRM. From 3 000 UAH, no monthly fees."]},
+    seo:{uk:["Поверну трафік","з Google","Зник із пошуку, впав трафік після редизайну, дублі та биті сторінки. Знайду причину безкоштовно і виправлю за фіксовану ціну."],
+         ru:["Верну трафик","из Google","Пропал из поиска, упал трафик после редизайна, дубли и битые страницы. Найду причину бесплатно и исправлю за фиксированную цену."],
+         en:["I'll bring traffic back","from Google","Dropped out of search, lost traffic after a redesign, duplicates and broken pages. Free diagnosis, fixed-price fix."]}
   };
   var g=new URLSearchParams(location.search).get('g');
   function applyG(){
@@ -868,6 +892,9 @@ document.addEventListener('DOMContentLoaded',function(){
     hMain.textContent=v[0]; hTail.textContent=v[1]; gSub.textContent=v[2];
     hero.classList.add('is-g');
   }
+  // photo slot: once #me is an <img>, every «Н» square (.me-mini) shows the same photo
+  var me=document.getElementById('me');
+  if(me&&me.tagName==='IMG') document.querySelectorAll('.me-mini').forEach(function(m){var i=document.createElement('img');i.src=me.getAttribute('src');i.alt='';i.className='me-mini';i.width=40;i.height=40;m.replaceWith(i);});
   // Default is Ukrainian: only ?lang= or a saved choice changes it (no browser-language guess, see seo findings).
   var saved=null; try{saved=localStorage.getItem('sb-lang');}catch(e){}
   var q=new URLSearchParams(location.search).get('lang');
