@@ -306,8 +306,12 @@ span.av{display:inline-flex;align-items:center;justify-content:center;font:500 1
 /* direct */
 .direct{padding-top:84px;padding-bottom:84px}
 .direct-in{display:grid;gap:40px}
-.me-card{display:flex;gap:18px;align-items:flex-end}
-.me{flex:none;width:132px;height:auto;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;background:var(--ink);color:var(--mark);font:800 76px/1 var(--sans);letter-spacing:-.04em;object-fit:cover}
+/* no photo yet: a small initials mark beside the name; a real <img class="me"> gets the full portrait */
+.me-card{display:flex;gap:16px;align-items:center}
+.me{flex:none;display:flex;align-items:center;justify-content:center;object-fit:cover}
+span.me{width:56px;height:56px;background:var(--ink);color:var(--mark);font:800 28px/1 var(--sans);letter-spacing:-.04em}
+img.me{width:132px;height:auto;aspect-ratio:4/5}
+.me-card:has(img.me){align-items:flex-end}
 .me-card figcaption b{display:block;font-size:26px;font-weight:800;letter-spacing:-.03em;line-height:1.1}
 .me-card figcaption span{display:block;color:var(--mute);font-size:15px;margin-top:4px}
 .me-card figcaption a{display:inline-block;margin-top:10px;font:500 15px/1 var(--mono);text-decoration:none;border-bottom:1.5px solid var(--ink);padding-bottom:3px}
@@ -397,8 +401,9 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
   .step{grid-template-columns:1fr;border-top:1.5px solid var(--ink);padding-top:18px}
   .step .m{grid-row:auto;font-size:34px;margin-bottom:14px}
   .direct-in{grid-template-columns:4fr 8fr;gap:72px}
-  .me-card{flex-direction:column;align-items:flex-start}
-  .me{width:100%;max-width:320px;font-size:170px}
+  .direct-in:not(:has(img.me)){grid-template-columns:minmax(0,880px);gap:28px}
+  .me-card:has(img.me){flex-direction:column;align-items:flex-start}
+  img.me{width:100%;max-width:320px}
   .direct .goals{margin-top:40px}
   .final-in{grid-template-columns:1fr auto;align-items:end;gap:48px}
 }
