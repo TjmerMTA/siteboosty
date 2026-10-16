@@ -291,7 +291,6 @@ span.av{display:inline-flex;align-items:center;justify-content:center;font:500 1
 .case>:not(.n):not(.thumb){grid-column:2}
 .case h3{font-size:clamp(21px,2vw,26px);font-weight:700;letter-spacing:-.02em;line-height:1.15}
 .case p{color:var(--mute);font-size:15px;margin-top:6px;max-width:58ch}
-.case .thumb{display:none}
 .case:hover h3,.feat:hover h3{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
 
 /* how */
@@ -393,9 +392,7 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
   .rv-head{grid-template-columns:1fr auto;align-items:end}
   .wall{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:48px}
   .feat{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:center}
-  .case{grid-template-columns:56px minmax(0,1fr) 220px;gap:4px 24px;align-items:start}
-  .case .thumb{display:block;grid-column:3;grid-row:1/span 4;background:var(--sheet);padding:6px;box-shadow:0 1px 0 var(--rule)}
-  .case .thumb img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top}
+  .case{grid-template-columns:56px minmax(0,1fr);gap:4px 24px;align-items:start}
   .steps{grid-template-columns:repeat(4,1fr);column-gap:28px}
   .step{grid-template-columns:1fr;border-top:1.5px solid var(--ink);padding-top:18px}
   .step .m{grid-row:auto;font-size:34px;margin-bottom:14px}
@@ -556,7 +553,6 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
       <li><div class="case work" data-proj="appsscript" role="button" tabindex="0"><span class="n">03</span><div class="w-tag" data-i18n="w6.tag">Автоматизація · Документи</div><h3 data-i18n="w6.h">Форма → 3 документи</h3><p data-i18n="w6.p">Система на Google Apps Script: одна заповнена форма — і три готові .docx-документи за шаблонами, без ручного передруку.</p><div class="tags"><span>Google Apps Script</span><span>Google Forms</span><span>Docs</span></div></div></li>
       <li><div class="case work" data-proj="janafit" role="button" tabindex="0"><span class="n">04</span><div class="w-tag" data-i18n="w4.tag">Автоматизація · Бот</div><h3 data-i18n="w4.h">JanaFit — бот-тренер</h3><p data-i18n="w4.p">Telegram-бот для марафону схуднення: програма тренувань, меню, нагадування й облік прогресу учасниць без ручної роботи тренера.</p><div class="tags"><span>Telegram Bot</span><span data-i18n="w4.t1">Нагадування</span><span data-i18n="w4.t2">Прогрес</span></div></div></li>
       <li><div class="case work" data-proj="freelancehunt" role="button" tabindex="0"><span class="n">05</span><div class="w-tag" data-i18n="w5.tag">Автоматизація · Бот</div><h3 data-i18n="w5.h">Freelancehunt — бот проєктів</h3><p data-i18n="w5.p">Бот, який ловить нові проєкти на біржі за фільтрами і миттєво надсилає їх у Telegram — перша відповідь швидша за конкурентів.</p><div class="tags"><span>Telegram Bot</span><span>REST API</span><span data-i18n="w5.t1">Фільтри</span></div></div></li>
-      <li><div class="case work" data-proj="spirit" role="button" tabindex="0"><span class="n">06</span><div class="w-tag" data-i18n="w2.tag">Сайти · SEO</div><h3>Spirit Agency</h3><p data-i18n="w2.p">Мережа з 8 сайтів-сателітів на піддоменах: вёрстка, SEO-теги, Open Graph, розгортання на GitHub Pages, оформлення Instagram-акаунтів.</p><div class="tags"><span data-i18n="w2.t1">8 сайтів</span><span>GitHub Pages</span><span data-i18n="w2.t2">SEO-теги</span><span>Instagram</span></div><div class="thumb shot"><img loading="lazy" src="img/spirit.webp" width="640" height="400" alt="Перший екран сайту Spirit Agency — одного з восьми сайтів мережі" data-i18n-alt="w2.alt"></div></div></li>
     </ol>
   </div>
 </section>
@@ -655,7 +651,6 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
 const PROJ = {
  shifton:{name:"Shifton",url:"https://shifton.com",stack:["Cloudflare Workers","D1","Queues","Bitrix24 REST","Webhooks","TypeScript"]},
  odin:{name:"Odin Originals",url:"https://www.odin-originals.com.ua",stack:["WordPress","WooCommerce","SEO","Google Search Console","PageSpeed"]},
- spirit:{name:"Spirit Agency",url:"https://spiritagency.space",stack:["HTML/CSS","GitHub Pages","Open Graph","SEO-теги","Instagram"]},
  janafit:{name:"JanaFit",stack:["Telegram Bot API","Python","Cron","Google Sheets"]},
  freelancehunt:{name:"Freelancehunt",stack:["Telegram Bot API","Freelancehunt API v2","Python"]},
  appsscript:{name:"Apps Script",stack:["Google Apps Script","Google Forms","Google Docs","Drive"]}
@@ -665,8 +660,6 @@ uk:{title:"SiteBoosty — ремонт, прискорення сайтів і S
 "w.open":"Відкрити кейс →","pm.h":"Кейс","pm.done":"Що зроблено","pm.stack":"Технології","pm.same":"Хочу так само","pm.visit":"Відкрити сайт ↗",
 "p.shifton.tag":"Інтеграції · Автоматизація","p.shifton.lead":"Shifton — SaaS для планування змін і обліку робочого часу. Я розробляю плагіни, які з'єднують Shifton із зовнішніми системами клієнтів.",
 "p.shifton.l":["Інтеграція з Bitrix24: двостороння синхронізація співробітників, змін і відсутностей","Обробка вебхуків і черги подій на Cloudflare Workers — без втрат при піках","Зберігання стану інтеграції в D1, повторні спроби при збоях","Каркас для наступних інтеграцій: CRM, хелпдеск, телефонія, календарі"],
-"p.spirit.tag":"Сайти · SEO","p.spirit.lead":"Мережа сайтів агентства на піддоменах одного домену — кожен під свою аудиторію і свій Instagram-акаунт.",
-"p.spirit.l":["8 сайтів-сателітів: вёрстка, адаптив, швидке завантаження","SEO-теги, мова сторінки, Open Graph для коректних прев'ю в месенджерах","Безкоштовний хостинг на GitHub Pages, домен і DNS налаштовані","Оформлення Instagram-акаунтів під кожен сайт"],
 "p.janafit.tag":"Автоматизація · Бот","p.janafit.lead":"Бот-тренер для марафону схуднення: тренер веде десятки учасниць, а рутину — програму, меню, нагадування — виконує бот.",
 "p.janafit.l":["Програма тренувань і меню за днями прямо в Telegram","Нагадування про тренування та замір за розкладом","Облік прогресу кожної учасниці","Тренер бачить зведення, не витрачаючи час на ручні повідомлення"],
 "p.freelancehunt.tag":"Автоматизація · Бот","p.freelancehunt.lead":"Бот, який моніторить біржу Freelancehunt і за секунди приносить нові проєкти у Telegram — щоб відповідати першим.",
@@ -675,14 +668,12 @@ uk:{title:"SiteBoosty — ремонт, прискорення сайтів і S
 "p.appsscript.l":["Google-форма як єдина точка введення даних","Автоматична генерація трьох .docx-документів за шаблонами","Готові файли складаються на Google Drive у потрібну папку","Дані вводяться один раз — без передруку в кожен документ"],
 "s.go":"Обговорити →","nav.work":"Портфоліо",
 "w.h":"Проєкти, які вже працюють","w.sub":"Кілька моїх робіт — від інтеграцій для SaaS до магазину на WooCommerce і Telegram-ботів.",
-"w1.alt":"Головна сторінка shifton.com — сервісу планування змін, для якого зроблено інтеграції з CRM","w2.alt":"Перший екран сайту Spirit Agency — одного з восьми сайтів мережі",
-"nav.reviews":"Відгуки","rv.h":"Що пишуть замовники — дослівно","rv.sub":"206 позитивних відгуків на біржі Freelancehunt за 2022–2024 роки. Нижче — реальні відгуки замовників з профілю.","rv.k1":"Позитивних відгуків","rv.k3":"успішних проєктів","rv.k2":"Середня оцінка","rv.k2b":"відгуків з оцінками","rv.c1":"Якість","rv.c2":"Професіоналізм","rv.c3":"Ціна","rv.c4":"Контактність","rv.c5":"Терміни","rv.safe":"Сейф","rv.pers":"Персональний","rv.more":"Показати ще","rv.count":"Показано {n} із {t}","rv.orig":"Відгуки наведено мовою оригіналу.","rv.note":"Дані взято з архівної копії профілю на Freelancehunt (грудень 2024).","rv.link":"Відкрити архів →",
+"w1.alt":"Головна сторінка shifton.com — сервісу планування змін, для якого зроблено інтеграції з CRM","nav.reviews":"Відгуки","rv.h":"Що пишуть замовники — дослівно","rv.sub":"206 позитивних відгуків на біржі Freelancehunt за 2022–2024 роки. Нижче — реальні відгуки замовників з профілю.","rv.k1":"Позитивних відгуків","rv.k3":"успішних проєктів","rv.k2":"Середня оцінка","rv.k2b":"відгуків з оцінками","rv.c1":"Якість","rv.c2":"Професіоналізм","rv.c3":"Ціна","rv.c4":"Контактність","rv.c5":"Терміни","rv.safe":"Сейф","rv.pers":"Персональний","rv.more":"Показати ще","rv.count":"Показано {n} із {t}","rv.orig":"Відгуки наведено мовою оригіналу.","rv.note":"Дані взято з архівної копії профілю на Freelancehunt (грудень 2024).","rv.link":"Відкрити архів →",
 "proof.a":"206 позитивних відгуків","proof.b":"на Freelancehunt · {avg} із 5 за {n} оцінками",
 "w7.tag":"SEO · Магазин","w7.p":"Інтернет-магазин на WooCommerce: SEO-просування і технічні доробки. Стабільне зростання позицій, показів і кліків із Google.","w7.t1":"Доробки",
 "p.odin.tag":"SEO · Інтернет-магазин","p.odin.lead":"Магазин Odin Originals: постійне SEO-просування і доробки сайту, щоб товари знаходили в Google і замовляли без перешкод.",
 "p.odin.l":["Технічне SEO: індексація, sitemap, структура сторінок","Оптимізація карток товарів і категорій під пошук","Швидкість завантаження і Core Web Vitals","Доробки магазину на WooCommerce за запитом клієнта","Щомісячний контроль позицій і трафіку в Search Console"],
 "w1.tag":"Інтеграції · Автоматизація","w1.p":"Плагіни-інтеграції сервісу планування змін Shifton із CRM: Bitrix24 та інші. Двостороння синхронізація даних, вебхуки, черги на Cloudflare Workers.",
-"w2.tag":"Сайти · SEO","w2.t1":"8 сайтів","w2.t2":"SEO-теги","w2.p":"Мережа з 8 сайтів-сателітів на піддоменах: вёрстка, SEO-теги, Open Graph, розгортання на GitHub Pages, оформлення Instagram-акаунтів.",
 "w4.tag":"Автоматизація · Бот","w4.h":"JanaFit — бот-тренер","w4.p":"Telegram-бот для марафону схуднення: програма тренувань, меню, нагадування й облік прогресу учасниць без ручної роботи тренера.","w4.t1":"Нагадування","w4.t2":"Прогрес",
 "w5.tag":"Автоматизація · Бот","w5.h":"Freelancehunt — бот проєктів","w5.p":"Бот, який ловить нові проєкти на біржі за фільтрами і миттєво надсилає їх у Telegram — перша відповідь швидша за конкурентів.","w5.t1":"Фільтри",
 "w6.tag":"Автоматизація · Документи","w6.h":"Форма → 3 документи","w6.p":"Система на Google Apps Script: одна заповнена форма — і три готові .docx-документи за шаблонами, без ручного передруку.",
@@ -722,8 +713,6 @@ ru:{title:"SiteBoosty — ремонт, ускорение сайтов и SEO",
 "w.open":"Открыть кейс →","pm.h":"Кейс","pm.done":"Что сделано","pm.stack":"Технологии","pm.same":"Хочу так же","pm.visit":"Открыть сайт ↗",
 "p.shifton.tag":"Интеграции · Автоматизация","p.shifton.lead":"Shifton — SaaS для планирования смен и учёта рабочего времени. Я разрабатываю плагины, которые соединяют Shifton с внешними системами клиентов.",
 "p.shifton.l":["Интеграция с Bitrix24: двусторонняя синхронизация сотрудников, смен и отсутствий","Обработка вебхуков и очереди событий на Cloudflare Workers — без потерь при пиках","Хранение состояния интеграции в D1, повторные попытки при сбоях","Каркас для следующих интеграций: CRM, хелпдеск, телефония, календари"],
-"p.spirit.tag":"Сайты · SEO","p.spirit.lead":"Сеть сайтов агентства на поддоменах одного домена — каждый под свою аудиторию и свой Instagram-аккаунт.",
-"p.spirit.l":["8 сайтов-сателлитов: вёрстка, адаптив, быстрая загрузка","SEO-теги, язык страницы, Open Graph для корректных превью в мессенджерах","Бесплатный хостинг на GitHub Pages, домен и DNS настроены","Оформление Instagram-аккаунтов под каждый сайт"],
 "p.janafit.tag":"Автоматизация · Бот","p.janafit.lead":"Бот-тренер для марафона похудения: тренер ведёт десятки участниц, а рутину — программу, меню, напоминания — выполняет бот.",
 "p.janafit.l":["Программа тренировок и меню по дням прямо в Telegram","Напоминания о тренировке и замерах по расписанию","Учёт прогресса каждой участницы","Тренер видит сводку, не тратя время на ручные сообщения"],
 "p.freelancehunt.tag":"Автоматизация · Бот","p.freelancehunt.lead":"Бот, который мониторит биржу Freelancehunt и за секунды приносит новые проекты в Telegram — чтобы отвечать первым.",
@@ -732,14 +721,12 @@ ru:{title:"SiteBoosty — ремонт, ускорение сайтов и SEO",
 "p.appsscript.l":["Google-форма как единая точка ввода данных","Автоматическая генерация трёх .docx-документов по шаблонам","Готовые файлы складываются на Google Drive в нужную папку","Данные вводятся один раз — без перепечатки в каждый документ"],
 "s.go":"Обсудить →","nav.work":"Портфолио",
 "w.h":"Проекты, которые уже работают","w.sub":"Несколько моих работ — от интеграций для SaaS до магазина на WooCommerce и Telegram-ботов.",
-"w1.alt":"Главная страница shifton.com — сервиса планирования смен, для которого сделаны интеграции с CRM","w2.alt":"Первый экран сайта Spirit Agency — одного из восьми сайтов сети",
-"nav.reviews":"Отзывы","rv.h":"Что пишут заказчики — дословно","rv.sub":"206 положительных отзывов на бирже Freelancehunt за 2022–2024 годы. Ниже — реальные отзывы заказчиков из профиля.","rv.k1":"Положительных отзывов","rv.k3":"успешных проектов","rv.k2":"Средняя оценка","rv.k2b":"отзывов с оценками","rv.c1":"Качество","rv.c2":"Профессионализм","rv.c3":"Цена","rv.c4":"Контактность","rv.c5":"Сроки","rv.safe":"Сейф","rv.pers":"Персональный","rv.more":"Показать ещё","rv.count":"Показано {n} из {t}","rv.orig":"Отзывы приведены на языке оригинала.","rv.note":"Данные взяты из архивной копии профиля на Freelancehunt (декабрь 2024).","rv.link":"Открыть архив →",
+"w1.alt":"Главная страница shifton.com — сервиса планирования смен, для которого сделаны интеграции с CRM","nav.reviews":"Отзывы","rv.h":"Что пишут заказчики — дословно","rv.sub":"206 положительных отзывов на бирже Freelancehunt за 2022–2024 годы. Ниже — реальные отзывы заказчиков из профиля.","rv.k1":"Положительных отзывов","rv.k3":"успешных проектов","rv.k2":"Средняя оценка","rv.k2b":"отзывов с оценками","rv.c1":"Качество","rv.c2":"Профессионализм","rv.c3":"Цена","rv.c4":"Контактность","rv.c5":"Сроки","rv.safe":"Сейф","rv.pers":"Персональный","rv.more":"Показать ещё","rv.count":"Показано {n} из {t}","rv.orig":"Отзывы приведены на языке оригинала.","rv.note":"Данные взяты из архивной копии профиля на Freelancehunt (декабрь 2024).","rv.link":"Открыть архив →",
 "proof.a":"206 положительных отзывов","proof.b":"на Freelancehunt · {avg} из 5 по {n} оценкам",
 "w7.tag":"SEO · Магазин","w7.p":"Интернет-магазин на WooCommerce: SEO-продвижение и технические доработки. Стабильный рост позиций, показов и кликов из Google.","w7.t1":"Доработки",
 "p.odin.tag":"SEO · Интернет-магазин","p.odin.lead":"Магазин Odin Originals: постоянное SEO-продвижение и доработки сайта, чтобы товары находили в Google и заказывали без препятствий.",
 "p.odin.l":["Техническое SEO: индексация, sitemap, структура страниц","Оптимизация карточек товаров и категорий под поиск","Скорость загрузки и Core Web Vitals","Доработки магазина на WooCommerce по запросу клиента","Ежемесячный контроль позиций и трафика в Search Console"],
 "w1.tag":"Интеграции · Автоматизация","w1.p":"Плагины-интеграции сервиса планирования смен Shifton с CRM: Bitrix24 и другие. Двусторонняя синхронизация данных, вебхуки, очереди на Cloudflare Workers.",
-"w2.tag":"Сайты · SEO","w2.t1":"8 сайтов","w2.t2":"SEO-теги","w2.p":"Сеть из 8 сайтов-сателлитов на поддоменах: вёрстка, SEO-теги, Open Graph, развёртывание на GitHub Pages, оформление Instagram-аккаунтов.",
 "w4.tag":"Автоматизация · Бот","w4.h":"JanaFit — бот-тренер","w4.p":"Telegram-бот для марафона похудения: программа тренировок, меню, напоминания и учёт прогресса участниц без ручной работы тренера.","w4.t1":"Напоминания","w4.t2":"Прогресс",
 "w5.tag":"Автоматизация · Бот","w5.h":"Freelancehunt — бот проектов","w5.p":"Бот, который ловит новые проекты на бирже по фильтрам и мгновенно присылает их в Telegram — первый ответ быстрее конкурентов.","w5.t1":"Фильтры",
 "w6.tag":"Автоматизация · Документы","w6.h":"Форма → 3 документа","w6.p":"Система на Google Apps Script: одна заполненная форма — и три готовых .docx-документа по шаблонам, без ручной перепечатки.",
@@ -779,8 +766,6 @@ en:{title:"SiteBoosty — website repair, speed-up and SEO",desc:"Website repair
 "w.open":"Open case →","pm.h":"Case","pm.done":"What was done","pm.stack":"Stack","pm.same":"I want the same","pm.visit":"Visit site ↗",
 "p.shifton.tag":"Integrations · Automation","p.shifton.lead":"Shifton is a SaaS for shift scheduling and time tracking. I build the plugins that connect Shifton to customers' external systems.",
 "p.shifton.l":["Bitrix24 integration: two-way sync of employees, shifts and absences","Webhook handling and event queues on Cloudflare Workers — no data loss at peaks","Integration state stored in D1, retries on failures","A framework for the next integrations: CRM, helpdesk, telephony, calendars"],
-"p.spirit.tag":"Websites · SEO","p.spirit.lead":"An agency's network of sites on subdomains of one domain — each for its own audience and its own Instagram account.",
-"p.spirit.l":["8 satellite sites: layout, responsive, fast loading","SEO tags, page language, Open Graph for correct previews in messengers","Free hosting on GitHub Pages, domain and DNS configured","Instagram account styling for each site"],
 "p.janafit.tag":"Automation · Bot","p.janafit.lead":"A coach bot for a weight-loss marathon: the coach guides dozens of participants while the bot handles the routine — plan, menu, reminders.",
 "p.janafit.l":["Workout plan and daily menu right in Telegram","Scheduled reminders for workouts and measurements","Progress tracking for every participant","The coach sees a summary without sending messages by hand"],
 "p.freelancehunt.tag":"Automation · Bot","p.freelancehunt.lead":"A bot that monitors the Freelancehunt marketplace and delivers new projects to Telegram in seconds — so you reply first.",
@@ -789,14 +774,12 @@ en:{title:"SiteBoosty — website repair, speed-up and SEO",desc:"Website repair
 "p.appsscript.l":["A Google Form as the single data entry point","Automatic generation of three .docx documents from templates","Finished files saved to the right Google Drive folder","Data is entered once, not retyped into each document"],
 "s.go":"Discuss →","nav.work":"Portfolio",
 "w.h":"Projects already up and running","w.sub":"A few of my projects — from SaaS integrations to a WooCommerce store and Telegram bots.",
-"w1.alt":"Home page of shifton.com, the shift-scheduling service I build CRM integrations for","w2.alt":"First screen of the Spirit Agency site, one of the eight sites in the network",
-"nav.reviews":"Reviews","rv.h":"What clients say, word for word","rv.sub":"206 positive reviews on the Freelancehunt marketplace in 2022–2024. Below are real client reviews from the profile.","rv.k1":"Positive reviews","rv.k3":"successful projects","rv.k2":"Average rating","rv.k2b":"rated reviews","rv.c1":"Quality","rv.c2":"Professionalism","rv.c3":"Price","rv.c4":"Communication","rv.c5":"Deadlines","rv.safe":"Safe deal","rv.pers":"Personal","rv.more":"Show more","rv.count":"Showing {n} of {t}","rv.orig":"Reviews are quoted in their original language.","rv.note":"Data taken from an archived copy of the Freelancehunt profile (December 2024).","rv.link":"Open the archive →",
+"w1.alt":"Home page of shifton.com, the shift-scheduling service I build CRM integrations for","nav.reviews":"Reviews","rv.h":"What clients say, word for word","rv.sub":"206 positive reviews on the Freelancehunt marketplace in 2022–2024. Below are real client reviews from the profile.","rv.k1":"Positive reviews","rv.k3":"successful projects","rv.k2":"Average rating","rv.k2b":"rated reviews","rv.c1":"Quality","rv.c2":"Professionalism","rv.c3":"Price","rv.c4":"Communication","rv.c5":"Deadlines","rv.safe":"Safe deal","rv.pers":"Personal","rv.more":"Show more","rv.count":"Showing {n} of {t}","rv.orig":"Reviews are quoted in their original language.","rv.note":"Data taken from an archived copy of the Freelancehunt profile (December 2024).","rv.link":"Open the archive →",
 "proof.a":"206 positive reviews","proof.b":"on Freelancehunt · {avg} out of 5 from {n} ratings",
 "w7.tag":"SEO · Store","w7.p":"WooCommerce online store: SEO promotion and technical improvements. Steady growth in Google rankings, impressions and clicks.","w7.t1":"Improvements",
 "p.odin.tag":"SEO · Online store","p.odin.lead":"Odin Originals store: ongoing SEO and site improvements so products get found on Google and ordered without friction.",
 "p.odin.l":["Technical SEO: indexing, sitemap, page structure","Product and category pages optimized for search","Load speed and Core Web Vitals","WooCommerce store improvements on request","Monthly tracking of rankings and traffic in Search Console"],
 "w1.tag":"Integrations · Automation","w1.p":"Integration plugins connecting the Shifton shift-scheduling service to CRMs such as Bitrix24. Two-way data sync, webhooks and queues on Cloudflare Workers.",
-"w2.tag":"Websites · SEO","w2.t1":"8 sites","w2.t2":"SEO tags","w2.p":"A network of 8 satellite sites on subdomains: layout, SEO tags, Open Graph, GitHub Pages deployment and Instagram account styling.",
 "w4.tag":"Automation · Bot","w4.h":"JanaFit — coach bot","w4.p":"Telegram bot for a weight-loss marathon: workout plan, menu, reminders and progress tracking with no manual work for the coach.","w4.t1":"Reminders","w4.t2":"Progress",
 "w5.tag":"Automation · Bot","w5.h":"Freelancehunt — project bot","w5.p":"A bot that catches new marketplace projects by filters and pushes them to Telegram instantly — first reply ahead of competitors.","w5.t1":"Filters",
 "w6.tag":"Automation · Documents","w6.h":"Form → 3 documents","w6.p":"Google Apps Script system: one submitted form produces three ready .docx documents from templates, with no retyping.",
