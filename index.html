@@ -172,6 +172,8 @@ h1 .tail:empty{display:none}
 .hero.is-g .g-sub{display:block}
 .hero.is-g h1{max-width:13ch}
 .ctas{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;margin-top:32px}
+.pline{order:1;flex-basis:100%;font-size:15px;font-weight:500;margin-top:-4px}
+.ctas .call{order:2}
 .proof{display:flex;align-items:center;gap:14px;margin-top:26px;text-decoration:none;width:fit-content}
 .faces{display:flex}
 .faces img{width:34px;height:34px;border-radius:50%;border:2px solid var(--paper);margin-left:-9px;background:var(--rule)}
@@ -376,6 +378,8 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
   .nav ul{display:flex}
   .h-tel{display:block}
   .btn.h-cta{display:inline-flex}
+  .ctas .call{order:1}
+  .pline{order:2;margin-top:0}
   .sticky{display:none}
   .hero{grid-template-columns:minmax(0,7fr) minmax(0,4.4fr);gap:64px;padding-top:60px;padding-bottom:96px;align-items:start}
   .ticket{margin-top:40px;padding:30px 30px 24px;transform:rotate(1.2deg)}
@@ -440,6 +444,7 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
     <p class="answer g-sub" id="g-sub"></p>
     <div class="ctas" id="hero-ctas">
       <a class="btn js-tg" href="https://t.me/webdev342" target="_blank" rel="noopener" onclick="lead('telegram')"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.6-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.1l-4.7-1.5c-1-.3-1-1 .2-1.5L20.6 3c.9-.3 1.6.2 1.3 1.3z"/></svg><span data-i18n="cta.tg">Написати в Telegram</span></a>
+      <p class="pline" id="pline" data-i18n="pl.direct">Діагностика 0 грн · ремонт від 1 500 грн</p>
       <a class="call js-phone js-phone-num" href="tel:+380686573262" onclick="lead('phone')">+380 68 657 32 62</a>
     </div>
     <a class="proof" href="#reviews">
@@ -682,6 +687,7 @@ uk:{title:"SiteBoosty — ремонт, прискорення сайтів і S
 "hero.h":"Сайт зламався, гальмує або зник із Google?","hero.a1":"Скажу, в чому причина, ","hero.mark":"за 30 хвилин","hero.a2":" — і скільки коштує це виправити.",
 "hero.terms":"Діагностика безкоштовна. Ціна фіксується до початку робіт, половину оплати — після того, як ви перевірили результат.",
 "cta.tg":"Написати в Telegram","cta.call":"Подзвонити","cta.order":"Замовити","hero.hint":"Відповідь за 30 хв · 8:00–22:00 щодня",
+"pl.direct":"Діагностика 0 грн · ремонт від 1 500 грн","pl.speed":"Діагностика 0 грн · прискорення від 2 500 грн","pl.crm":"Діагностика 0 грн · заявки в Telegram і CRM від 3 000 грн","pl.seo":"Діагностика 0 грн · SEO від 2 500 грн",
 "tk.h":"Умови роботи","tk.sign":"Приймає і виконує","tk.diag":"Діагностика","tk.diag_v":"0 грн · 30 хв","tk.fix":"Дрібний ремонт","tk.pay":"Оплата","tk.pay_t":"друга — після перевірки","tk.stamp":"Ціна фіксована",
 "s.h":"Що лагоджу і скільки це коштує","s.sub":"Оберіть, що болить зараз. Точну ціну назву після безкоштовної діагностики","s.sub2":"— і вона вже не зміниться.",
 "s0.h":"Діагностика","s0.p":"Надсилаєте посилання на сайт — отримуєте причину проблеми й фіксовану ціну.","s0.from":"0 грн","s0.t":"30 хвилин",
@@ -738,6 +744,7 @@ ru:{title:"SiteBoosty — ремонт, ускорение сайтов и SEO",
 "hero.h":"Сайт сломался, тормозит или пропал из Google?","hero.a1":"Скажу, в чём причина, ","hero.mark":"за 30 минут","hero.a2":" — и сколько стоит это исправить.",
 "hero.terms":"Диагностика бесплатна. Цена фиксируется до начала работ, половину оплаты — после того, как вы проверили результат.",
 "cta.tg":"Написать в Telegram","cta.call":"Позвонить","cta.order":"Заказать","hero.hint":"Ответ за 30 мин · 8:00–22:00 ежедневно",
+"pl.direct":"Диагностика 0 грн · ремонт от 1 500 грн","pl.speed":"Диагностика 0 грн · ускорение от 2 500 грн","pl.crm":"Диагностика 0 грн · заявки в Telegram и CRM от 3 000 грн","pl.seo":"Диагностика 0 грн · SEO от 2 500 грн",
 "tk.h":"Условия работы","tk.sign":"Принимает и выполняет","tk.diag":"Диагностика","tk.diag_v":"0 грн · 30 мин","tk.fix":"Мелкий ремонт","tk.pay":"Оплата","tk.pay_t":"вторая — после проверки","tk.stamp":"Цена фиксированная",
 "s.h":"Что чиню и сколько это стоит","s.sub":"Выберите, что болит сейчас. Точную цену назову после бесплатной диагностики","s.sub2":"— и она уже не изменится.",
 "s0.h":"Диагностика","s0.p":"Присылаете ссылку на сайт — получаете причину проблемы и фиксированную цену.","s0.from":"0 грн","s0.t":"30 минут",
@@ -794,6 +801,7 @@ en:{title:"SiteBoosty — website repair, speed-up and SEO",desc:"Website repair
 "hero.h":"Website broken, slow or gone from Google?","hero.a1":"I'll tell you what's wrong ","hero.mark":"within 30 minutes","hero.a2":" — and what it costs to fix.",
 "hero.terms":"Diagnosis is free. The price is fixed before I start, and you pay the second half after you've checked the result.",
 "cta.tg":"Message on Telegram","cta.call":"Call me","cta.order":"Order","hero.hint":"Reply in 30 min · 8:00–22:00 daily",
+"pl.direct":"Free diagnosis · repair from ₴1,500","pl.speed":"Free diagnosis · speed-up from ₴2,500","pl.crm":"Free diagnosis · leads to Telegram & CRM from ₴3,000","pl.seo":"Free diagnosis · SEO from ₴2,500",
 "tk.h":"Terms of work","tk.sign":"Taken and done by","tk.diag":"Diagnosis","tk.diag_v":"0 UAH · 30 min","tk.fix":"Quick fix","tk.pay":"Payment","tk.pay_t":"second half after you check","tk.stamp":"Fixed price",
 "s.h":"What I fix and what it costs","s.sub":"Pick what hurts right now. I'll name the exact price after a free diagnosis","s.sub2":"— and it won't change.",
 "s0.h":"Diagnosis","s0.p":"Send me the site link — get the cause of the problem and a fixed price.","s0.from":"0 UAH","s0.t":"30 minutes",
@@ -887,6 +895,8 @@ document.addEventListener('DOMContentLoaded',function(){
   };
   var g=new URLSearchParams(location.search).get('g');
   function applyG(){
+    var d=I18N[document.documentElement.lang]||I18N.uk;
+    document.getElementById('pline').textContent=d['pl.'+(G[g]&&g!=='repair'?g:'direct')];
     if(!g||!G[g]){ hero.classList.remove('is-g'); hTail.textContent=''; return; }
     var v=G[g][document.documentElement.lang]||G[g].uk;
     hMain.textContent=v[0]; hTail.textContent=v[1]; gSub.textContent=v[2];
