@@ -174,8 +174,9 @@ h1 .tail:empty{display:none}
 .ctas{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;margin-top:32px}
 .pline{order:1;flex-basis:100%;font-size:15px;font-weight:500;margin-top:-4px}
 .ctas .call{order:2}
-.proof{display:flex;align-items:center;gap:14px;margin-top:26px;text-decoration:none;width:fit-content}
-.faces{display:flex}
+.proof{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:26px;text-decoration:none;max-width:100%}
+.proof>span:last-child{flex:1 1 170px;min-width:0}
+.faces{display:flex;flex:none}
 .faces img{width:34px;height:34px;border-radius:50%;border:2px solid var(--paper);margin-left:-9px;background:var(--rule)}
 .faces img:first-child{margin-left:0}
 .proof span{font-size:14px;line-height:1.35;color:var(--mute)}
@@ -438,7 +439,7 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
 <main>
 <section class="wrap hero" id="hero">
   <div>
-    <div class="byline"><span class="me-mini" aria-hidden="true">Н</span><span><b><span data-i18n="me.name">Назарій</span> · <span data-i18n="me.role">розробник</span> · <a class="js-tg" href="https://t.me/webdev342" target="_blank" rel="noopener" onclick="lead('telegram')">@webdev342</a></b><span class="mono" data-i18n="hero.hint">Відповідь за 30 хв · 8:00–22:00 щодня</span></span></div>
+    <div class="byline"><span class="me-mini" aria-hidden="true" data-i18n="me.ini">Н</span><span><b><span data-i18n="me.name">Назарій</span> · <span data-i18n="me.role">розробник</span> · <a class="js-tg" href="https://t.me/webdev342" target="_blank" rel="noopener" onclick="lead('telegram')">@webdev342</a></b><span class="mono" data-i18n="hero.hint">Відповідь за 30 хв · 8:00–22:00 щодня</span></span></div>
     <h1><span id="h-main" data-i18n="hero.h">Сайт зламався, гальмує або зник із Google?</span> <mark class="tail" id="h-tail"></mark></h1>
     <p class="answer d"><span data-i18n="hero.a1">Скажу, в чому причина, </span><mark data-i18n="hero.mark">за 30 хвилин</mark><span data-i18n="hero.a2"> — і скільки коштує це виправити.</span></p>
     <p class="answer g-sub" id="g-sub"></p>
@@ -466,7 +467,7 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
       <img src="img/reviews/av/S03026.webp" width="34" height="34" alt="">
       <div><q>Назарий, помог очень быстро, решил мою проблему.</q><span>Евгеній Кислухо · «Помощь на сайте WordPress» · Freelancehunt</span></div>
     </div>
-    <div class="t-sign"><span class="me-mini" aria-hidden="true">Н</span><div><small data-i18n="tk.sign">Приймає і виконує</small><b><span data-i18n="me.name">Назарій</span> · @webdev342</b></div><div class="stamp" data-i18n="tk.stamp">Ціна фіксована</div></div>
+    <div class="t-sign"><span class="me-mini" aria-hidden="true" data-i18n="me.ini">Н</span><div><small data-i18n="tk.sign">Приймає і виконує</small><b><span data-i18n="me.name">Назарій</span> · @webdev342</b></div><div class="stamp" data-i18n="tk.stamp">Ціна фіксована</div></div>
   </aside>
 </section>
 
@@ -578,7 +579,7 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
         <img class="me" id="me" src="img/nazarii.webp" width="640" height="800" alt="Назарій — розробник SiteBoosty" data-i18n-alt="me.alt" loading="lazy">
         The small «Н» squares in the hero and on the receipt switch to the same photo by themselves.
       -->
-      <span class="me" id="me" role="img" aria-label="Назарій" data-i18n-aria="me.name">Н</span>
+      <span class="me" id="me" role="img" aria-label="Назарій" data-i18n-aria="me.name" data-i18n="me.ini">Н</span>
       <figcaption><b data-i18n="me.name">Назарій</b><span data-i18n="me.cap">розробник, Київ</span><a class="js-tg" href="https://t.me/webdev342" target="_blank" rel="noopener" onclick="lead('telegram')">@webdev342</a></figcaption>
     </figure>
     <div>
@@ -701,7 +702,7 @@ uk:{title:"SiteBoosty — ремонт, прискорення сайтів і S
 "o2.h":"Прискорення + SEO-база","o2.term":"Термін — 3–5 днів","o2.l1":"Швидкість: Lighthouse 90+ на мобільних","o2.l2":"Виправлення технічних SEO-помилок","o2.l3":"Індексація, robots, sitemap, дублі","o2.l4":"Аналітика GA4 і цілі на заявки","o2.l5":"Звіт «до / після» за даними Google",
 "o3.h":"Заявки без втрат","o3.term":"Термін — 1–2 дні","o3.l1":"Форми з сайту → Telegram або CRM","o3.l2":"Автовідповідь клієнту за секунду","o3.l3":"Захист від спаму","o3.l4":"Без абонплати за сторонні сервіси",
 "g1.h":"Спершу причина, потім ціна","g1.p":"Дивлюся сайт і пишу, що зламалося і чому. Ціну називаю до початку робіт — і вона не змінюється.","g2.h":"Резервна копія перед роботою","g2.p":"Перед змінами зберігаю копію сайту, щоб будь-що можна було повернути назад.","g3.h":"Звіт після роботи","g3.p":"Пишу, що змінено і навіщо. Після прискорення — «до / після» за даними Google.","g4.h":"Друга половина — після перевірки","g4.p":"50% на старті, 50% — коли ви самі перевірили результат.",
-"me.name":"Назарій","me.role":"розробник","me.cap":"розробник, Київ","me.alt":"Назарій — розробник SiteBoosty",
+"me.name":"Назарій","me.ini":"Н","me.role":"розробник","me.cap":"розробник, Київ","me.alt":"Назарій — розробник SiteBoosty",
 "h.h":"Як це працює","h.sub":"Чотири кроки від «щось не так» до «працює і приносить клієнтів».","hm1":"1 хв","hm2":"30 хв","hm3":"24 год",
 "h1.h":"Пишете в Telegram","h1.p":"Посилання на сайт і що саме турбує. Це займає хвилину.","h2.h":"Безкоштовна діагностика","h2.p":"За 30 хвилин кажу, що сталося, і називаю фіксовану ціну.","h3.h":"Робота за домовленістю","h3.p":"Дрібне — за 24 години, більше — з чітким терміном у договорі.","h4.h":"Перевірка результату","h4.p":"Показую «до / після» за даними Google. Другу половину платите після.",
 "f.h":"Відповідаю і роблю роботу сам","f.p":"Я — Назарій, розробник. Ви пишете мені в Telegram, я дивлюся сайт, називаю ціну й роблю роботу сам — від першого повідомлення до звіту. Тому відповідаю швидко, а в ціні немає націнки агентства.",
@@ -758,7 +759,7 @@ ru:{title:"SiteBoosty — ремонт, ускорение сайтов и SEO",
 "o2.h":"Ускорение + SEO-база","o2.term":"Срок — 3–5 дней","o2.l1":"Скорость: Lighthouse 90+ на мобильных","o2.l2":"Исправление технических SEO-ошибок","o2.l3":"Индексация, robots, sitemap, дубли","o2.l4":"Аналитика GA4 и цели на заявки","o2.l5":"Отчёт «до / после» по данным Google",
 "o3.h":"Заявки без потерь","o3.term":"Срок — 1–2 дня","o3.l1":"Формы с сайта → Telegram или CRM","o3.l2":"Автоответ клиенту за секунду","o3.l3":"Защита от спама","o3.l4":"Без абонплаты за сторонние сервисы",
 "g1.h":"Сначала причина, потом цена","g1.p":"Смотрю сайт и пишу, что сломалось и почему. Цену называю до начала работ — и она не меняется.","g2.h":"Резервная копия перед работой","g2.p":"Перед изменениями сохраняю копию сайта, чтобы что угодно можно было вернуть назад.","g3.h":"Отчёт после работы","g3.p":"Пишу, что изменено и зачем. После ускорения — «до / после» по данным Google.","g4.h":"Вторая половина — после проверки","g4.p":"50% на старте, 50% — когда вы сами проверили результат.",
-"me.name":"Назарий","me.role":"разработчик","me.cap":"разработчик, Киев","me.alt":"Назарий — разработчик SiteBoosty",
+"me.name":"Назарий","me.ini":"Н","me.role":"разработчик","me.cap":"разработчик, Киев","me.alt":"Назарий — разработчик SiteBoosty",
 "h.h":"Как это работает","h.sub":"Четыре шага от «что-то не так» до «работает и приносит клиентов».","hm1":"1 мин","hm2":"30 мин","hm3":"24 ч",
 "h1.h":"Пишете в Telegram","h1.p":"Ссылка на сайт и что именно беспокоит. Это занимает минуту.","h2.h":"Бесплатная диагностика","h2.p":"За 30 минут говорю, что случилось, и называю фиксированную цену.","h3.h":"Работа по договорённости","h3.p":"Мелкое — за 24 часа, крупное — с чётким сроком в договоре.","h4.h":"Проверка результата","h4.p":"Показываю «до / после» по данным Google. Вторую половину платите после.",
 "f.h":"Отвечаю и делаю работу сам","f.p":"Я — Назарий, разработчик. Вы пишете мне в Telegram, я смотрю сайт, называю цену и делаю работу сам — от первого сообщения до отчёта. Поэтому отвечаю быстро, а в цене нет наценки агентства.",
@@ -815,7 +816,7 @@ en:{title:"SiteBoosty — website repair, speed-up and SEO",desc:"Website repair
 "o2.h":"Speed + SEO foundation","o2.term":"Turnaround — 3–5 days","o2.l1":"Speed: Lighthouse 90+ on mobile","o2.l2":"Technical SEO issues fixed","o2.l3":"Indexing, robots, sitemap, duplicates","o2.l4":"GA4 analytics with lead goals","o2.l5":"Before/after report from Google data",
 "o3.h":"No lost leads","o3.term":"Turnaround — 1–2 days","o3.l1":"Site forms → Telegram or CRM","o3.l2":"Instant auto-reply to the customer","o3.l3":"Spam protection","o3.l4":"No monthly fees for third-party tools",
 "g1.h":"Cause first, then the price","g1.p":"I look at the site and tell you what broke and why. The price is named before work starts and doesn't change.","g2.h":"A backup before any work","g2.p":"Before changing anything I save a copy of the site, so any change can be rolled back.","g3.h":"A report afterwards","g3.p":"What was changed and why. After a speed-up — before/after from Google data.","g4.h":"Second half after you check","g4.p":"50% upfront, 50% once you've checked the result yourself.",
-"me.name":"Nazarii","me.role":"developer","me.cap":"developer, Kyiv","me.alt":"Nazarii, the developer behind SiteBoosty",
+"me.name":"Nazarii","me.ini":"N","me.role":"developer","me.cap":"developer, Kyiv","me.alt":"Nazarii, the developer behind SiteBoosty",
 "h.h":"How it works","h.sub":"Four steps from “something's wrong” to “it works and brings customers”.","hm1":"1 min","hm2":"30 min","hm3":"24 h",
 "h1.h":"Message me on Telegram","h1.p":"Send the site link and what's bothering you. Takes a minute.","h2.h":"Free diagnosis","h2.p":"Within 30 minutes I tell you what happened and quote a fixed price.","h3.h":"Work as agreed","h3.p":"Small fixes in 24 hours, bigger jobs with a clear deadline in writing.","h4.h":"Check the result","h4.p":"I show before/after from Google data. You pay the second half afterwards.",
 "f.h":"I answer, and I do the work myself","f.p":"I'm Nazarii, a developer. You message me on Telegram, I look at the site, quote a price and do the work myself, from the first message to the report. That's why replies are fast and there's no agency markup.",
