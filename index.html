@@ -189,11 +189,12 @@ h1 .tail:empty{display:none}
 .t-head b{font-weight:500;letter-spacing:.08em;font-size:13px}
 .t-head span{color:var(--mute);font-size:12px;letter-spacing:.04em}
 .row{display:flex;align-items:baseline;gap:8px;padding:9px 0;border-bottom:1px dotted var(--rule)}
-.row dt{color:var(--mute);flex:none}
-.row .dots{flex:1;border-bottom:1.5px dotted #b4b1a6;transform:translateY(-4px);min-width:10px}
+.row dt{color:var(--mute);flex:1;min-width:0;display:flex;align-items:baseline;gap:8px}
+.row dt:after{content:"";flex:1;min-width:10px;border-bottom:1.5px dotted #b4b1a6;transform:translateY(-4px)}
 .row dd{text-align:right}
 .row dd small{display:block;color:var(--mute);font-size:12px}
-.row.free dd span{background:var(--mark);padding:0 6px}
+.row.hit dd span{background:var(--mark);padding:0 6px}
+.row.hit dt{color:var(--ink)}
 .t-foot{margin-top:18px;display:flex;gap:12px;align-items:flex-start;font:400 13px/1.45 var(--sans)}
 .t-sign{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin-top:16px;padding-top:14px;border-top:1.5px dashed var(--ink);font-family:var(--sans)}
 .t-sign small{display:block;font-size:12px;color:var(--mute)}
@@ -427,7 +428,7 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
       <li><a href="#faq" data-i18n="nav.faq">Питання</a></li>
     </ul>
     <div class="tools">
-      <div class="lang" id="lang" role="group" aria-label="Мова / Language">
+      <div class="lang" id="lang" role="group" aria-label="Мова сайту" data-i18n-aria="lang.label">
         <button type="button" data-lang="uk">UA</button><button type="button" data-lang="ru">RU</button><button type="button" data-lang="en">EN</button>
       </div>
       <a class="h-tel js-phone js-phone-num" href="tel:+380686573262" onclick="lead('phone')">+380 68 657 32 62</a>
@@ -450,7 +451,7 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
     </div>
     <a class="proof" href="#reviews">
       <span class="faces"><img src="img/reviews/av/S03026.webp" width="34" height="34" alt=""><img src="img/reviews/av/newima777.webp" width="34" height="34" alt=""><img src="img/reviews/av/internetkz.webp" width="34" height="34" alt=""><img src="img/reviews/av/depay-188.webp" width="34" height="34" alt=""><img src="img/reviews/av/liubomyrr.webp" width="34" height="34" alt=""><img src="img/reviews/av/mgmebel.webp" width="34" height="34" alt=""></span>
-      <span><b data-i18n="proof.a">206 позитивних відгуків</b><span id="proof-b">на Freelancehunt · 4,94 із 5</span></span>
+      <span><b data-i18n="proof.a">206 позитивних відгуків</b><span id="proof-b">на Freelancehunt · 4,94 із 5 за 176 оцінками</span></span>
     </a>
     <p class="terms" data-i18n="hero.terms">Діагностика безкоштовна. Ціна фіксується до початку робіт, половину оплати — після того, як ви перевірили результат.</p>
   </div>
@@ -458,14 +459,16 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
   <aside class="ticket" aria-label="SiteBoosty">
     <div class="t-head"><b data-i18n="tk.h">Заявка на ремонт</b><span>siteboosty.com</span></div>
     <dl>
-      <div class="row free"><dt data-i18n="tk.diag">Діагностика</dt><span class="dots"></span><dd><span data-i18n="tk.diag_v">0 грн · 30 хв</span></dd></div>
-      <div class="row"><dt data-i18n="tk.fix">Дрібний ремонт</dt><span class="dots"></span><dd><span data-i18n="s1.from">від 1 500 грн</span><small data-i18n="s1.t">до 24 годин</small></dd></div>
-      <div class="row"><dt data-i18n="s2.h">Прискорення</dt><span class="dots"></span><dd><span data-i18n="s2.from">від 2 500 грн</span><small>Core Web Vitals</small></dd></div>
-      <div class="row"><dt data-i18n="tk.pay">Оплата</dt><span class="dots"></span><dd>50% / 50%<small data-i18n="tk.pay_t">друга — після перевірки</small></dd></div>
+      <div class="row hit" data-g="direct"><dt data-i18n="tk.diag">Діагностика</dt><dd><span data-i18n="tk.diag_v">0 грн · 30 хв</span></dd></div>
+      <div class="row" data-g="repair"><dt data-i18n="tk.fix">Ремонт</dt><dd><span data-i18n="s1.from">від 1 500 грн</span><small data-i18n="s1.t">до 24 годин</small></dd></div>
+      <div class="row" data-g="speed"><dt data-i18n="s2.h">Прискорення</dt><dd><span data-i18n="s2.from">від 2 500 грн</span></dd></div>
+      <div class="row" data-g="seo"><dt>SEO</dt><dd><span data-i18n="s3.from">від 2 500 грн</span></dd></div>
+      <div class="row" data-g="crm"><dt data-i18n="tk.crm">Заявки → CRM</dt><dd><span data-i18n="s4.from">від 3 000 грн</span><small data-i18n="s4.t">1–2 дні</small></dd></div>
+      <div class="row"><dt data-i18n="tk.pay">Оплата</dt><dd><span>50% / 50%</span><small data-i18n="tk.pay_t">друга — після перевірки</small></dd></div>
     </dl>
     <div class="t-foot">
       <img src="img/reviews/av/S03026.webp" width="34" height="34" alt="">
-      <div><q>Назарий, помог очень быстро, решил мою проблему.</q><span>Евгеній Кислухо · «Помощь на сайте WordPress» · Freelancehunt</span></div>
+      <div><q>Назарий, помог очень быстро, решил мою проблему. […]</q><span>Евгеній Кислухо · «Помощь на сайте WordPress» · Freelancehunt</span></div>
     </div>
     <div class="t-sign"><span class="me-mini" aria-hidden="true" data-i18n="me.ini">Н</span><div><small data-i18n="tk.sign">Приймає і виконує</small><b><span data-i18n="me.name">Назарій</span> · @webdev342</b></div><div class="stamp" data-i18n="tk.stamp">Ціна фіксована</div></div>
   </aside>
@@ -549,11 +552,11 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
     </div>
 
     <ol class="cases">
-      <li class="case work" data-proj="odin" role="button" tabindex="0"><span class="n">02</span><div class="w-tag" data-i18n="w7.tag">SEO · Магазин</div><h3>Odin Originals</h3><p data-i18n="w7.p">Інтернет-магазин на WooCommerce: SEO-просування і технічні доробки. Стабільне зростання позицій, показів і кліків із Google.</p><div class="tags"><span>SEO</span><span>WooCommerce</span><span>Search Console</span><span data-i18n="w7.t1">Доробки</span></div></li>
-      <li class="case work" data-proj="appsscript" role="button" tabindex="0"><span class="n">03</span><div class="w-tag" data-i18n="w6.tag">Автоматизація · Документи</div><h3 data-i18n="w6.h">Форма → 3 документи</h3><p data-i18n="w6.p">Система на Google Apps Script: одна заповнена форма — і три готові .docx-документи за шаблонами, без ручного передруку.</p><div class="tags"><span>Google Apps Script</span><span>Google Forms</span><span>Docs</span></div></li>
-      <li class="case work" data-proj="janafit" role="button" tabindex="0"><span class="n">04</span><div class="w-tag" data-i18n="w4.tag">Автоматизація · Бот</div><h3 data-i18n="w4.h">JanaFit — бот-тренер</h3><p data-i18n="w4.p">Telegram-бот для марафону схуднення: програма тренувань, меню, нагадування й облік прогресу учасниць без ручної роботи тренера.</p><div class="tags"><span>Telegram Bot</span><span data-i18n="w4.t1">Нагадування</span><span data-i18n="w4.t2">Прогрес</span></div></li>
-      <li class="case work" data-proj="freelancehunt" role="button" tabindex="0"><span class="n">05</span><div class="w-tag" data-i18n="w5.tag">Автоматизація · Бот</div><h3 data-i18n="w5.h">Freelancehunt — бот проєктів</h3><p data-i18n="w5.p">Бот, який ловить нові проєкти на біржі за фільтрами і миттєво надсилає їх у Telegram — перша відповідь швидша за конкурентів.</p><div class="tags"><span>Telegram Bot</span><span>REST API</span><span data-i18n="w5.t1">Фільтри</span></div></li>
-      <li class="case work" data-proj="spirit" role="button" tabindex="0"><span class="n">06</span><div class="w-tag" data-i18n="w2.tag">Сайти · SEO</div><h3>Spirit Agency</h3><p data-i18n="w2.p">Мережа з 8 сайтів-сателітів на піддоменах: вёрстка, SEO-теги, Open Graph, розгортання на GitHub Pages, оформлення Instagram-акаунтів.</p><div class="tags"><span data-i18n="w2.t1">8 сайтів</span><span>GitHub Pages</span><span data-i18n="w2.t2">SEO-теги</span><span>Instagram</span></div><div class="thumb shot"><img loading="lazy" src="img/spirit.webp" width="640" height="400" alt="Перший екран сайту Spirit Agency — одного з восьми сайтів мережі" data-i18n-alt="w2.alt"></div></li>
+      <li><div class="case work" data-proj="odin" role="button" tabindex="0"><span class="n">02</span><div class="w-tag" data-i18n="w7.tag">SEO · Магазин</div><h3>Odin Originals</h3><p data-i18n="w7.p">Інтернет-магазин на WooCommerce: SEO-просування і технічні доробки. Стабільне зростання позицій, показів і кліків із Google.</p><div class="tags"><span>SEO</span><span>WooCommerce</span><span>Search Console</span><span data-i18n="w7.t1">Доробки</span></div></div></li>
+      <li><div class="case work" data-proj="appsscript" role="button" tabindex="0"><span class="n">03</span><div class="w-tag" data-i18n="w6.tag">Автоматизація · Документи</div><h3 data-i18n="w6.h">Форма → 3 документи</h3><p data-i18n="w6.p">Система на Google Apps Script: одна заповнена форма — і три готові .docx-документи за шаблонами, без ручного передруку.</p><div class="tags"><span>Google Apps Script</span><span>Google Forms</span><span>Docs</span></div></div></li>
+      <li><div class="case work" data-proj="janafit" role="button" tabindex="0"><span class="n">04</span><div class="w-tag" data-i18n="w4.tag">Автоматизація · Бот</div><h3 data-i18n="w4.h">JanaFit — бот-тренер</h3><p data-i18n="w4.p">Telegram-бот для марафону схуднення: програма тренувань, меню, нагадування й облік прогресу учасниць без ручної роботи тренера.</p><div class="tags"><span>Telegram Bot</span><span data-i18n="w4.t1">Нагадування</span><span data-i18n="w4.t2">Прогрес</span></div></div></li>
+      <li><div class="case work" data-proj="freelancehunt" role="button" tabindex="0"><span class="n">05</span><div class="w-tag" data-i18n="w5.tag">Автоматизація · Бот</div><h3 data-i18n="w5.h">Freelancehunt — бот проєктів</h3><p data-i18n="w5.p">Бот, який ловить нові проєкти на біржі за фільтрами і миттєво надсилає їх у Telegram — перша відповідь швидша за конкурентів.</p><div class="tags"><span>Telegram Bot</span><span>REST API</span><span data-i18n="w5.t1">Фільтри</span></div></div></li>
+      <li><div class="case work" data-proj="spirit" role="button" tabindex="0"><span class="n">06</span><div class="w-tag" data-i18n="w2.tag">Сайти · SEO</div><h3>Spirit Agency</h3><p data-i18n="w2.p">Мережа з 8 сайтів-сателітів на піддоменах: вёрстка, SEO-теги, Open Graph, розгортання на GitHub Pages, оформлення Instagram-акаунтів.</p><div class="tags"><span data-i18n="w2.t1">8 сайтів</span><span>GitHub Pages</span><span data-i18n="w2.t2">SEO-теги</span><span>Instagram</span></div><div class="thumb shot"><img loading="lazy" src="img/spirit.webp" width="640" height="400" alt="Перший екран сайту Spirit Agency — одного з восьми сайтів мережі" data-i18n-alt="w2.alt"></div></div></li>
     </ol>
   </div>
 </section>
@@ -629,7 +632,7 @@ dialog.pm::backdrop{background:rgba(18,18,18,.6)}
   <button class="x" id="pm-x" type="button" aria-label="Close">×</button>
   <div class="in">
     <div class="w-tag" id="pm-tag"></div>
-    <h2 id="pm-h"></h2>
+    <h2 id="pm-h" data-i18n="pm.h">Кейс</h2>
     <p class="lead" id="pm-lead"></p>
     <h3 data-i18n="pm.done">Що зроблено</h3>
     <ul id="pm-list"></ul>
@@ -659,7 +662,7 @@ const PROJ = {
 };
 const I18N = {
 uk:{title:"SiteBoosty — ремонт, прискорення сайтів і SEO",desc:"Ремонт і прискорення сайтів, SEO, заявки з сайту в Telegram і CRM. Безкоштовна діагностика за 30 хвилин, фіксована ціна до старту. Від 1 500 грн.",
-"w.open":"Відкрити кейс →","pm.done":"Що зроблено","pm.stack":"Технології","pm.same":"Хочу так само","pm.visit":"Відкрити сайт ↗",
+"w.open":"Відкрити кейс →","pm.h":"Кейс","pm.done":"Що зроблено","pm.stack":"Технології","pm.same":"Хочу так само","pm.visit":"Відкрити сайт ↗",
 "p.shifton.tag":"Інтеграції · Автоматизація","p.shifton.lead":"Shifton — SaaS для планування змін і обліку робочого часу. Я розробляю плагіни, які з'єднують Shifton із зовнішніми системами клієнтів.",
 "p.shifton.l":["Інтеграція з Bitrix24: двостороння синхронізація співробітників, змін і відсутностей","Обробка вебхуків і черги подій на Cloudflare Workers — без втрат при піках","Зберігання стану інтеграції в D1, повторні спроби при збоях","Каркас для наступних інтеграцій: CRM, хелпдеск, телефонія, календарі"],
 "p.spirit.tag":"Сайти · SEO","p.spirit.lead":"Мережа сайтів агентства на піддоменах одного домену — кожен під свою аудиторію і свій Instagram-акаунт.",
@@ -674,7 +677,7 @@ uk:{title:"SiteBoosty — ремонт, прискорення сайтів і S
 "w.h":"Проєкти, які вже працюють","w.sub":"Кілька моїх робіт — від інтеграцій для SaaS до магазину на WooCommerce і Telegram-ботів.",
 "w1.alt":"Головна сторінка shifton.com — сервісу планування змін, для якого зроблено інтеграції з CRM","w2.alt":"Перший екран сайту Spirit Agency — одного з восьми сайтів мережі",
 "nav.reviews":"Відгуки","rv.h":"Що пишуть замовники — дослівно","rv.sub":"206 позитивних відгуків на біржі Freelancehunt за 2022–2024 роки. Нижче — реальні відгуки замовників з профілю.","rv.k1":"Позитивних відгуків","rv.k3":"успішних проєктів","rv.k2":"Середня оцінка","rv.k2b":"відгуків з оцінками","rv.c1":"Якість","rv.c2":"Професіоналізм","rv.c3":"Ціна","rv.c4":"Контактність","rv.c5":"Терміни","rv.safe":"Сейф","rv.pers":"Персональний","rv.more":"Показати ще","rv.count":"Показано {n} із {t}","rv.orig":"Відгуки наведено мовою оригіналу.","rv.note":"Дані взято з архівної копії профілю на Freelancehunt (грудень 2024).","rv.link":"Відкрити архів →",
-"proof.a":"206 позитивних відгуків","proof.b":"на Freelancehunt · {avg} із 5",
+"proof.a":"206 позитивних відгуків","proof.b":"на Freelancehunt · {avg} із 5 за {n} оцінками",
 "w7.tag":"SEO · Магазин","w7.p":"Інтернет-магазин на WooCommerce: SEO-просування і технічні доробки. Стабільне зростання позицій, показів і кліків із Google.","w7.t1":"Доробки",
 "p.odin.tag":"SEO · Інтернет-магазин","p.odin.lead":"Магазин Odin Originals: постійне SEO-просування і доробки сайту, щоб товари знаходили в Google і замовляли без перешкод.",
 "p.odin.l":["Технічне SEO: індексація, sitemap, структура сторінок","Оптимізація карток товарів і категорій під пошук","Швидкість завантаження і Core Web Vitals","Доробки магазину на WooCommerce за запитом клієнта","Щомісячний контроль позицій і трафіку в Search Console"],
@@ -684,12 +687,12 @@ uk:{title:"SiteBoosty — ремонт, прискорення сайтів і S
 "w5.tag":"Автоматизація · Бот","w5.h":"Freelancehunt — бот проєктів","w5.p":"Бот, який ловить нові проєкти на біржі за фільтрами і миттєво надсилає їх у Telegram — перша відповідь швидша за конкурентів.","w5.t1":"Фільтри",
 "w6.tag":"Автоматизація · Документи","w6.h":"Форма → 3 документи","w6.p":"Система на Google Apps Script: одна заповнена форма — і три готові .docx-документи за шаблонами, без ручного передруку.",
 "q4.a":"50% на старті, 50% після того, як ви перевірили результат. Оплата на картку, за рахунком для ФОП/ТОВ, або через фриланс-біржу (Freelancehunt, Upwork) із безпечною угодою — гроші резервуються на біржі й списуються лише після здачі роботи.",
-"nav.services":"Послуги","nav.prices":"Ціни","nav.how":"Як це працює","nav.faq":"Питання","nav.cta":"Написати",
+"lang.label":"Мова сайту","nav.services":"Послуги","nav.prices":"Ціни","nav.how":"Як це працює","nav.faq":"Питання","nav.cta":"Написати",
 "hero.h":"Сайт зламався, гальмує або зник із Google?","hero.a1":"Скажу, в чому причина, ","hero.mark":"за 30 хвилин","hero.a2":" — і скільки коштує це виправити.",
 "hero.terms":"Діагностика безкоштовна. Ціна фіксується до початку робіт, половину оплати — після того, як ви перевірили результат.",
 "cta.tg":"Написати в Telegram","cta.call":"Подзвонити","cta.order":"Замовити","hero.hint":"Відповідь за 30 хв · 8:00–22:00 щодня",
 "pl.direct":"Діагностика 0 грн · ремонт від 1 500 грн","pl.speed":"Діагностика 0 грн · прискорення від 2 500 грн","pl.crm":"Діагностика 0 грн · заявки в Telegram і CRM від 3 000 грн","pl.seo":"Діагностика 0 грн · SEO від 2 500 грн",
-"tk.h":"Умови роботи","tk.sign":"Приймає і виконує","tk.diag":"Діагностика","tk.diag_v":"0 грн · 30 хв","tk.fix":"Дрібний ремонт","tk.pay":"Оплата","tk.pay_t":"друга — після перевірки","tk.stamp":"Ціна фіксована",
+"tk.h":"Умови роботи","tk.sign":"Приймає і виконує","tk.diag":"Діагностика","tk.diag_v":"0 грн · 30 хв","tk.fix":"Ремонт","tk.crm":"Заявки → CRM","tk.pay":"Оплата","tk.pay_t":"друга — після перевірки","tk.stamp":"Ціна фіксована",
 "s.h":"Що лагоджу і скільки це коштує","s.sub":"Оберіть, що болить зараз. Точну ціну назву після безкоштовної діагностики","s.sub2":"— і вона вже не зміниться.",
 "s0.h":"Діагностика","s0.p":"Надсилаєте посилання на сайт — отримуєте причину проблеми й фіксовану ціну.","s0.from":"0 грн","s0.t":"30 хвилин",
 "s1.h":"Ремонт сайту","s1.p":"Білий екран, помилки після оновлення, не працюють форми чи кошик.","s1.from":"від 1 500 грн","s1.t":"до 24 годин",
@@ -716,7 +719,7 @@ uk:{title:"SiteBoosty — ремонт, прискорення сайтів і S
 "foot":"SiteBoosty · Назарій, розробник · сайти, SEO, автоматизація · Україна"},
 
 ru:{title:"SiteBoosty — ремонт, ускорение сайтов и SEO",desc:"Ремонт и ускорение сайтов, SEO, заявки с сайта в Telegram и CRM. Бесплатная диагностика за 30 минут, фиксированная цена до старта. От 1 500 грн.",
-"w.open":"Открыть кейс →","pm.done":"Что сделано","pm.stack":"Технологии","pm.same":"Хочу так же","pm.visit":"Открыть сайт ↗",
+"w.open":"Открыть кейс →","pm.h":"Кейс","pm.done":"Что сделано","pm.stack":"Технологии","pm.same":"Хочу так же","pm.visit":"Открыть сайт ↗",
 "p.shifton.tag":"Интеграции · Автоматизация","p.shifton.lead":"Shifton — SaaS для планирования смен и учёта рабочего времени. Я разрабатываю плагины, которые соединяют Shifton с внешними системами клиентов.",
 "p.shifton.l":["Интеграция с Bitrix24: двусторонняя синхронизация сотрудников, смен и отсутствий","Обработка вебхуков и очереди событий на Cloudflare Workers — без потерь при пиках","Хранение состояния интеграции в D1, повторные попытки при сбоях","Каркас для следующих интеграций: CRM, хелпдеск, телефония, календари"],
 "p.spirit.tag":"Сайты · SEO","p.spirit.lead":"Сеть сайтов агентства на поддоменах одного домена — каждый под свою аудиторию и свой Instagram-аккаунт.",
@@ -731,7 +734,7 @@ ru:{title:"SiteBoosty — ремонт, ускорение сайтов и SEO",
 "w.h":"Проекты, которые уже работают","w.sub":"Несколько моих работ — от интеграций для SaaS до магазина на WooCommerce и Telegram-ботов.",
 "w1.alt":"Главная страница shifton.com — сервиса планирования смен, для которого сделаны интеграции с CRM","w2.alt":"Первый экран сайта Spirit Agency — одного из восьми сайтов сети",
 "nav.reviews":"Отзывы","rv.h":"Что пишут заказчики — дословно","rv.sub":"206 положительных отзывов на бирже Freelancehunt за 2022–2024 годы. Ниже — реальные отзывы заказчиков из профиля.","rv.k1":"Положительных отзывов","rv.k3":"успешных проектов","rv.k2":"Средняя оценка","rv.k2b":"отзывов с оценками","rv.c1":"Качество","rv.c2":"Профессионализм","rv.c3":"Цена","rv.c4":"Контактность","rv.c5":"Сроки","rv.safe":"Сейф","rv.pers":"Персональный","rv.more":"Показать ещё","rv.count":"Показано {n} из {t}","rv.orig":"Отзывы приведены на языке оригинала.","rv.note":"Данные взяты из архивной копии профиля на Freelancehunt (декабрь 2024).","rv.link":"Открыть архив →",
-"proof.a":"206 положительных отзывов","proof.b":"на Freelancehunt · {avg} из 5",
+"proof.a":"206 положительных отзывов","proof.b":"на Freelancehunt · {avg} из 5 по {n} оценкам",
 "w7.tag":"SEO · Магазин","w7.p":"Интернет-магазин на WooCommerce: SEO-продвижение и технические доработки. Стабильный рост позиций, показов и кликов из Google.","w7.t1":"Доработки",
 "p.odin.tag":"SEO · Интернет-магазин","p.odin.lead":"Магазин Odin Originals: постоянное SEO-продвижение и доработки сайта, чтобы товары находили в Google и заказывали без препятствий.",
 "p.odin.l":["Техническое SEO: индексация, sitemap, структура страниц","Оптимизация карточек товаров и категорий под поиск","Скорость загрузки и Core Web Vitals","Доработки магазина на WooCommerce по запросу клиента","Ежемесячный контроль позиций и трафика в Search Console"],
@@ -741,12 +744,12 @@ ru:{title:"SiteBoosty — ремонт, ускорение сайтов и SEO",
 "w5.tag":"Автоматизация · Бот","w5.h":"Freelancehunt — бот проектов","w5.p":"Бот, который ловит новые проекты на бирже по фильтрам и мгновенно присылает их в Telegram — первый ответ быстрее конкурентов.","w5.t1":"Фильтры",
 "w6.tag":"Автоматизация · Документы","w6.h":"Форма → 3 документа","w6.p":"Система на Google Apps Script: одна заполненная форма — и три готовых .docx-документа по шаблонам, без ручной перепечатки.",
 "q4.a":"50% на старте, 50% после того, как вы проверили результат. Оплата на карту, по счёту для ФОП/ООО или через фриланс-биржу (Freelancehunt, Upwork) с безопасной сделкой — деньги резервируются на бирже и списываются только после сдачи работы.",
-"nav.services":"Услуги","nav.prices":"Цены","nav.how":"Как это работает","nav.faq":"Вопросы","nav.cta":"Написать",
+"lang.label":"Язык сайта","nav.services":"Услуги","nav.prices":"Цены","nav.how":"Как это работает","nav.faq":"Вопросы","nav.cta":"Написать",
 "hero.h":"Сайт сломался, тормозит или пропал из Google?","hero.a1":"Скажу, в чём причина, ","hero.mark":"за 30 минут","hero.a2":" — и сколько стоит это исправить.",
 "hero.terms":"Диагностика бесплатна. Цена фиксируется до начала работ, половину оплаты — после того, как вы проверили результат.",
 "cta.tg":"Написать в Telegram","cta.call":"Позвонить","cta.order":"Заказать","hero.hint":"Ответ за 30 мин · 8:00–22:00 ежедневно",
 "pl.direct":"Диагностика 0 грн · ремонт от 1 500 грн","pl.speed":"Диагностика 0 грн · ускорение от 2 500 грн","pl.crm":"Диагностика 0 грн · заявки в Telegram и CRM от 3 000 грн","pl.seo":"Диагностика 0 грн · SEO от 2 500 грн",
-"tk.h":"Условия работы","tk.sign":"Принимает и выполняет","tk.diag":"Диагностика","tk.diag_v":"0 грн · 30 мин","tk.fix":"Мелкий ремонт","tk.pay":"Оплата","tk.pay_t":"вторая — после проверки","tk.stamp":"Цена фиксированная",
+"tk.h":"Условия работы","tk.sign":"Принимает и выполняет","tk.diag":"Диагностика","tk.diag_v":"0 грн · 30 мин","tk.fix":"Ремонт","tk.crm":"Заявки → CRM","tk.pay":"Оплата","tk.pay_t":"вторая — после проверки","tk.stamp":"Цена фиксированная",
 "s.h":"Что чиню и сколько это стоит","s.sub":"Выберите, что болит сейчас. Точную цену назову после бесплатной диагностики","s.sub2":"— и она уже не изменится.",
 "s0.h":"Диагностика","s0.p":"Присылаете ссылку на сайт — получаете причину проблемы и фиксированную цену.","s0.from":"0 грн","s0.t":"30 минут",
 "s1.h":"Ремонт сайта","s1.p":"Белый экран, ошибки после обновления, не работают формы или корзина.","s1.from":"от 1 500 грн","s1.t":"до 24 часов",
@@ -773,7 +776,7 @@ ru:{title:"SiteBoosty — ремонт, ускорение сайтов и SEO",
 "foot":"SiteBoosty · Назарий, разработчик · сайты, SEO, автоматизация · Украина"},
 
 en:{title:"SiteBoosty — website repair, speed-up and SEO",desc:"Website repair and speed-up, SEO, leads from your site to Telegram and CRM. Free 30-minute diagnosis, fixed price before work starts. From 1 500 UAH.",
-"w.open":"Open case →","pm.done":"What was done","pm.stack":"Stack","pm.same":"I want the same","pm.visit":"Visit site ↗",
+"w.open":"Open case →","pm.h":"Case","pm.done":"What was done","pm.stack":"Stack","pm.same":"I want the same","pm.visit":"Visit site ↗",
 "p.shifton.tag":"Integrations · Automation","p.shifton.lead":"Shifton is a SaaS for shift scheduling and time tracking. I build the plugins that connect Shifton to customers' external systems.",
 "p.shifton.l":["Bitrix24 integration: two-way sync of employees, shifts and absences","Webhook handling and event queues on Cloudflare Workers — no data loss at peaks","Integration state stored in D1, retries on failures","A framework for the next integrations: CRM, helpdesk, telephony, calendars"],
 "p.spirit.tag":"Websites · SEO","p.spirit.lead":"An agency's network of sites on subdomains of one domain — each for its own audience and its own Instagram account.",
@@ -788,7 +791,7 @@ en:{title:"SiteBoosty — website repair, speed-up and SEO",desc:"Website repair
 "w.h":"Projects already up and running","w.sub":"A few of my projects — from SaaS integrations to a WooCommerce store and Telegram bots.",
 "w1.alt":"Home page of shifton.com, the shift-scheduling service I build CRM integrations for","w2.alt":"First screen of the Spirit Agency site, one of the eight sites in the network",
 "nav.reviews":"Reviews","rv.h":"What clients say, word for word","rv.sub":"206 positive reviews on the Freelancehunt marketplace in 2022–2024. Below are real client reviews from the profile.","rv.k1":"Positive reviews","rv.k3":"successful projects","rv.k2":"Average rating","rv.k2b":"rated reviews","rv.c1":"Quality","rv.c2":"Professionalism","rv.c3":"Price","rv.c4":"Communication","rv.c5":"Deadlines","rv.safe":"Safe deal","rv.pers":"Personal","rv.more":"Show more","rv.count":"Showing {n} of {t}","rv.orig":"Reviews are quoted in their original language.","rv.note":"Data taken from an archived copy of the Freelancehunt profile (December 2024).","rv.link":"Open the archive →",
-"proof.a":"206 positive reviews","proof.b":"on Freelancehunt · {avg} out of 5",
+"proof.a":"206 positive reviews","proof.b":"on Freelancehunt · {avg} out of 5 from {n} ratings",
 "w7.tag":"SEO · Store","w7.p":"WooCommerce online store: SEO promotion and technical improvements. Steady growth in Google rankings, impressions and clicks.","w7.t1":"Improvements",
 "p.odin.tag":"SEO · Online store","p.odin.lead":"Odin Originals store: ongoing SEO and site improvements so products get found on Google and ordered without friction.",
 "p.odin.l":["Technical SEO: indexing, sitemap, page structure","Product and category pages optimized for search","Load speed and Core Web Vitals","WooCommerce store improvements on request","Monthly tracking of rankings and traffic in Search Console"],
@@ -798,12 +801,12 @@ en:{title:"SiteBoosty — website repair, speed-up and SEO",desc:"Website repair
 "w5.tag":"Automation · Bot","w5.h":"Freelancehunt — project bot","w5.p":"A bot that catches new marketplace projects by filters and pushes them to Telegram instantly — first reply ahead of competitors.","w5.t1":"Filters",
 "w6.tag":"Automation · Documents","w6.h":"Form → 3 documents","w6.p":"Google Apps Script system: one submitted form produces three ready .docx documents from templates, with no retyping.",
 "q4.a":"50% upfront, 50% after you've verified the result. Pay by card, by invoice for businesses, or via a freelance marketplace (Freelancehunt, Upwork) with escrow — funds are held by the platform and released only after delivery.",
-"nav.services":"Services","nav.prices":"Pricing","nav.how":"How it works","nav.faq":"FAQ","nav.cta":"Message me",
+"lang.label":"Site language","nav.services":"Services","nav.prices":"Pricing","nav.how":"How it works","nav.faq":"FAQ","nav.cta":"Message me",
 "hero.h":"Website broken, slow or gone from Google?","hero.a1":"I'll tell you what's wrong ","hero.mark":"within 30 minutes","hero.a2":" — and what it costs to fix.",
 "hero.terms":"Diagnosis is free. The price is fixed before I start, and you pay the second half after you've checked the result.",
 "cta.tg":"Message on Telegram","cta.call":"Call me","cta.order":"Order","hero.hint":"Reply in 30 min · 8:00–22:00 daily",
 "pl.direct":"Free diagnosis · repair from ₴1,500","pl.speed":"Free diagnosis · speed-up from ₴2,500","pl.crm":"Free diagnosis · leads to Telegram & CRM from ₴3,000","pl.seo":"Free diagnosis · SEO from ₴2,500",
-"tk.h":"Terms of work","tk.sign":"Taken and done by","tk.diag":"Diagnosis","tk.diag_v":"0 UAH · 30 min","tk.fix":"Quick fix","tk.pay":"Payment","tk.pay_t":"second half after you check","tk.stamp":"Fixed price",
+"tk.h":"Terms of work","tk.sign":"Taken and done by","tk.diag":"Diagnosis","tk.diag_v":"0 UAH · 30 min","tk.fix":"Repair","tk.crm":"Leads → CRM","tk.pay":"Payment","tk.pay_t":"second half after you check","tk.stamp":"Fixed price",
 "s.h":"What I fix and what it costs","s.sub":"Pick what hurts right now. I'll name the exact price after a free diagnosis","s.sub2":"— and it won't change.",
 "s0.h":"Diagnosis","s0.p":"Send me the site link — get the cause of the problem and a fixed price.","s0.from":"0 UAH","s0.t":"30 minutes",
 "s1.h":"Website repair","s1.p":"White screen, errors after an update, broken forms or checkout.","s1.from":"from ₴1,500","s1.t":"within 24 hours",
@@ -857,7 +860,7 @@ document.addEventListener('DOMContentLoaded',function(){
     document.getElementById('rv-total').textContent=RV.length+' '+d()['rv.k2b']+'.';
     var ck=['rv.c1','rv.c2','rv.c3','rv.c4','rv.c5'];
     document.getElementById('rv-crit').innerHTML=RV_CRIT.map(function(v,i){return '<li>'+d()[ck[i]]+' <b>'+num(v)+'</b></li>';}).join('');
-    document.getElementById('proof-b').textContent=d()['proof.b'].replace('{avg}',num(RV_AVG));
+    document.getElementById('proof-b').textContent=d()['proof.b'].replace('{avg}',num(RV_AVG)).replace('{n}',RV.length);
   }
   window.rvCount=render;
   more.onclick=function(){shown=Math.min(shown+STEP,RV.length);render();};
@@ -875,7 +878,7 @@ document.addEventListener('DOMContentLoaded',function(){
     document.querySelectorAll('[data-i18n-alt]').forEach(function(el){var k=el.getAttribute('data-i18n-alt'); if(d[k]!=null) el.alt=d[k];});
     document.querySelectorAll('[data-i18n-aria]').forEach(function(el){var k=el.getAttribute('data-i18n-aria'); if(d[k]!=null) el.setAttribute('aria-label',d[k]);});
     document.querySelectorAll('#lang button').forEach(function(b){b.classList.toggle('on',b.dataset.lang===l);b.setAttribute('aria-pressed',b.dataset.lang===l);});
-    var pb=document.getElementById('proof-b'); if(pb) pb.textContent=d['proof.b'].replace('{avg}',(window.RV_AVG||4.94).toLocaleString(l==='en'?'en-US':'uk-UA',{minimumFractionDigits:1}));
+    var pb=document.getElementById('proof-b'); if(pb) pb.textContent=d['proof.b'].replace('{avg}',(window.RV_AVG||4.94).toLocaleString(l==='en'?'en-US':'uk-UA',{minimumFractionDigits:1})).replace('{n}',window.RV?RV.length:176);
     if(window.rvCount) window.rvCount();
     try{localStorage.setItem('sb-lang',l);}catch(e){}
     applyG();
@@ -898,6 +901,8 @@ document.addEventListener('DOMContentLoaded',function(){
   function applyG(){
     var d=I18N[document.documentElement.lang]||I18N.uk;
     document.getElementById('pline').textContent=d['pl.'+(G[g]&&g!=='repair'?g:'direct')];
+    var key=G[g]?g:'direct';
+    document.querySelectorAll('.ticket .row[data-g]').forEach(function(r){r.classList.toggle('hit',r.dataset.g===key);});
     if(!g||!G[g]){ hero.classList.remove('is-g'); hTail.textContent=''; return; }
     var v=G[g][document.documentElement.lang]||G[g].uk;
     hMain.textContent=v[0]; hTail.textContent=v[1]; gSub.textContent=v[2];
