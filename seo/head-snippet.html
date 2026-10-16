@@ -1,0 +1,94 @@
+<!--
+  DESIGNER NOTES (delete this comment block when pasting; it is not part of the snippet)
+
+  1. Paste everything between "BEGIN" and "END" into <head> of index.html, right after
+     <meta name="viewport">. DELETE the old <title> and <meta name="description"> first
+     (otherwise the page has two of each).
+  2. Keep the description tag exactly as <meta name="description" ...>: setLang() in the page
+     script finds it with querySelector('meta[name=description]') and rewrites it per language.
+  3. setLang() also rewrites document.title and that meta from I18N[lang].title / .desc, and
+     Google indexes the RENDERED page. So the I18N strings must match this snippet, or the
+     script will silently put the old text back. New values for I18N (all within 60 / 155 chars):
+       uk title: SiteBoosty — ремонт, прискорення сайтів і SEO                       (45)
+       uk desc : Ремонт і прискорення сайтів, SEO, заявки з сайту в Telegram і CRM. Безкоштовна діагностика за 30 хвилин, фіксована ціна до старту. Від 1 500 грн.   (145)
+       ru title: SiteBoosty — ремонт, ускорение сайтов и SEO                         (43)
+       ru desc : Ремонт и ускорение сайтов, SEO, заявки с сайта в Telegram и CRM. Бесплатная диагностика за 30 минут, фиксированная цена до старта. От 1 500 грн.      (144)
+       en title: SiteBoosty — website repair, speed-up and SEO                       (45)
+       en desc : Website repair and speed-up, SEO, leads from your site to Telegram and CRM. Free 30-minute diagnosis, fixed price before work starts. From 1 500 UAH.  (149)
+     og:/twitter: tags are not rewritten by the script (they are read by messengers, which
+     do not run JS), so they stay Ukrainian — that is intended.
+  4. Files this block points to and that the designer must create at the site root:
+       /og.png (1200x630, PNG), /favicon.svg, /apple-touch-icon.png (180x180).
+  5. The price "1 500 грн" is the lowest price actually shown on the page today
+     (package "Швидка допомога" and "від 1 500 грн" on the repair card). If prices on the
+     page change, change the description, the priceRange below and I18N together.
+-->
+
+<!-- BEGIN seo head block -->
+<title>SiteBoosty — ремонт, прискорення сайтів і SEO</title>
+<meta name="description" content="Ремонт і прискорення сайтів, SEO, заявки з сайту в Telegram і CRM. Безкоштовна діагностика за 30 хвилин, фіксована ціна до старту. Від 1 500 грн.">
+
+<!-- One canonical for the root and every variant of it (/?g=repair, /?g=speed, /?g=crm, /?g=seo, ?lang=..., gclid and utm_* tags),
+     so the ad URLs do not split into separate pages in Google. -->
+<link rel="canonical" href="https://siteboosty.com/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+
+<!-- No hreflang on purpose: uk/ru/en are switched by JS on ONE URL (no separate address per language),
+     and hreflang needs a separate URL for each language version. Adding it here would be wrong. -->
+
+<!-- Open Graph (Facebook, Telegram, LinkedIn, Viber previews) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SiteBoosty">
+<meta property="og:url" content="https://siteboosty.com/">
+<meta property="og:title" content="SiteBoosty — ремонт, прискорення сайтів і SEO">
+<meta property="og:description" content="Ремонт і прискорення сайтів, SEO, заявки з сайту в Telegram і CRM. Безкоштовна діагностика за 30 хвилин, фіксована ціна до старту. Від 1 500 грн.">
+<meta property="og:image" content="https://siteboosty.com/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SiteBoosty — ремонт, прискорення сайтів і SEO">
+<meta property="og:locale" content="uk_UA">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta property="og:locale:alternate" content="en_US">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SiteBoosty — ремонт, прискорення сайтів і SEO">
+<meta name="twitter:description" content="Ремонт і прискорення сайтів, SEO, заявки з сайту в Telegram і CRM. Безкоштовна діагностика за 30 хвилин, фіксована ціна до старту. Від 1 500 грн.">
+<meta name="twitter:image" content="https://siteboosty.com/og.png">
+<meta name="twitter:image:alt" content="SiteBoosty — ремонт, прискорення сайтів і SEO">
+
+<!-- Browser UI colour (matches --bg in the light and dark themes of the page) -->
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#171717" media="(prefers-color-scheme: dark)">
+
+<!-- Icons (absolute paths: they must work from any URL, including the 404 page) -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- Structured data. No address / rating on purpose: the studio has no public address and
+     the Freelancehunt reviews are not marked up (self-served review markup is not eligible for rich results). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://siteboosty.com/#business",
+  "name": "SiteBoosty",
+  "url": "https://siteboosty.com/",
+  "image": "https://siteboosty.com/og.png",
+  "description": "Ремонт і прискорення сайтів, SEO, заявки з сайту в Telegram і CRM. Безкоштовна діагностика за 30 хвилин, фіксована ціна до старту.",
+  "telephone": "+380686573262",
+  "areaServed": "UA",
+  "priceRange": "від 1 500 грн",
+  "sameAs": ["https://t.me/webdev342"],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "telephone": "+380686573262",
+    "url": "https://t.me/webdev342",
+    "areaServed": "UA",
+    "availableLanguage": ["uk", "ru", "en"]
+  }
+}
+</script>
+<!-- END seo head block -->
