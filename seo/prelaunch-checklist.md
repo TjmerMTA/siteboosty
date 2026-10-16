@@ -10,6 +10,7 @@ Run on the published site (after the director merges and publishes). Tick each l
 - [ ] `curl -s https://siteboosty.com/ | grep -c 'rel="canonical"'` → exactly **1**, and it is `https://siteboosty.com/`.
 - [ ] Same canonical for `/?g=repair`, `/?g=speed`, `/?g=crm`, `/?g=seo` and `/?lang=ru` (the canonical must not contain `?g=`).
 - [ ] Only one `<title>` and one `<meta name="description">` in the page; no `noindex` anywhere on `/`.
+- [ ] Exactly one `<meta name="theme-color" content="#efede6">` (the page has one light theme; no dark-theme variant): `curl -s https://siteboosty.com/ | grep -c 'name="theme-color"'` → **1**.
 - [ ] `/og.png` (1200×630), `/favicon.svg`, `/apple-touch-icon.png` all return `200` (not the 404 page).
 - [ ] Open Graph preview: paste `https://siteboosty.com/` into Telegram "Saved messages" → card with image, title, text.
 - [ ] JSON-LD parses: Google Rich Results Test or schema.org validator shows `ProfessionalService`, no errors.
@@ -28,7 +29,7 @@ Open each URL, hard reload, read the hero (h1 + text under it). They must not ro
 - [ ] `/?g=speed` → «Прискоримо сайт за 1–3 дні», «Від 2 500 грн.»
 - [ ] `/?g=crm` → «Заявки з сайту прямо в Telegram або CRM», «Від 3 000 грн…»
 - [ ] `/?g=seo` → «Повернемо трафік з Google» (no price in the text)
-- [ ] `/` (no param) → normal rotating headline.
+- [ ] `/` (no param) → the fixed headline «Сайт зламався, гальмує або зник із Google?» with «Скажемо, в чому причина, за 30 хвилин — і скільки коштує це виправити.» under it. It does not rotate (the rotation was removed in the redesign). `/?g=none` or any unknown `g` shows the same.
 - [ ] The prices in these headlines match the cards and packages lower on the page (repair 1 500, package prices 1 500 / 4 500 / 3 000). If they differ, tell the owner. Do not decide the number.
 - [ ] Ad text and landing text agree (an ad must not promise something the hero does not).
 
@@ -48,7 +49,7 @@ Open DevTools → Network, tick "Preserve log", filter `conversion` and `collect
 
 - [ ] PageSpeed Insights (pagespeed.web.dev) for `https://siteboosty.com/?g=speed`, **Mobile** tab. Write down the real Performance score, LCP, CLS, INP. Target: Performance ≥ 90, LCP < 2.5 s, CLS < 0.1.
 - [ ] If the score is below 90, send the list of failed audits back to the designer. Do not put the page's "Lighthouse 90+" promise in ads until the page itself reaches it.
-- [ ] On a real phone (or DevTools 375 px): no horizontal scroll, hero + both buttons visible without scrolling, the sticky button does not cover text or the buttons, text is readable in the dark theme too.
+- [ ] On a real phone (or DevTools 375 px): no horizontal scroll, hero + both buttons visible without scrolling, the sticky button does not cover text or the buttons (it appears only after the hero buttons scroll away). There is no dark theme any more, so there is nothing to check there.
 - [ ] Images below the fold are lazy, the hero loads without waiting for them (no layout jump).
 
 ## F. Honesty check of the page (rule: no invented numbers)
